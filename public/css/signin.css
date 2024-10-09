@@ -1,0 +1,158 @@
+*/:root {
+    --bs-blue: #4682A9;
+    --bs-indigo: #4682A9;
+    --bs-purple: #6f42c1;
+    --bs-pink: #d63384;
+    --bs-red: #dc3545;
+    --bs-orange: #fff;
+    --bs-yellow: #fff;
+    --bs-green: #4682A9;
+    --bs-teal: #4682A9;
+    --bs-cyan: #0dcaf0;
+    --bs-white: #fff;
+    --bs-gray: #6c757d;
+    --bs-gray-dark: #343a40;
+    --bs-gray-100: #f8f9fa;
+    --bs-gray-200: #e9ecef;
+    --bs-gray-300: #dee2e6;
+    --bs-gray-400: #ced4da;
+    --bs-gray-500: #adb5bd;
+    --bs-gray-600: #6c757d;
+    --bs-gray-700: #495057;
+    --bs-gray-800: #343a40;
+    --bs-gray-900: #212529;
+    --bs-primary: #4682A9;
+    --bs-secondary: #6c757d;
+    --bs-success: #4682A9;
+    --bs-info: #0dcaf0;
+    --bs-warning: #fff;
+    --bs-danger: #dc3545;
+    --bs-light: #f8f9fa;
+    --bs-dark: #212529;
+    --bs-primary-rgb: 13,110,253;
+    --bs-secondary-rgb: 108,117,125;
+    --bs-success-rgb: 25,135,84;
+    --bs-info-rgb: 13,202,240;
+    --bs-warning-rgb: 255,193,7;
+    --bs-danger-rgb: 220,53,69;
+    --bs-light-rgb: 248,249,250;
+    --bs-dark-rgb: 33,37,41;
+    --bs-white-rgb: 255,255,255;
+    --bs-black-rgb: 0,0,0;
+    --bs-body-color-rgb: 33,37,41;
+    --bs-body-bg-rgb: 255,255,255;
+    --bs-font-sans-serif: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    --bs-font-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+    --bs-body-font-family: var(--bs-font-sans-serif);
+    --bs-body-font-size: 1rem;
+    --bs-body-font-weight: 400;
+    --bs-body-line-height: 1.5;
+    --bs-body-color: #212529;
+    --bs-body-bg: #fff
+}
+
+body .container-form{
+    background-color: #4682A9;
+    height: 100vh;
+    width: 100%;
+}
+
+body .content{
+    display: flex;
+    width: 100%;
+}
+
+body .form{
+    background-color: white;
+    border-radius: 0 50px 50px 0;
+    width: 70%;
+    height: 100%;
+}
+
+body .product{
+    width: auto;
+}
+
+.form-signin{
+    margin-left: 100px;
+    margin-right: auto;
+    width: 70%;
+}
+
+.form-signin h1{
+    color: #4682A9;
+}
+
+.product img{
+    max-height: 600px;
+    margin: auto;
+    position: relative;
+    right: 100px;
+}
+
+.form-signin form{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-signin button{
+    background-color: #4682A9;
+    color: white;
+}
+
+.form-signin button:hover{
+    background-color: #164463;
+    color: white;
+}
+
+.form-signin img{
+    width: 140px;
+}
+
+.form-signin a{
+    color: #4682A9;
+    text-decoration: none;
+}
+
+.form-signin a:hover{
+    text-decoration: underline;
+}
+
+/* Tablet */
+@media (max-width: 770px) {
+    body .container-form{
+        height: fit-content;
+        width: 100%;
+    }
+
+    .content{
+        flex-direction: column-reverse;
+    }
+
+    .product{
+        display: flex;
+    }
+
+    .product img{
+        right: 0;
+        max-height: 300px;
+        margin: 0 auto;
+    }
+
+    body .form{
+        padding: 50px;
+        width: 100%;
+        border-radius: 50px 50px 0 0;
+    }
+
+    .form .form-signin{
+        width: 100%;
+        margin: 0;
+    }
+}
+
+/* Mobile Phone */
+@media (max-width: 450px) {
+
+}
