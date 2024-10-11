@@ -44,12 +44,23 @@
                             @enderror
                         </div>
                         <div class="form-floating my-3">
-                            <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                            <input type="password" name="password" class="form-control rounded-bottom  @error('password') is-invalid @enderror" id="password" placeholder="Password" required>
                             <label for="password">Password</label>
+                            @error('password')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                            <div id="rulesPassword" class="form-text">Password harus memiliki panjang antara 3 hingga 8 karakter</div>
                         </div>
                         <div class="form-floating my-3">
-                            <input type="password" name="confirm-password" class="form-control" id="confirm-password" placeholder="Konfirmasi Password">
+                            <input type="password" name="confirm-password" class="form-control @error('confirm-password') is-invalid @enderror" id="confirm-password" placeholder="Konfirmasi Password" required>
                             <label for="confirm-password">Konfirmasi Password</label>
+                            @error('confirm-password')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                         <button class="btn w-100 py-2 my-3" type="submit">Registrasi</button>
                     </form>

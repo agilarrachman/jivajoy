@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,24 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard',[
+        "active" => "beranda"
+    ]);
+});
+
+Route::get('/profile', function () {
+    return view('profile');
+});
+
+Route::get('/cart', function () {
+    return view('cart');
+});
+
+Route::get('/order', function () {
+    return view('order');
+});
+
 Route::get('/createProfile', function () {
     return view('create-profile');
 });
@@ -31,3 +50,6 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
+
+Route::get('/create-profile', [ProfileController::class, 'index']);
+Route::post('/store-profile', [ProfileController::class, 'store']);

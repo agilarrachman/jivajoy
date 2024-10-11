@@ -81,6 +81,12 @@ body .product{
     height: auto;
 }
 
+#profileImagePreview{
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+}
+
 .form-signup{
     margin-right: 100px;
     margin-left: auto;
@@ -130,6 +136,16 @@ body .product{
 
 .form-signup a:hover{
     text-decoration: underline;
+}
+
+.form-check-input[type="radio"]:checked {
+    background-color: #4682A9; 
+    /* border-color: #4682A9; */
+}
+
+/* Memberi efek kecil pada saat focus (opsional) */
+.form-check-input[type="radio"]:focus {
+    outline: 2px solid #4682A9;
 }
 
 /* Tablet */

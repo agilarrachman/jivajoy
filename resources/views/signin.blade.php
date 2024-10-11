@@ -27,6 +27,19 @@
             <div class="form d-flex">
                 <main class="form-signin my-auto">
                     <img src="img/jivajoy logo.png" alt="logo jivajoy" class="img-fluid">
+                    @if(session()->has('success'))
+                    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    @endif
+
+                    @if(session()->has('loginError'))
+                    <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                        {{ session('loginError') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    @endif
                     <h1 class="h1 mt-3 fw-bold">Masuk</h1>
                     <p class="p mb-3">Masuk untuk mengakses akun jivajoy Anda!</p>
                     <form action="/login" method="post">

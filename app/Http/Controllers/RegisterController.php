@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 
 class RegisterController extends Controller
@@ -17,19 +16,17 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:255',                                       //Style 1
-            'username' => ['required', 'min:3', 'max:255', 'unique:users'],     //Style 2
             'email' => 'required|email:dns|unique:users',
-            'password' => 'required|min:5|max:255'
+            'password' => 'required|min:3|max:8',
+            'confirm-password' => 'required|same:password',
+        ], [
+            'confirm-password.same' => 'Konfirmasi password harus sama dengan password.',
         ]);
 
-        // $validatedData['password'] = bcrypt($validatedData['password']);
-        $validatedData['password'] = Hash::make($validatedData['password']);
-
-        User::create($validatedData);
-
-        // $request->session()->flash('success', 'Registration successfull! Please login');
-
-        return redirect('/login')->with('success', 'Registration successfull! Please login');
+        // Redirect ke halaman penginputan data diri sambil membawa email dan password (unencrypted password)
+        return redirect('/create-profile')->with([
+            'email' => $request->email,
+            'password' => $request->password
+        ]);
     }
 }

@@ -19,12 +19,13 @@
     <link rel="shortcut icon" type="image/x-icon" href="img/logo.svg">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="js/script.js"></script>
 </head>
 
 <body>
     <div class="container-form">
         <div class="content h-100">
-            <div class="product my-auto">
+            <div class="product" style="margin-top:50px;">
                 <img src="img/produk sign-in.png" alt="" class="img-fluid">
             </div>
             <div class="form d-flex flex-column">
@@ -33,11 +34,20 @@
                     <h1 class="h1 mt-3 fw-bold">Lengkapi Data Diri</h1>
                     <p class="p mb-4">Akun Jivajoy Anda berhasil dibuat!
                         Silakan lengkapi data diri untuk melangkah lebih jauh dalam perjalanan anda</p>
-                    <form action="/register" method="post">
+                    <form action="/store-profile" method="post" enctype="multipart/form-data">
                         @csrf
-                        <div class="col d-flex flex-column">
-                            <img src="img/marsya.jpg" alt="" class="rounded-circle mx-auto my-3">
-                            <input type="file" name="profile_image" id="profile_image" class="form-control w-80 mx-auto mb-4">
+                        <input type="hidden" name="email" value="{{ session('email') }}">
+                        <input type="hidden" name="password" value="{{ session('password') }}">
+                        <input type="hidden" name="role" value="User">
+                        <div class="col d-flex flex-column w-80">
+                            <img id="profileImagePreview" src="img/default profile picture.jpg" alt="" class="rounded-circle mx-auto my-3">
+                            <input type="file" name="foto_profil" id="foto_profil" class="form-control mx-auto @error('foto_profil') is-invalid @enderror" onchange="previewImage(event)">
+                            @error('foto_profil')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                            <div id="rulesProfileImage" class="form-text mb-4">Silakan unggah gambar profil dengan format file gambar (jpeg, png, jpg, gif) dan ukuran maksimum 5 MB</div>
                         </div>
                         <div class="form-floating my-2">
                             <input type="text" name="nama" class="form-control  @error('nama') is-invalid @enderror" id="nama" placeholder="name@example.com" autofocus required value="{{ old('nama') }}">
@@ -49,87 +59,33 @@
                             @enderror
                         </div>
                         <div class="form-floating my-2">
-                            <input type="number" name="nohp" class="form-control  @error('nohp') is-invalid @enderror" id="nohp" placeholder="name@example.com" autofocus required value="{{ old('nohp') }}">
-                            <label for="nohp">Nomor HP</label>
-                            @error('nohp')
+                            <input type="text" name="username" class="form-control  @error('username') is-invalid @enderror" id="username" placeholder="name@example.com" autofocus required value="{{ old('username') }}">
+                            <label for="username">Username</label>
+                            @error('username')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                             @enderror
                         </div>
-                        <div class="row w-100 mx-auto">
-                            <div class="col-md-6 pe-md-3 my-1 px-0">
-                                <div class="select-input w-100">
-                                    <label for="kecamatan" class="mb-2">Provinsi</label>
-                                    <select class="form-select w-100" aria-label="Default select example">
-                                        <option selected>Pilih provinsi</option>
-                                        <option value="Jawa Barat">Jawa Barat</option>
-                                        <option value="Bogor Selatan">Bogor Selatan</option>
-                                        <option value="Bogor Tengah">Bogor Tengah</option>
-                                        <option value="Bogor Timur">Bogor Timur</option>
-                                        <option value="Bogor Utara">Bogor Utara</option>
-                                        <option value="Tanah Sereal">Tanah Sereal</option>
-                                    </select>
-                                </div>
+                        <label for="jenis_kelamin" class="my-2">Jenis Kelamin</label>
+                        <div class="mb-2">
+                            <div class="form-check-inline">
+                                <input class="form-check-input" type="radio" name="jenis_kelamin" id="Pria" value="Pria" checked>
+                                <label class="form-check-label" for="Pria">
+                                    Pria
+                                </label>
                             </div>
-                            <div class="col-md-6 my-1 px-0">
-                                <div class="select-input w-100">
-                                    <label for="kecamatan" class="mb-2">Kota/Kabupaten</label>
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>Pilih Kota/Kabupaten</option>
-                                        <option value="Kota Bogor">Kota Bogor</option>
-                                        <option value="Bogor Selatan">Bogor Selatan</option>
-                                        <option value="Bogor Tengah">Bogor Tengah</option>
-                                        <option value="Bogor Timur">Bogor Timur</option>
-                                        <option value="Bogor Utara">Bogor Utara</option>
-                                        <option value="Tanah Sereal">Tanah Sereal</option>
-                                    </select>
-                                </div>
+                            <div class="form-check-inline">
+                                <input class="form-check-input" type="radio" name="jenis_kelamin" id="Wanita" value="Wanita">
+                                <label class="form-check-label" for="Wanita">
+                                    Wanita
+                                </label>
                             </div>
                         </div>
-                        <div class="row w-100 mx-auto">
-                            <div class="col-md-4 pe-md-3 px-0 my-1">
-                                <div class="select-input">
-                                    <label for="kecamatan" class="mb-2">Kecamatan</label>
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>Pilih kecamatan</option>
-                                        <option value="Bogor Barat">Bogor Barat</option>
-                                        <option value="Bogor Selatan">Bogor Selatan</option>
-                                        <option value="Bogor Tengah">Bogor Tengah</option>
-                                        <option value="Bogor Timur">Bogor Timur</option>
-                                        <option value="Bogor Utara">Bogor Utara</option>
-                                        <option value="Tanah Sereal">Tanah Sereal</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-4 pe-md-3 px-0 my-1">
-                                <div class="select-input">
-                                    <label for="kecamatan" class="mb-2">Kelurahan</label>
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>Pilih kelurahan</option>
-                                        <option value="Loji">Loji</option>
-                                        <option value="Bogor Selatan">Bogor Selatan</option>
-                                        <option value="Bogor Tengah">Bogor Tengah</option>
-                                        <option value="Bogor Timur">Bogor Timur</option>
-                                        <option value="Bogor Utara">Bogor Utara</option>
-                                        <option value="Tanah Sereal">Tanah Sereal</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-4 px-0 my-1">
-                                <label for="kode_pos" class="form-label my-0 mb-2">Kode Pos</label>
-                                <input type="number" name="kode_pos" class="form-control  @error('kode_pos') is-invalid @enderror" id="kode_pos" placeholder="Kode Pos" autofocus required value="{{ old('kode_pos') }}">
-                                @error('kode_pos')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="text-area w-100 my-1">
-                            <label for="detail_alamat" class="form-label my-0 mb-2">Detail Alamat</label>
-                            <textarea name="detail_alamat" class="form-control @error('kod_pos') is-invalid @enderror" id="detail_alamat" placeholder="Contoh: Nama Jalan, Gedung, No. Rumah, Blok/Unit, Patokan" autofocus required>{{ old('detail_alamat') }}</textarea>
-                            @error('detail_alamat')
+                        <div class="form-floating my-2">
+                            <input type="number" name="no_hp" class="form-control  @error('no_hp') is-invalid @enderror" id="no_hp" placeholder="name@example.com" autofocus required value="{{ old('no_hp') }}">
+                            <label for="no_hp">Nomor HP</label>
+                            @error('no_hp')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -144,6 +100,7 @@
 
     <!-- Bootstrap CSS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="js/index.min.js"></script>
 </body>
 
 </html>
