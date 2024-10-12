@@ -24,7 +24,7 @@ class RegisterController extends Controller
         ]);
 
         // Redirect ke halaman penginputan data diri sambil membawa email dan password (unencrypted password)
-        return redirect('/create-profile')->with([
+        return redirect('/createProfile')->with([
             'email' => $request->email,
             'password' => $request->password
         ]);

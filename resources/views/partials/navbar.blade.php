@@ -1,7 +1,7 @@
 <header class="header d-flex flex-wrap align-items-center" data-page="home" data-overlay="true">
     <div class="container d-flex flex-wrap flex-xl-nowrap align-items-center justify-content-between">
         <div class="link d-flex flex-wrap flex-xl-nowrap align-items-center justify-content-between">
-            <a class="brand header_logo d-flex align-items-center" href="/" style="text-decoration: none;">
+            <a class="brand header_logo d-flex align-items-center" href="/" style="text-decoration: none; position: relative; bottom: 5px;">
                 <span class="logo">
                     <svg width="48" height="45" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <image href="img/logo.svg" width="100%" height="100%" clip-path="url(#logoHeader)" />
@@ -17,19 +17,19 @@
             <nav class="header_nav">
                 <ul class="header_nav-list">
                     <li class="header_nav-list_item">
-                        <a class="nav-link d-inline-flex align-items-center" href="/">Beranda</a>
+                        <a class="nav-link {{ ($active === 'Beranda') ? 'active' : '' }} d-inline-flex align-items-center" href="/">Beranda</a>
                     </li>
                     <li class="header_nav-list_item">
-                        <a class="nav-link d-inline-flex align-items-center" href="product.html">Produk</a>
+                        <a class="nav-link {{ ($active === 'Produk') ? 'active' : '' }} d-inline-flex align-items-center" href="product.html">Produk</a>
                     </li>
                     <li class="header_nav-list_item">
-                        <a class="nav-link d-inline-flex align-items-center" href="news2.html">Berita</a>
+                        <a class="nav-link {{ ($active === 'Berita') ? 'active' : '' }} d-inline-flex align-items-center" href="news2.html">Berita</a>
                     </li>
                     <li class="header_nav-list_item">
-                        <a class="nav-link d-inline-flex align-items-center" href="team.html">Tim</a>
+                        <a class="nav-link {{ ($active === 'Tim') ? 'active' : '' }} d-inline-flex align-items-center" href="/team">Tim</a>
                     </li>
                     <li class="header_nav-list_item">
-                        <a class="nav-link d-inline-flex align-items-center" href="konsultasi.html">Konsultasi</a>
+                        <a class="nav-link {{ ($active === 'Konsultasi') ? 'active' : '' }} d-inline-flex align-items-center" href="konsultasi.html">Konsultasi</a>
                     </li>
                 </ul>
             </nav>
@@ -67,23 +67,18 @@
                         </svg>
                         Riwayat Pemesanan
                     </a></li>
-                <li><a class="dropdown-item" href="/order">
-                <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <li><a class="dropdown-item" href="#" id="deleteAccountButton">
+                        <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M22.823 5.89834C23.2607 5.89834 23.625 6.26171 23.625 6.72408V7.15158C23.625 7.6027 23.2607 7.97732 22.823 7.97732H4.17809C3.73934 7.97732 3.375 7.6027 3.375 7.15158V6.72408C3.375 6.26171 3.73934 5.89834 4.17809 5.89834H7.45826C8.12458 5.89834 8.70447 5.42472 8.85436 4.75647L9.02614 3.98923C9.2931 2.94412 10.1717 2.25 11.1772 2.25H15.8228C16.8174 2.25 17.7058 2.94412 17.9629 3.93411L18.1467 4.75535C18.2955 5.42472 18.8754 5.89834 19.5428 5.89834H22.823ZM21.1566 21.5258C21.499 18.3342 22.0986 10.7518 22.0986 10.6753C22.1205 10.4435 22.045 10.2241 21.8951 10.0475C21.7342 9.88215 21.5307 9.78428 21.3064 9.78428H5.70209C5.4767 9.78428 5.26225 9.88215 5.11345 10.0475C4.96246 10.2241 4.88806 10.4435 4.899 10.6753C4.90101 10.6893 4.92253 10.9564 4.95849 11.4029C5.11828 13.3866 5.56331 18.9114 5.85089 21.5258C6.05439 23.4518 7.3181 24.6623 9.14857 24.7061C10.5611 24.7388 12.0163 24.75 13.5043 24.75C14.9058 24.75 16.3293 24.7388 17.7856 24.7061C19.6795 24.6735 20.9421 23.4844 21.1566 21.5258Z" fill="currentColor" />
                         </svg>
                         Hapus Akun
                     </a></li>
-                <li>
-                    <form action="/logout" method="post">
-                        @csrf
-                        <button type="submit">
-                            <svg width="31" height="31" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13.1015 8.50496V3.82777C13.1015 3.33045 13.4981 2.91602 13.9998 2.91602C14.449 2.91602 14.8295 3.26426 14.8898 3.70536L14.8981 3.82777V8.50496L20.4747 8.50531C23.2513 8.50531 25.5326 10.7791 25.6607 13.6148L25.6663 13.8665V19.7456C25.6663 22.6012 23.4644 24.9452 20.729 25.0769L20.4863 25.0827H7.51301C4.73634 25.0827 2.46611 22.8203 2.33865 19.9741L2.33301 19.7215L2.33301 13.8544C2.33301 10.9988 4.5239 8.64343 7.25867 8.51117L7.50134 8.50531H13.1013V15.9748L11.2347 14.0472C10.8847 13.6857 10.313 13.6857 9.96301 14.0472C9.78801 14.2279 9.70634 14.4688 9.70634 14.7098C9.70634 14.8929 9.75861 15.0837 9.86911 15.2453L9.96301 15.3603L13.358 18.8782C13.5213 19.0589 13.7547 19.1553 13.9997 19.1553C14.1941 19.1553 14.3886 19.0884 14.5425 18.9615L14.6297 18.8782L18.0247 15.3603C18.3747 14.9989 18.3747 14.4086 18.0247 14.0472C17.7065 13.7186 17.2051 13.6887 16.8536 13.9576L16.753 14.0472L14.898 15.9748V8.50531L13.1015 8.50496Z" fill="currentColor" />
-                            </svg>
-                            Keluar Akun
-                        </button>
-                    </form>
-                </li>
+                <li><a class="dropdown-item" href="#" id="logoutButton">
+                        <svg width="31" height="31" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.1015 8.50496V3.82777C13.1015 3.33045 13.4981 2.91602 13.9998 2.91602C14.449 2.91602 14.8295 3.26426 14.8898 3.70536L14.8981 3.82777V8.50496L20.4747 8.50531C23.2513 8.50531 25.5326 10.7791 25.6607 13.6148L25.6663 13.8665V19.7456C25.6663 22.6012 23.4644 24.9452 20.729 25.0769L20.4863 25.0827H7.51301C4.73634 25.0827 2.46611 22.8203 2.33865 19.9741L2.33301 19.7215L2.33301 13.8544C2.33301 10.9988 4.5239 8.64343 7.25867 8.51117L7.50134 8.50531H13.1013V15.9748L11.2347 14.0472C10.8847 13.6857 10.313 13.6857 9.96301 14.0472C9.78801 14.2279 9.70634 14.4688 9.70634 14.7098C9.70634 14.8929 9.75861 15.0837 9.86911 15.2453L9.96301 15.3603L13.358 18.8782C13.5213 19.0589 13.7547 19.1553 13.9997 19.1553C14.1941 19.1553 14.3886 19.0884 14.5425 18.9615L14.6297 18.8782L18.0247 15.3603C18.3747 14.9989 18.3747 14.4086 18.0247 14.0472C17.7065 13.7186 17.2051 13.6887 16.8536 13.9576L16.753 14.0472L14.898 15.9748V8.50531L13.1015 8.50496Z" fill="currentColor" />
+                        </svg>
+                        Keluar Akun
+                    </a></li>
             </ul>
         </div>
         @else

@@ -50,8 +50,87 @@ document.addEventListener('scroll', function() {
     }
 });
 
-document.querySelector('form[action="/logout"]').addEventListener('submit', function(event) {
-    console.log("Form is being submitted");
+// Unblock Submit Form
+document.querySelectorAll('form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+        // Mengizinkan semua form untuk di-submit
+        e.stopImmediatePropagation(); // Menghentikan event listener lain yang mungkin memblokir submit
+        return true; // Mengizinkan form untuk melanjutkan submit
+    });
+});
+
+// Popup Logout
+document.addEventListener("DOMContentLoaded", function () {
+    const logoutButton = document.getElementById("logoutButton");
+    const logoutSidebar = document.getElementById("logoutSidebar");
+    const logoutPopup = document.getElementById("logoutPopup");
+    const closeLogoutPopup = document.getElementById("closeLogoutPopup");
+    const cancelLogout = document.getElementById("cancelLogout");
+
+    // Tampilkan popup saat tombol logout diklik
+    logoutButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Mencegah link melakukan navigasi
+        logoutPopup.style.display = "flex"; // Menampilkan popup
+    });
+
+    logoutSidebar.addEventListener("click", function (event) {
+        event.preventDefault(); // Mencegah link melakukan navigasi
+        logoutPopup.style.display = "flex"; // Menampilkan popup
+    });
+
+    // Tutup popup saat tombol close diklik
+    closeLogoutPopup.addEventListener("click", function () {
+        logoutPopup.style.display = "none"; // Menyembunyikan popup
+    });
+
+    // Tutup popup saat tombol Batal diklik
+    cancelLogout.addEventListener("click", function () {
+        logoutPopup.style.display = "none"; // Menyembunyikan popup
+    });
+
+    // Tutup popup saat area di luar popup diklik
+    window.addEventListener("click", function (event) {
+        if (event.target === logoutPopup) {
+            logoutPopup.style.display = "none"; // Menyembunyikan popup
+        }
+    });
+});
+
+// Popup Delete Account
+document.addEventListener("DOMContentLoaded", function () {
+    const deleteAccountButton = document.getElementById("deleteAccountButton");
+    const deleteAccountSidebar = document.getElementById("deleteAccountSidebar");
+    const deleteAccountPopup = document.getElementById("deleteAccountPopup");
+    const closeDeleteAccountPopup = document.getElementById("closeDeleteAccountPopup");
+    const cancelDeleteAccount = document.getElementById("cancelDeleteAccount");
+
+    // Tampilkan popup saat tombol logout diklik
+    deleteAccountButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Mencegah link melakukan navigasi
+        deleteAccountPopup.style.display = "flex"; // Menampilkan popup
+    });
+
+    deleteAccountSidebar.addEventListener("click", function (event) {
+        event.preventDefault(); // Mencegah link melakukan navigasi
+        deleteAccountPopup.style.display = "flex"; // Menampilkan popup
+    });
+
+    // Tutup popup saat tombol close diklik
+    closeDeleteAccountPopup.addEventListener("click", function () {
+        deleteAccountPopup.style.display = "none"; // Menyembunyikan popup
+    });
+
+    // Tutup popup saat tombol Batal diklik
+    cancelDeleteAccount.addEventListener("click", function () {
+        deleteAccountPopup.style.display = "none"; // Menyembunyikan popup
+    });
+
+    // Tutup popup saat area di luar popup diklik
+    window.addEventListener("click", function (event) {
+        if (event.target === deleteAccountPopup) {
+            deleteAccountPopup.style.display = "none"; // Menyembunyikan popup
+        }
+    });
 });
 
 

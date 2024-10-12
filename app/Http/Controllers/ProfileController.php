@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -13,10 +15,7 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('create-profile');
-    }
+    public function index() {}
 
     /**
      * Show the form for creating a new resource.
@@ -39,22 +38,22 @@ class ProfileController extends Controller
         $validatedData = $request->validate([
             'foto_profil' => 'required|image|file|max:5000',
             'nama' => 'required|string|max:255',
-            'username' => 'required|string|max:255',
+            'username' => 'required|string|max:255||unique:users,username',
             'jenis_kelamin' => 'required|string|max:255',
             'no_hp' => 'required|string|max:15',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:3|max:8',
             'role' => 'required|in:Admin,User'
         ]);
-        
+
         if ($request->file('foto_profil')) {
             $validatedData['foto_profil'] = $request->file('foto_profil')->store('foto_profil', 'public');
-        }        
+        }
 
         $validatedData['password'] = Hash::make($validatedData['password']);
 
         User::create($validatedData);
-        
+
         return redirect('/login')->with('success', 'Registration successfull! Please login');
     }
 
@@ -89,8 +88,42 @@ class ProfileController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        // Define validation rules for the fields
+        $rules = [
+            'nama' => 'required|string|max:255',
+            'jenis_kelamin' => 'required|string|max:255',
+            'no_hp' => 'required|string|max:15',
+            'role' => 'required|in:Admin,User'
+        ];
+
+        // Conditional validation for email and username
+        if ($request->email !== $user->email) {
+            $rules['email'] = 'required|email|unique:users,email';
+        }
+        if ($request->username !== $user->username) {
+            $rules['username'] = 'required|string|max:255|unique:users,username';
+        }
+
+        // Validate input data
+        $validatedData = $request->validate($rules);
+
+        // Jika ada upload foto profil baru
+        if ($request->file('foto_profil')) {
+            // Simpan foto baru dan hapus foto lama (jika ada)
+            if ($user->foto_profil) {
+                Storage::delete('public/' . $user->foto_profil);
+            }
+            $validatedData['foto_profil'] = $request->file('foto_profil')->store('foto_profil', 'public');
+        }
+
+        // Update the user record with the validated data
+        User::where('id', $user->id)->update($validatedData);
+
+        // Redirect back to the profile page with a success message
+        return redirect('/profile')->with('success', 'Profile has been updated!');
     }
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -100,6 +133,23 @@ class ProfileController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        // Ambil user yang sedang login
+        $currentUser = auth()->user();
+
+        // Pastikan user yang sedang login sama dengan user yang akan dihapus
+        if ($currentUser->id !== $user->id) {
+            return response()->json(['error' => 'Unauthorized'], 403);
+        }
+
+        // Hapus foto profil user jika ada
+        if ($user->foto_profil) {
+            Storage::disk('public')->delete($user->foto_profil);
+        }
+
+        // Hapus data user dari database
+        $user->delete();
+
+        // Redirect ke halaman depan dengan pesan sukses
+        return redirect('/')->with('deleteAccountSuccess', 'Your account has been deleted successfully.');
     }
 }

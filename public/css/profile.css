@@ -5972,12 +5972,12 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
     font-size: 17px;
     height: 48px
 }
-
+/* 
 .btn:focus,.btn:hover {
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1)
-}
+} */
 
 .btn--green {
     background: 0 0;
@@ -6186,11 +6186,11 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
 
 @media screen and (min-width:991.98px) {
     .section {
-        padding: 160px 0
+        padding: 50px 0
     }
 
     .section--nopb {
-        padding: 160px 0 0
+        padding: 50px 0 0
     }
 
     .swiper-pagination--dots {
@@ -6340,7 +6340,7 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
     list-style: none;
-    padding: 0;
+    padding: 0 !important;
     margin: 0;
     right: 0;
     top: 50px; /* Adjust the dropdown position to be right under the profile */
@@ -6774,6 +6774,307 @@ h1.heading{
     margin-top: 100px;
 }
 
+.footer_main {
+    background: #4682A9;
+    color: #fff;
+    margin-top: 100px;
+}
 
+.footer_main-header {
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: #fff
+}
 
+.footer_main-block {
+    margin-bottom: 30px
+}
 
+.footer_main-block:last-of-type {
+    margin-bottom: 0
+}
+
+.footer_main-about_brand {
+    margin-bottom: 10px
+}
+
+.footer_main-about_brand svg {
+    margin-right: 10px
+}
+
+.footer_main-about_wrapper .text {
+    margin: 5px 0 20px
+}
+
+.footer_main-about_wrapper .socials {
+    font-size: 22px
+}
+
+.footer_main-about_wrapper .socials .list-item {
+    margin-right: 25px
+}
+
+.footer_main-about_wrapper .socials .list-item:last-of-type {
+    margin-right: 0
+}
+
+.footer_main-about_wrapper .socials .list-item .link .icon {
+    display: inline-block;
+    -webkit-transition: .3s ease-in;
+    -o-transition: .3s ease-in;
+    transition: .3s ease-in
+}
+
+.footer_main-about_wrapper .socials .list-item .link .icon:focus,.footer_main-about_wrapper .socials .list-item .link .icon:hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1)
+}
+
+.footer_main-contacts_list .list-item {
+    margin-bottom: 15px
+}
+
+.footer_main-contacts_list .list-item:last-of-type {
+    margin-bottom: 0
+}
+
+.footer_main-contacts_list .list-item .icon {
+    border-radius: 50%;
+    background: white;
+    width: 35px;
+    height: 35px;
+    margin-right: 20px;
+    color: #4682A9;
+    font-size: 16px
+}
+
+.footer_main-contacts_list .list-item .link:focus,.footer_main-contacts_list .list-item .link:hover {
+    color: white
+}
+
+.footer_main-nav_list .list-item {
+    margin-bottom: 15px;
+    width: 50%;
+    padding-right: 10px
+}
+
+.footer_main-nav_list .list-item:last-of-type {
+    margin-bottom: 0
+}
+
+.footer_main-nav_list .list-item .icon {
+    font-size: 16px;
+    margin-right: 5px
+}
+
+.footer_main-nav_list .list-item .link:focus,.footer_main-nav_list .list-item .link:hover {
+    color: white
+}
+
+.footer_main-instagram_list {
+    grid-template-rows: repeat(3,1fr);
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 15px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center
+}
+
+.footer_main-instagram_list .link {
+    border-radius: 8px;
+    overflow: hidden;
+    display: block;
+    height: 115px;
+    width: 100%
+}
+
+.footer_main-instagram_list .link .preview {
+    -webkit-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    height: 100%
+}
+
+.footer_main-instagram_list .link:focus .preview,.footer_main-instagram_list .link:hover .preview {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1)
+}
+
+.footer_secondary {
+    padding: 30px 0;
+    background-color: white
+}
+
+.footer_secondary-copyright {
+    text-align: center;
+    margin: auto;
+}
+
+.footer_secondary-list {
+    margin-bottom: 20px
+}
+
+.footer_secondary-list .list-item {
+    margin-right: 20px
+}
+
+.footer_secondary-list .list-item:last-of-type {
+    margin-right: 0
+}
+
+@media screen and (min-width:575.98px) {
+    .footer_main-instagram_list {
+        grid-template-rows: repeat(2,1fr);
+        grid-template-columns: repeat(3,1fr)
+    }
+
+    .footer_main-instagram_list .link {
+        height: 140px
+    }
+}
+
+@media screen and (min-width:767.98px) {
+    .footer_main-instagram_list .link {
+        height: 93px
+    }
+
+    .footer_main-about {
+        margin-top: -18px
+    }
+
+    .footer_main-about_brand {
+        margin-left: -10px
+    }
+
+    .footer_main-about_wrapper .text {
+        max-width: 260px
+    }
+
+    .footer_main-nav_list .list-item {
+        width: unset
+    }
+
+    .footer_secondary-copyright {
+        text-align: left
+    }
+
+    .footer_secondary-copyright .linebreak {
+        display: block
+    }
+
+    .footer_secondary-list {
+        margin-bottom: 0
+    }
+}
+
+@media screen and (min-width:991.98px) {
+    .footer_main-about_wrapper .text {
+        margin: 5px 0 50px
+    }
+
+    .footer_main-instagram_list {
+        grid-gap: 20px
+    }
+
+    .footer_main-instagram_list .link {
+        height: 120px
+    }
+
+    .footer_secondary {
+        padding: 40px 0
+    }
+}
+
+@media screen and (min-width:1199.98px) {
+    .footer_main-instagram {
+        max-width: 312px
+    }
+
+    .footer_main-instagram_list .list-item {
+        height: 100px
+    }
+
+    .footer_main-instagram_list .list-item .link {
+        height: 100%
+    }
+
+    .footer_secondary-copyright .linebreak {
+        display: inline
+    }
+}
+
+footer a{
+    color: white;
+}
+
+.popup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.popup-content {
+    background: white;
+    border-radius: 5px;
+    width: auto;
+    text-align: center;
+}
+
+.popup img{
+    width: 100px;
+    margin: auto;
+}
+
+.close {
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn {
+    margin: 5px;
+}
+
+.popup .cancel{
+    background-color: #4682A9;
+    color: white;
+    border-radius: 8px;
+    width: 100%;
+    font-weight: 500;
+}
+
+.popup .cancel:hover{
+    background-color: #28668f;
+}
+
+.popup form{
+    width: 100%;
+}
+
+.popup form button{
+    background-color: #E6E5E5;
+    color: #556260;
+    border-radius: 8px;
+    width: 100%;
+    font-weight: 500;
+}
+
+.popup form button:hover{
+    background-color: #c2c2c2;
+}
+
+.popup h4{
+    font-family: NunitoSans, sans-serif;
+    color: #4682A9;
+    font-weight: 700;
+}

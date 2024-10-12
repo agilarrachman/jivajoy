@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +19,19 @@ use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return view('index',[
-        "active" => "beranda"
+        "active" => "Beranda"
+    ]);
+});
+
+Route::get('/team', function () {
+    return view('team',[
+        "active" => "Tim"
     ]);
 });
 
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard',[
-        "active" => "beranda"
+        "active" => "beranda",
     ]);
 });
 
@@ -51,5 +58,12 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/create-profile', [ProfileController::class, 'index']);
+// Route::get('/create-profile', [ProfileController::class, 'index']);
 Route::post('/store-profile', [ProfileController::class, 'store']);
+Route::get('/profile', function () {
+    return view('profile',[
+        'user' => User::where('id', auth()->user()->id)->first()
+    ]);
+});
+Route::put('/profile/{user:username}', [ProfileController::class, 'update'])->middleware('auth');
+Route::delete('/profile/{user:username}', [ProfileController::class, 'destroy'])->middleware('auth');
