@@ -104,6 +104,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeDeleteAccountPopup = document.getElementById("closeDeleteAccountPopup");
     const cancelDeleteAccount = document.getElementById("cancelDeleteAccount");
 
+    console.log(document.getElementById("closeLogoutPopup"));  // Cek apakah null
+    console.log(document.getElementById("cancelLogout"));
+
     // Tampilkan popup saat tombol logout diklik
     deleteAccountButton.addEventListener("click", function (event) {
         event.preventDefault(); // Mencegah link melakukan navigasi

@@ -1,0 +1,131 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #868E8C;
+}
+
+h1{
+    color: #4380a8; 
+    font-weight: 700;
+}
+
+.sidebar {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    background-color: #cfdee8;
+    /* Light color for sidebar */
+    padding: 20px;
+}
+
+.sidebar img {
+    width: 100%;
+    max-width: 150px;
+    /* Limit the logo size */
+    margin: 0;
+    /* Center the logo */
+    display: block;
+}
+
+.sidebar a {
+    color: #4380a8;
+    /* Font color */
+    padding: 15px 20px;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar .menu:hover {
+    border-radius: 30px;
+    background-color: #4380a8;
+    /* Background color on hover */
+    color: white;
+    transition: .3s ease-in-out;
+    /* Font color on hover */
+}
+
+.content {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+.navbar {
+    background-color: #ffffff;
+}
+
+.navbar-brand,
+.nav-link,
+.dropdown-item {
+    color: #000 !important;
+}
+
+.dropdown-menu {
+    background-color: #ffffff;
+    border: 1px solid #eaeaea;
+}
+
+.dropdown-item:hover {
+    background-color: #f1f1f1;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .content {
+        margin-left: 0;
+    }
+}
+
+.breadcrumb {
+    background-color: transparent;
+    /* Transparent background for breadcrumbs */
+}
+
+.btn-rounded {
+    border-radius: 25px;
+    /* Rounded button */
+    padding: 8px 12px;
+    /* Adjust padding for a better button size */
+    font-size: 14px;
+    /* Button font size */
+}
+
+.table thead th {
+    background-color: #4380a8;
+    /* Warna biru JivaJoy */
+    color: white;
+    /* Warna teks putih */
+}
+
+.no-hover {
+    text-decoration: none;
+}
+
+.no-hover:hover {
+    text-decoration: none;
+}
+
+.sidebar .active {
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.breadcrumb a {
+    font-family: 'Poppins', sans-serif;
+    color: var(--bs-breadcrumb-item-active-color);
+    text-decoration: none;
+}
+
+#buttonPrimary {
+    background-color: #4380a8;
+    color: #ffffff;
+}
+
+#buttonPrimary:hover {
+    background-color: #28668f;
+}

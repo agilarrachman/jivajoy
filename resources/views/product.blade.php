@@ -1,221 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Product JivaJoy</title>
-        <link rel="stylesheet preload" as="style" href="css/preload.min.css" />
-        <link rel="stylesheet preload" as="style" href="css/libs.min.css" />
 
-        <link rel="stylesheet" href="css/product.min.css" />
-    </head>
-    <body>
-        <header class="header d-flex flex-wrap align-items-center" data-page="home" data-overlay="true">
-            <div class="container d-flex flex-wrap flex-xl-nowrap align-items-center justify-content-between">
-                <a class="brand header_logo d-flex align-items-center" href="index.html">
-                    <span class="logo">
-                        <svg width="48" height="45" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <image href="img/logo.svg" width="100%" height="100%" clip-path="url(#logoHeader)" />
-                            <defs>
-                                <clipPath id="logoHeader">
-                                    <rect width="60" height="60" fill="white" />
-                                </clipPath>
-                            </defs>
-                        </svg>
-                    </span>                                       
-                    <span class="accent">JivaJoy</span>
-                </a>
-                <nav class="header_nav">
-                    <ul class="header_nav-list">
-                        <li class="header_nav-list_item">
-                            <a
-                                class="nav-link d-inline-flex align-items-center"
-                                href="index.html"
-                                aria-expanded="false"
-                                aria-controls="homeMenu"
-                            >
-                                Beranda
-                            </a>
-                        </li>                        
-                        <li class="header_nav-list_item">
-                            <a
-                                class="nav-link d-inline-flex align-items-center"
-                                href="product.html"
-                                aria-expanded="false"
-                                aria-controls="shopMenu"
-                            >
-                                Produk
-                            </a>
-                        </li>
-                        
-                        <li class="header_nav-list_item dropdown">
-                            <a
-                                class="nav-link d-inline-flex align-items-center"
-                                href="news2.html"
-                                aria-expanded="false"
-                                aria-controls="newsMenu"
-                            >
-                                Berita
-                            </a>
-                        </li>
-                        <li class="header_nav-list_item dropdown">
-                            <a
-                                class="nav-link d-inline-flex align-items-center"
-                                href="team.html"
-                                aria-expanded="false"
-                                aria-controls="pagesMenu"
-                            >
-                                Tim
-                            </a>
-                        </li>
-                        <li class="header_nav-list_item dropdown">
-                            <a
-                                class="nav-link d-inline-flex align-items-center"
-                                href="konsultasi.html"
-                                aria-expanded="false"
-                                aria-controls="pagesMenu"
-                            >
-                                Konsultasi
-                            </a>
-                        </li>
-                    </ul>
-                    </ul>
-                </nav>
-                <span class="header_trigger d-inline-flex d-xl-none flex-column justify-content-between">
-                    <span class="line line--short"></span>
-                    <span class="line line"></span>
-                    <span class="line line--short"></span>
-                    <span class="line line"></span>
-                </span>
-            </div>
-        </header>
-        <!-- Single product content start -->
-        <main>
-            <section class="about section--nopb">
-                <div class="container">
-                    <!-- Product main -->
-                    <div class="about_main d-lg-flex flex-nowrap">
-                        <div class="about_main-slider">
-                            <div class="about_main-slider--single" data-modal="false">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <a href="img/product1.png" data-role="gallery">
-                                            <picture>
-                                                <source
-                                                    data-srcset="img/product1.png"
-                                                    srcset="img/product1.png"
-                                                    type="image/webp"
-                                                />
-                                                <img
-                                                    class="lazy"
-                                                    data-src="img/product1.png"
-                                                    src="img/product1.png"
-                                                    alt="media"
-                                                />
-                                            </picture>
-                                        </a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href="img/box.png" data-role="gallery">
-                                            <picture>
-                                                <source
-                                                    data-srcset="img/box.png"
-                                                    srcset="img/box.png"
-                                                    type="image/webp"
-                                                />
-                                                <img
-                                                    class="lazy"
-                                                    data-src="img/box.png"
-                                                    src="img/box.png"
-                                                    alt="media"
-                                                />
-                                            </picture>
-                                        </a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href="img/product.png" data-role="gallery">
-                                            <picture>
-                                                <source
-                                                    data-srcset="img/product.png"
-                                                    srcset="img/product.png"
-                                                    type="image/webp"
-                                                />
-                                                <img
-                                                    class="lazy"
-                                                    data-src="img/product.png"
-                                                    src="img/product.png"
-                                                    alt="media"
-                                                />
-                                            </picture>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="swiper-controls d-flex align-items-center justify-content-between">
-                                    <a class="swiper-button-prev d-inline-flex align-items-center justify-content-center" href="#">
-                                        <i class="icon-caret_left icon"></i>
-                                    </a>
-                                    <a class="swiper-button-next d-inline-flex align-items-center justify-content-center" href="#">
-                                        <i class="icon-caret_right icon"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="about_main-slider--thumbs">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <picture>
-                                            <source
-                                                data-srcset="img/box.png"
-                                                srcset="img/box.png"
-                                                type="image/webp"
-                                            />
-                                            <img
-                                                class="lazy"
-                                                data-src="img/box.png"
-                                                src="img/box.png"
-                                                alt="media"
-                                            />
-                                        </picture>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <picture>
-                                            <source
-                                                data-srcset="img/product.png"
-                                                srcset="img/product.png"
-                                                type="image/webp"
-                                            />
-                                            <img
-                                                class="lazy"
-                                                data-src="img/product.png"
-                                                src="img/product.png"
-                                                alt="media"
-                                            />
-                                        </picture>
-                                    </div>
-                                    <div class="swiper-slide">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta property="og:title" content="JivaJoy" />
+    <meta property="og:type" content="Website" />
+    <meta property="og:url" content="https://jivajoy.id/" />
+    <meta property="og:description"
+        content="Aromaterapi 2in1 (Inhaler & Roll On) dari Kemangi dan Cendana Sebagai Upaya Mencegah Baby Blues dengan Kemasan Website Terintegrasi" />
+    <meta name="description" content="Aromaterapi 2in1 (Inhaler & Roll On) dari Kemangi dan Cendana Sebagai Upaya Mencegah Baby Blues dengan Kemasan Website Terintegrasi">
+    <title> JivaJoy | Produk</title>
+    <link rel="stylesheet preload" as="style" href="css/preload.min.css" />
+    <link rel="stylesheet preload" as="style" href="css/libs.min.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo.svg">
+    <link rel="stylesheet" href="css/product.min.css" />
+</head>
+
+<body>
+    @include('partials.navbar')
+    <!-- Single product content start -->
+    <main>
+        <section class="about section--nopb">
+            <div class="container">
+                <!-- Product main -->
+                <div class="about_main d-lg-flex flex-nowrap">
+                    <div class="about_main-slider">
+                        <div class="about_main-slider--single" data-modal="false">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <a href="img/product1.png" data-role="gallery">
                                         <picture>
                                             <source
                                                 data-srcset="img/product1.png"
                                                 srcset="img/product1.png"
-                                                type="image/webp"
-                                            />
+                                                type="image/webp" />
                                             <img
                                                 class="lazy"
                                                 data-src="img/product1.png"
                                                 src="img/product1.png"
-                                                alt="media"
-                                            />
+                                                alt="media" />
                                         </picture>
-                                    </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="img/box.png" data-role="gallery">
+                                        <picture>
+                                            <source
+                                                data-srcset="img/box.png"
+                                                srcset="img/box.png"
+                                                type="image/webp" />
+                                            <img
+                                                class="lazy"
+                                                data-src="img/box.png"
+                                                src="img/box.png"
+                                                alt="media" />
+                                        </picture>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="img/product.png" data-role="gallery">
+                                        <picture>
+                                            <source
+                                                data-srcset="img/product.png"
+                                                srcset="img/product.png"
+                                                type="image/webp" />
+                                            <img
+                                                class="lazy"
+                                                data-src="img/product.png"
+                                                src="img/product.png"
+                                                alt="media" />
+                                        </picture>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="swiper-controls d-flex align-items-center justify-content-between">
+                                <a class="swiper-button-prev d-inline-flex align-items-center justify-content-center" href="#">
+                                    <i class="icon-caret_left icon"></i>
+                                </a>
+                                <a class="swiper-button-next d-inline-flex align-items-center justify-content-center" href="#">
+                                    <i class="icon-caret_right icon"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="about_main-slider--thumbs">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <picture>
+                                        <source
+                                            data-srcset="img/box.png"
+                                            srcset="img/box.png"
+                                            type="image/webp" />
+                                        <img
+                                            class="lazy"
+                                            data-src="img/box.png"
+                                            src="img/box.png"
+                                            alt="media" />
+                                    </picture>
+                                </div>
+                                <div class="swiper-slide">
+                                    <picture>
+                                        <source
+                                            data-srcset="img/product.png"
+                                            srcset="img/product.png"
+                                            type="image/webp" />
+                                        <img
+                                            class="lazy"
+                                            data-src="img/product.png"
+                                            src="img/product.png"
+                                            alt="media" />
+                                    </picture>
+                                </div>
+                                <div class="swiper-slide">
+                                    <picture>
+                                        <source
+                                            data-srcset="img/product1.png"
+                                            srcset="img/product1.png"
+                                            type="image/webp" />
+                                        <img
+                                            class="lazy"
+                                            data-src="img/product1.png"
+                                            src="img/product1.png"
+                                            alt="media" />
+                                    </picture>
                                 </div>
                             </div>
                         </div>
-                        <div class="about_main-info">
-                            <div class="about_main-info_product d-sm-flex align-items-center justify-content-between">
-                                <h2 class="title">JivaJoy: Aromatherapy 2in1 
-                                    (Inhaler & Roll On)  </h2>
-                            </div>
-                            <!-- <div class="about_main-info_rating d-flex align-items-center">
+                    </div>
+                    <div class="about_main-info">
+                        <div class="about_main-info_product align-items-center justify-content-between">
+                            <h2 class="title">JivaJoy: Aromatherapy 2in1
+                                (Inhaler & Roll On) </h2>
+                            <h4 class="harga mt-2">Rp.24.999,-</h4>
+                        </div>
+                        <!-- <div class="about_main-info_rating d-flex align-items-center">
                                 <ul class="stars d-flex align-items-center accent">
                                     <li class="stars_star">
                                         <i class="icon-star_fill"></i>
@@ -235,442 +155,183 @@
                                 </ul>
                                 <a class="reviews-amount" href="#reviews">(2 customer reviews)</a>
                             </div> -->
-                            <p class="about_main-info_description">
-                                Aromatherapy 2in1 (Inhaler & Roll On) dari Kemangi dan Cendana sebagai Upaya Pencegahan Baby Blues dengan Integrated Website Packaging
-                            </p>
-                            <ul class="about_main-info_list">
-                                <li class="list-item">
-                                    <span class="property">Category:</span>
-                                    <span class="value">Oil</span>
-                                </li>
-                                <li class="list-item">
-                                    <span class="property">Size Inhaler:</span>
-                                    <span class="value">2ml</span>
-                                </li>
-                                <li class="list-item">
-                                    <span class="property">Size Roll On:</span>
-                                    <span class="value">5ml</span>
-                                </li>
-                                <li class="list-item">
-                                    <span class="property">Varian</span>
-                                    <span class="value">Hot and Warm</span>
-                                </li>
-                            </ul>
-                            <a href="product.html" style="background-color: #4682A9; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; border-radius: 30px; font-size: 16px; cursor: pointer; margin-top: 4%;">
-                                <b>Beli Sekarang</b>
-                            </a>                            
+                        <h4>Deskripsi</h4>
+                        <p class="about_main-info_description">
+                            Aromatherapy 2in1 (Inhaler & Roll On) dari Kemangi dan Cendana sebagai Upaya Pencegahan Baby Blues dengan Integrated Website Packaging
+                        </p>
+                        <div class="row d-flex flex-colum flex-md-row g-2 mb-5">
+                            <div class="col-12 col-md-6">
+                                <h4>Komposisi</h4>
+                                <ul class="about_main-info_list mt-1">
+                                    <li class="list-item">
+                                        <span class="value">Mentol 24% b/v</span>
+                                    </li>
+                                    <li class="list-item">
+                                        <span class="value">Camphor 24% b/v</span>
+                                    </li>
+                                    <li class="list-item">
+                                        <span class="value">Metil Salisilat 24% v/v</span>
+                                    </li>
+                                    <li class="list-item">
+                                        <span class="value">Minyak cendana 48% v/v</span>
+                                    </li>
+                                    <li class="list-item">
+                                        <span class="value">Minyak kemangi 28% v/v</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <h4>Informasi Produk</h4>
+                                <ul class="about_main-info_list mt-1">
+                                    <li class="list-item">
+                                        <span class="property">Category:</span>
+                                        <span class="value">Oil</span>
+                                    </li>
+                                    <li class="list-item">
+                                        <span class="property">Size Inhaler:</span>
+                                        <span class="value">2ml</span>
+                                    </li>
+                                    <li class="list-item">
+                                        <span class="property">Size Roll On:</span>
+                                        <span class="value">5ml</span>
+                                    </li>
+                                    <li class="list-item">
+                                        <span class="property">Varian</span>
+                                        <span class="value">Hot and Warm</span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Product additional information -->
-                    <div class="about_secondary">
-                        <div class="about_secondary-content">
-                            <ul class="about_secondary-content_nav nav nav-tabs" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <div
-                                        class="nav-link active"
-                                        id="description-tab"
-                                        data-bs-toggle="tab"
-                                        data-bs-target="#description"
-                                        role="tab"
-                                        aria-selected="true"
-                                    >
-                                        Deskripsi
-                                    </div>
-                                </li>
-                                
-                                <li class="nav-item" role="presentation">
-                                    <div
-                                        class="nav-link"
-                                        id="additional-tab"
-                                        data-bs-toggle="tab"
-                                        data-bs-target="#additionalInfo"
-                                        role="tab"
-                                        aria-selected="false"
-                                    >
-                                        Informasi Tambahan
-                                    </div>
-                                </li>
-                            </ul>
-                            <div class="about_secondary-content_tabs tab-content" id="productTabs">
-                                <div class="wrapper">
-                                    <h4
-                                        class="accordion_component-item_header d-flex justify-content-between align-items-center"
-                                        data-bs-toggle="collapse"
-                                        data-bs-target="#description"
-                                        aria-expanded="true"
-                                    >
-                                        Deskripsi
-                                        <i class="icon-caret_down transform icon"></i>
-                                    </h4>
-                                    <div
-                                        class="tab-pane collapse show active"
-                                        id="description"
-                                        role="tabpanel"
-                                        aria-labelledby="description-tab"
-                                        data-bs-parent="#productTabs"
-                                    >
-                                        <p class="text">
-                                            Aromatherapy 2in1 (Inhaler & Roll On) dari Kemangi dan Cendana sebagai Upaya Pencegahan Baby Blues dengan Integrated Website Packaging
-                                        </p>
-                                        <!-- <p class="text">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                        </p> -->
+                        @auth
+                        <div class="order-section">
+                            <h3>Pesan Produk</h3>
+                            <div class="input-order row d-flex flex-colum flex-md-row">
+                                <!-- Jumlah Harga -->
+                                <div class="price-section col-12 col-md-4 me-3" style="margin-bottom: 15px;">
+                                    <p style="margin-right: 10px;" class="my-2 fs-5">Jumlah Harga</p>
+                                    <h5 id="total-price" style="font-weight: bold;">Rp 0</h5>
+                                </div>
+
+                                <!-- Jumlah Qty -->
+                                <div class="quantity-section col-12 col-md-3 me-3" style="margin-bottom: 15px;">
+                                    <p style="margin-right: 10px;" class="mt-2 fs-5">Jumlah</p>
+                                    <div class="d-flex align-items-center w-100">
+                                        <button type="button" id="decrease-qty">-</button>
+                                        <input type="number" id="quantity" value="1" min="1" class="form-control text-center" readonly>
+                                        <button type="button" id="increase-qty">+</button>
                                     </div>
                                 </div>
-                               
-                                <div class="wrapper">
-                                    <h4
-                                        class="accordion_component-item_header d-flex justify-content-between align-items-center"
-                                        data-bs-toggle="collapse"
-                                        data-bs-target="#additionalInfo"
-                                    >
-                                        Informasi Tambahan
-                                        <i class="icon-caret_down icon"></i>
-                                    </h4>
-                                    <div
-                                        class="tab-pane collapse"
-                                        id="additionalInfo"
-                                        role="tabpanel"
-                                        aria-labelledby="additional-tab"
-                                        data-bs-parent="#productTabs"
-                                    >
-                                        <table class="table d-flex flex-column">
-                                            <tbody>
-                                                <tr class="table_row d-flex flex-column flex-lg-row">
-                                                    <th class="table_row-header">Komposisi:</th>
-                                                    <td class="table_row-cell">
-                                                        Mentol 24% b/v
-                                                        <br>Camphor 24% b/v
-                                                        <br>Metil Salisilat 24% v/v
-                                                        <br>Minyak cendana 48% v/v
-                                                        <br>Minyak kemangi 28% v/v
-                                                    </td>                                                    
-                                                </tr>
-                                                <!-- <tr class="table_row d-flex flex-column flex-lg-row">
-                                                    <th class="table_row-header">Recommended Usage:</th>
-                                                    <td class="table_row-cell">
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                                    </td>
-                                                </tr> -->
-                                            </tbody>
-                                        </table>
-                                    </div>
+
+                                <!-- Pilih Varian -->
+                                <div class="variant-section col-12 col-md-3" style="margin-bottom: 15px;">
+                                    <p style="margin-right: 10px;" class="mt-2 fs-5">Pilih Varian:</p>
+                                    <select id="variant" class="form-select" required style="width: auto;">
+                                        @foreach ($products as $product)
+                                        @if(old('product_id') == $product->id)
+                                        <option value="{{ $product->id }}" selected>{{ $product->varian }}</option>
+                                        @else
+                                        <option value="{{ $product->id }}">{{ $product->varian }}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
+
+                            <div class="row d-flex flex-column flex-md-row w-100 my-3 g-3">
+                                <!-- Form untuk Masukkan Keranjang -->
+                                <form class="col-12 col-md-6" action="/keranjang" method="POST" id="cart-form">
+                                    @csrf
+                                    <input type="hidden" name="id_customer" value="{{ auth()->user()->id }}">
+                                    <input type="hidden" name="id_produk" id="cart-variant">
+                                    <input type="hidden" name="qty" id="cart-quantity">
+                                    <input type="hidden" name="total_harga" id="cart-total-price">
+                                    <button type="submit" style="border-radius: 30px;">
+                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.4745 13.106H19.7037C20.1933 13.106 20.578 12.7012 20.578 12.213C20.578 11.713 20.1933 11.3201 19.7037 11.3201H16.4745C15.9849 11.3201 15.6002 11.713 15.6002 12.213C15.6002 12.7012 15.9849 13.106 16.4745 13.106ZM23.539 6.91606C24.2501 6.91606 24.7164 7.16608 25.1827 7.71376C25.649 8.26143 25.7306 9.04722 25.6257 9.76039L24.5182 17.5707C24.3084 19.072 23.0494 20.1781 21.5689 20.1781H8.85046C7.3 20.1781 6.01767 18.9649 5.88944 17.3933L4.81694 4.41462L3.05664 4.10507C2.59034 4.02173 2.26393 3.55739 2.34553 3.08116C2.42713 2.5942 2.88178 2.27155 3.35974 2.34418L6.14007 2.7716C6.53643 2.84423 6.82787 3.1764 6.86284 3.58121L7.08434 6.24814C7.11931 6.63032 7.42241 6.91606 7.79545 6.91606H23.539ZM8.66371 22.0598C7.68447 22.0598 6.89175 22.8694 6.89175 23.8695C6.89175 24.8577 7.68447 25.6673 8.66371 25.6673C9.63129 25.6673 10.424 24.8577 10.424 23.8695C10.424 22.8694 9.63129 22.0598 8.66371 22.0598ZM21.7785 22.0598C20.7992 22.0598 20.0065 22.8694 20.0065 23.8695C20.0065 24.8577 20.7992 25.6673 21.7785 25.6673C22.7461 25.6673 23.5388 24.8577 23.5388 23.8695C23.5388 22.8694 22.7461 22.0598 21.7785 22.0598Z" fill="currentColor" />
+                                        </svg>
+                                        Masukkan Keranjang
+                                    </button>
+                                </form>
+
+                                <!-- Form untuk Checkout -->
+                                <form class="col-12 col-md-6" action="/" method="POST" id="checkout-form">
+                                    @csrf
+                                    <input type="hidden" name="id_customer" value="{{ auth()->user()->id }}">
+                                    <input type="hidden" name="id_produk" id="cart-variant">
+                                    <input type="hidden" name="qty" id="cart-quantity">
+                                    <input type="hidden" name="total_harga" id="cart-total-price">
+                                    <button type="submit" style="border-radius: 30px;">
+                                        <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.0466 7.875C19.0824 7.79527 19.0991 7.70838 19.0956 7.62111H19.125C18.9992 4.61915 16.5205 2.25 13.5056 2.25C10.4906 2.25 8.01194 4.61915 7.88612 7.62111C7.87129 7.7051 7.87129 7.79102 7.88612 7.875H7.79818C6.3565 7.875 4.81539 8.82671 4.36797 11.3851L3.49302 18.3541C2.77715 23.4708 5.41195 24.75 8.8521 24.75H18.1783C21.6085 24.75 24.1637 22.8977 23.5274 18.3541L22.6624 11.3851C22.1354 8.89835 20.6441 7.875 19.2223 7.875H19.0466ZM17.4299 7.875C17.3986 7.79394 17.382 7.70797 17.3809 7.62111C17.3809 5.46393 15.6261 3.71518 13.4615 3.71518C11.2968 3.71518 9.54207 5.46393 9.54207 7.62111C9.5569 7.7051 9.5569 7.79102 9.54207 7.875H17.4299ZM10.2341 13.6671C9.68501 13.6671 9.23986 13.209 9.23986 12.6438C9.23986 12.0786 9.68501 11.6205 10.2341 11.6205C10.7832 11.6205 11.2284 12.0786 11.2284 12.6438C11.2284 13.209 10.7832 13.6671 10.2341 13.6671ZM15.7523 12.6438C15.7523 13.209 16.1974 13.6671 16.7465 13.6671C17.2957 13.6671 17.7408 13.209 17.7408 12.6438C17.7408 12.0786 17.2957 11.6205 16.7465 11.6205C16.1974 11.6205 15.7523 12.0786 15.7523 12.6438Z" fill="currentColor" />
+                                        </svg>
+                                        Checkout
+                                    </button>
+                                </form>
+                            </div>
                         </div>
+                        @else
+                        <div class="row bg-danger w-100">
+                            <a href="/login" class="button-login col-12 w-100 d-flex align-items-center justify-content-center">
+                                <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" class="me-1">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M19.0466 7.875C19.0824 7.79527 19.0991 7.70838 19.0956 7.62111H19.125C18.9992 4.61915 16.5205 2.25 13.5056 2.25C10.4906 2.25 8.01194 4.61915 7.88612 7.62111C7.87129 7.7051 7.87129 7.79102 7.88612 7.875H7.79818C6.3565 7.875 4.81539 8.82671 4.36797 11.3851L3.49302 18.3541C2.77715 23.4708 5.41195 24.75 8.8521 24.75H18.1783C21.6085 24.75 24.1637 22.8977 23.5274 18.3541L22.6624 11.3851C22.1354 8.89835 20.6441 7.875 19.2223 7.875H19.0466ZM17.4299 7.875C17.3986 7.79394 17.382 7.70797 17.3809 7.62111C17.3809 5.46393 15.6261 3.71518 13.4615 3.71518C11.2968 3.71518 9.54207 5.46393 9.54207 7.62111C9.5569 7.7051 9.5569 7.79102 9.54207 7.875H17.4299ZM10.2341 13.6671C9.68501 13.6671 9.23986 13.209 9.23986 12.6438C9.23986 12.0786 9.68501 11.6205 10.2341 11.6205C10.7832 11.6205 11.2284 12.0786 11.2284 12.6438C11.2284 13.209 10.7832 13.6671 10.2341 13.6671ZM15.7523 12.6438C15.7523 13.209 16.1974 13.6671 16.7465 13.6671C17.2957 13.6671 17.7408 13.209 17.7408 12.6438C17.7408 12.0786 17.2957 11.6205 16.7465 11.6205C16.1974 11.6205 15.7523 12.0786 15.7523 12.6438Z" fill="currentColor" />
+                                </svg>Masuk untuk melakukan pemesanan</a>
+                        </div>
+                        @endauth
                     </div>
                 </div>
-            </section>
-            
-        </main>
-        <!-- Single product content end -->
-        <footer class="footer">
-            <div class="footer_main section">
-                <div class="container d-flex flex-column flex-md-row flex-wrap flex-xl-nowrap justify-content-xl-between">
-                    <div class="footer_main-about footer_main-block col-md-6 col-xl-auto">
-                        <a class="brand footer_main-about_brand d-flex align-items-center" href="index.html">
-                            <span class="logo">
-                                <svg width="48" height="45" viewBox="0 0 48 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g clip-path="url(#logoFooter)">
-                                        <image href="img/logo3.svg" width="100%" height="100%" clip-path="url(#logoHeader)" />
-                                        <defs>
-                                        <clipPath id="logoFooter">
-                                            <rect width="48" height="45" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            </span>
-                            <span class="accent" style="color: white;">JivaJoy</span>
-                        </a>
-                        <div class="footer_main-about_wrapper">
-                            <p class="text">
-                                Aromatherapy 2in1 (Inhaler & Roll On) dari Kemangi dan Cendana sebagai Upaya Pencegahan Baby Blues dengan Integrated Website Packaging
-                            </p>
-                            <ul class="socials d-flex align-items-center accent">
-                                <!-- <li class="list-item">
-                                    <a class="link" href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                                        <i class="icon-facebook icon" style="color: white;"></i>
-                                    </a>
-                                </li>
-                                <li class="list-item">
-                                    <a class="link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                                        <i class="icon-instagram icon" style="color: white;"></i>
-                                    </a>
-                                </li>
-                                <li class="list-item">
-                                    <a class="link" href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                                        <i class="icon-twitter icon" style="color: white;"></i>
-                                    </a>
-                                </li>
-                                <li class="list-item">
-                                    <a class="link" href="https://whatsapp.com" target="_blank" rel="noopener noreferrer">
-                                        <i class="icon-whatsapp icon" style="color: white;"></i>
-                                    </a>
-                                </li> -->
-                            </ul>                            
-                        </div>
-                    </div>
-                    <div class="footer_main-contacts footer_main-block col-md-6 col-xl-auto">
-                        <h4 class="footer_main-contacts_header footer_main-header">Contacts information</h4>
-                        <ul class="footer_main-contacts_list">
-                            <li class="list-item d-flex align-items-center">
-                                <span class="icon d-flex justify-content-center align-items-center" style="background-color: white;">
-                                    <i class="icon-call"></i>
-                                </span>
-                                <div class="wrapper d-flex flex-column">
-                                    <a class="link" href="tel:+1234567890">+62 895-3597-28314 (Rangga)</a>
-                                </div>
-                            </li>
-                            <li class="list-item d-flex align-items-center">
-                                <span class="icon d-flex justify-content-center align-items-center" style="background-color: white;">
-                                    <i class="icon-location"></i>
-                                </span>
-                                <div class="wrapper d-flex flex-column">
-                                    <span>Sekolah Vokasi Bogor</span>
-                                </div>
-                            </li>
-                            <li class="list-item d-flex align-items-center">
-                                <span class="icon d-flex justify-content-center align-items-center" style="background-color: white;">
-                                    <i class="icon-clock"></i>
-                                </span>
-                                <div class="wrapper d-flex flex-column">
-                                    <span>9:00 am to 5:00 pm</span>
-                                    <span>Monday to Saturday</span>
-                                </div>
-                            </li>
-                        </ul>
-                        
-                    </div>
-                    <div class="footer_main-nav footer_main-block col-md-6 col-xl-auto">
-                        <h4 class="footer_main-nav_header footer_main-header">Shop Products</h4>
-                        <ul class="footer_main-nav_list d-flex flex-wrap flex-md-column">
-                            <li class="list-item">
-                                <a class="link d-inline-flex align-items-center" href="https://shopee.co.id/jivajoy">
-                                    <i class="icon-caret_right accent icon" style="color: white;"></i>
-                                    Shopee
-                                </a>
-                            </li>
-                            <li class="list-item">
-                                <a class="link d-inline-flex align-items-center" href="https://www.tokopedia.com/jivajoy">
-                                    <i class="icon-caret_right accent icon" style="color: white;"></i>
-                                    Tokopedia
-                                </a>
-                            </li>
-                            </li>
-                            <li class="list-item">
-                                <a class="link d-inline-flex align-items-center" href="https://s.lazada.co.id/s.rL1Wf?dsource=share&laz_share_info=646959714_100_1600_0_646959714_null&laz_token=66e2b61c2b7c264eb062fb0776b3abae">
-                                    <i class="icon-caret_right accent icon" style="color: white;"></i>
-                                    Lazada
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <!-- <div class="footer_main-instagram footer_main-block col-md-6 col-xl-auto">
-                        <h4 class="footer_main-instagram_header footer_main-header">Instagram</h4>
-                        <ul class="footer_main-instagram_list d-grid">
-                            <li class="list-item">
-                                <a class="link" href="#" target="_blank" rel="noopener norefferer">
-                                    <picture>
-                                        <source data-srcset="img/footer1.png" srcset="img/footer1.png" type="image/webp" />
-                                        <img
-                                            class="lazy preview"
-                                            data-src="img/footer1.png"
-                                            src="img/footer1.png"
-                                            alt="instagram post"
-                                        />
-                                    </picture>
-                                </a>
-                            </li>
-                            <li class="list-item">
-                                <a class="link" href="#" target="_blank" rel="noopener norefferer">
-                                    <picture>
-                                        <source data-srcset="img/footer2.png" srcset="img/footer2.png" type="image/webp" />
-                                        <img
-                                            class="lazy preview"
-                                            data-src="img/footer2.png"
-                                            src="img/footer2.png"
-                                            alt="instagram post"
-                                        />
-                                    </picture>
-                                </a>
-                            </li>
-                            <li class="list-item">
-                                <a class="link" href="#" target="_blank" rel="noopener norefferer">
-                                    <picture>
-                                        <source data-srcset="img/footer3.png" srcset="img/footer3.png" type="image/webp" />
-                                        <img
-                                            class="lazy preview"
-                                            data-src="img/footer3.png"
-                                            src="img/footer3.png"
-                                            alt="instagram post"
-                                        />
-                                    </picture>
-                                </a>
-                            </li>
-                            <li class="list-item">
-                                <a class="link" href="#" target="_blank" rel="noopener norefferer">
-                                    <picture>
-                                        <source data-srcset="img/footer4.png" srcset="img/footer4.png" type="image/webp" />
-                                        <img
-                                            class="lazy preview"
-                                            data-src="img/footer4.png"
-                                            src="img/footer4.png"
-                                            alt="instagram post"
-                                        />
-                                    </picture>
-                                </a>
-                            </li>
-                            <li class="list-item">
-                                <a class="link" href="#" target="_blank" rel="noopener norefferer">
-                                    <picture>
-                                        <source data-srcset="img/footer5.png" srcset="img/footer5.png" type="image/webp" />
-                                        <img
-                                            class="lazy preview"
-                                            data-src="img/footer5.png"
-                                            src="img/footer5.png"
-                                            alt="instagram post"
-                                        />
-                                    </picture>
-                                </a>
-                            </li>
-                            <li class="list-item">
-                                <a class="link" href="#" target="_blank" rel="noopener norefferer">
-                                    <picture>
-                                        <source data-srcset="img/footer6.png" srcset="img/footer6.png" type="image/webp" />
-                                        <img
-                                            class="lazy preview"
-                                            data-src="img/footer6.png"
-                                            src="img/footer6.png"
-                                            alt="instagram post"
-                                        />
-                                    </picture>
-                                </a>
-                            </li>
-                        </ul>
-                    </div> -->
-                </div>
             </div>
-            <div class="footer_secondary">
-                <div
-                    class="
-                        container
-                        d-flex
-                        flex-column-reverse flex-md-row
-                        justify-content-center justify-content-md-between
-                        align-items-md-center
-                    "
-                >
-                    <p class="footer_secondary-copyright">
-                         &copy; JivaJoy
-                        <span class="linebreak">All rights reserved Copyrights 2024</span>
-                    </p>
-                    </ul>
-                </div>
-            </div>
-        </footer>
-        <script src="js/common.min.js"></script>
-        <div class="cartOffcanvas offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas">
-            <div class="cartOffcanvas_header d-flex align-items-center justify-content-between">
-                <h2 class="cartOffcanvas_header-title" id="cartOffcanvasLabel">Cart</h2>
-                <button class="cartOffcanvas_header-close" type="button" data-bs-dismiss="offcanvas" aria-label="Close">
-                    <i class="icon-close"></i>
-                </button>
-            </div>
-            <div class="cartOffcanvas_body">
-                <ul class="cartOffcanvas_body-list">
-                    <li class="cartOffcanvas_body-list_item d-sm-flex align-items-center">
-                        <div class="media">
-                            <a href="product.html" target="_blank" rel="noopener norefferer">
-                                <picture>
-                                    <source data-srcset="img/placeholder.jpg" srcset="img/placeholder.jpg" type="image/webp" />
-                                    <img class="lazy" data-src="img/placeholder.jpg" src="img/placeholder.jpg" alt="media" />
-                                </picture>
-                            </a>
-                        </div>
-                        <div class="main d-flex flex-wrap justify-content-between align-items-end align-items-lg-center">
-                            <a class="main_title" href="product.html" target="_blank" rel="noopener norefferer">
-                                <span class="main_title-product"> Jonny Chronic - French Macaroon </span>
-                            </a>
-                            <div class="main_price">
-                                <span class="price">$14.98</span>
-                            </div>
-                            <div class="qty d-flex align-items-center justify-content-between">
-                                <span class="qty_minus control disabled d-flex align-items-center">
-                                    <i class="icon-minus"></i>
-                                </span>
-                                <input class="qty_amount" type="number" readonly value="1" min="1" max="99" />
-                                <span class="qty_plus control d-flex align-items-center">
-                                    <i class="icon-plus"></i>
-                                </span>
-                            </div>
-                            <a class="btn--underline" href="#">Remove</a>
-                        </div>
-                    </li>
-                    <li class="cartOffcanvas_body-list_item d-sm-flex align-items-center">
-                        <div class="media">
-                            <a href="product.html" target="_blank" rel="noopener norefferer">
-                                <picture>
-                                    <source data-srcset="img/placeholder.jpg" srcset="img/placeholder.jpg" type="image/webp" />
-                                    <img class="lazy" data-src="img/placeholder.jpg" src="img/placeholder.jpg" alt="media" />
-                                </picture>
-                            </a>
-                        </div>
-                        <div class="main d-flex flex-wrap justify-content-between align-items-end align-items-lg-center">
-                            <a class="main_title" href="product.html" target="_blank" rel="noopener norefferer">
-                                <span class="main_title-product"> House Shatter – Durban Poison </span>
-                            </a>
-                            <div class="main_price">
-                                <span class="price">$6.96</span>
-                            </div>
-                            <div class="qty d-flex align-items-center justify-content-between">
-                                <span class="qty_minus control disabled d-flex align-items-center">
-                                    <i class="icon-minus"></i>
-                                </span>
-                                <input class="qty_amount" type="number" readonly value="1" min="1" max="99" />
-                                <span class="qty_plus control d-flex align-items-center">
-                                    <i class="icon-plus"></i>
-                                </span>
-                            </div>
-                            <a class="btn--underline" href="#">Remove</a>
-                        </div>
-                    </li>
-                    <li class="cartOffcanvas_body-list_item d-sm-flex align-items-center">
-                        <div class="media">
-                            <a href="product.html" target="_blank" rel="noopener norefferer">
-                                <picture>
-                                    <source data-srcset="img/placeholder.jpg" srcset="img/placeholder.jpg" type="image/webp" />
-                                    <img class="lazy" data-src="img/placeholder.jpg" src="img/placeholder.jpg" alt="media" />
-                                </picture>
-                            </a>
-                        </div>
-                        <div class="main d-flex flex-wrap justify-content-between align-items-end align-items-lg-center">
-                            <a class="main_title" href="product.html" target="_blank" rel="noopener norefferer">
-                                <span class="main_title-product"> Natures: CBD Tincture </span>
-                            </a>
-                            <div class="main_price">
-                                <span class="price">$7.49</span>
-                            </div>
-                            <div class="qty d-flex align-items-center justify-content-between">
-                                <span class="qty_minus control disabled d-flex align-items-center">
-                                    <i class="icon-minus"></i>
-                                </span>
-                                <input class="qty_amount" type="number" readonly value="1" min="1" max="99" />
-                                <span class="qty_plus control d-flex align-items-center">
-                                    <i class="icon-plus"></i>
-                                </span>
-                            </div>
-                            <a class="btn--underline" href="#">Remove</a>
-                        </div>
-                    </li>
-                </ul>
-                <div class="cartOffcanvas_body-total d-flex justify-content-between align-items-center">
-                    <span>Total</span>
-                    <span class="cartTotal">$29.43</span>
-                </div>
-                <a class="cartOffcanvas_body-btn btn" href="cart.html">Proceed to checkout</a>
-            </div>
-        </div>
-        <script src="js/shop.min.js"></script>
-    </body>
+        </section>
+
+    </main>
+    <!-- Single product content end -->
+
+    @include('partials.footer')
+    @include('partials.popup')
+
+    <script src="js/common.min.js"></script>
+    <script src="js/shop.min.js"></script>
+    <script src="js/script.js"></script>
+
+    <script>
+        document.getElementById('increase-qty').addEventListener('click', function() {
+            var qty = document.getElementById('quantity');
+            qty.value = parseInt(qty.value) + 1;
+            updatePrice();
+        });
+
+        document.getElementById('decrease-qty').addEventListener('click', function() {
+            var qty = document.getElementById('quantity');
+            if (parseInt(qty.value) > 1) {
+                qty.value = parseInt(qty.value) - 1;
+                updatePrice();
+            }
+        });
+
+        document.getElementById('variant').addEventListener('change', function() {
+            updatePrice();
+        });
+
+        function updatePrice() {
+            var qty = document.getElementById('quantity').value;
+            var variant = document.getElementById('variant').value;
+            var pricePerItem = 24999;
+            var totalPrice = qty * pricePerItem;
+
+            document.getElementById('total-price').textContent = 'Rp ' + totalPrice.toLocaleString();
+
+            // Update nilai input hidden di kedua form
+            document.getElementById('cart-quantity').value = qty;
+            document.getElementById('cart-total-price').value = totalPrice;
+            document.getElementById('cart-variant').value = variant;
+
+            document.getElementById('checkout-quantity').value = qty;
+            document.getElementById('checkout-total-price').value = totalPrice;
+            document.getElementById('checkout-variant').value = variant;
+        }
+
+        // Initial update for price when page loads
+        updatePrice();
+    </script>
+</body>
+
 </html>

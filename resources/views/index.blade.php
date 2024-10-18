@@ -33,13 +33,13 @@
         <!-- Hero section start -->
         <section class="hero">
             <div class="container d-xl-flex align-items-start">
-                <div class="hero_about col-xl-6">
+                <div class="hero_about col-md-6">
                     <div class="hero_header">
                         <h1 class="hero_header-title">JivaJoy</h1>
                         <p class="hero_header-text">
                             Aromaterapi 2in1 (Inhaler & Roll On) dari Kemangi dan Cendana Sebagai Upaya Mencegah Baby Blues dengan Kemasan Website Terintegrasi
                         </p>
-                        <a href="product.html" style="background-color: #4682A9; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; border-radius: 30px; font-size: 16px; cursor: pointer;">
+                        <a href="/produk" style="background-color: #4682A9; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; border-radius: 30px; font-size: 16px; cursor: pointer;">
                             <b>Lihat Produk</b>
                         </a>
                     </div>
@@ -56,7 +56,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="hero_promo col-xl-6">
+                <div class="hero_promo col-md-6">
                     <div class="hero_promo-underlay"></div>
                     <div class="hero_promo-underlay--highlight"></div>
                     <div class="hero_slider swiper">
@@ -73,7 +73,7 @@
                                 <div class="hero_slider-slide_media">
                                     <picture>
                                         <source data-srcset="img/productrv.png" srcset="img/productrv.png" type="image/webp" />
-                                        <img class="lazy" data-src="img/productrv.png" src="img/productrv.png" alt="media" style="margin-right: 43%;" />
+                                        <img class="lazy" data-src="img/productrv.png" src="img/productrv.png" alt="media" style="margin-right: 43%;"/>
                                     </picture>
                                 </div>
                                 <div class="hero_slider-slide_main">
@@ -278,6 +278,7 @@
         <!-- Promo info section start -->
         <section class="info section" style="position: relative;">
             <div class="container">
+                
                 <div class="info_content d-flex flex-column align-items-center">
                     <h3 class="info_content-header" style="position: relative; z-index: 1;">
                         “Melalui air mata dan kelelahan akibat baby blues, ingatlah bahwa setiap matahari terbit membawa peluang baru untuk kegembiraan dan kekuatan untuk menerima kekacauan indah sebagai ibu.”
@@ -583,7 +584,6 @@
     <!-- Homepage content end -->
 
     @include('partials.footer')
-
     @include('partials.popup')
 
     <script src="js/common.min.js"></script>

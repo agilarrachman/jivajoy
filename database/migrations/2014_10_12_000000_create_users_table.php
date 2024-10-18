@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('jenis_kelamin');
             $table->string('no_hp');
-            $table->enum('role', ['Admin', 'User'])->default('User');
+            $table->enum('role', ['Admin', 'Customer'])->default('Customer');
             $table->rememberToken();
             $table->timestamps();
         });

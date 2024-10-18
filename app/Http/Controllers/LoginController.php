@@ -25,7 +25,7 @@ class LoginController extends Controller
             // Mengecek role pengguna setelah login
             if (Auth::user()->role === 'Admin') {
                 // Redirect ke admin dashboard jika role adalah Admin
-                return redirect()->intended('admin/dashboard');
+                return redirect()->intended('/dashboard');
             }
 
             // Redirect ke halaman utama jika role adalah User

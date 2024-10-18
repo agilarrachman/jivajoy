@@ -6,7 +6,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -41,9 +40,9 @@ class ProfileController extends Controller
             'username' => 'required|string|max:255||unique:users,username',
             'jenis_kelamin' => 'required|string|max:255',
             'no_hp' => 'required|string|max:15',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email:dns|unique:users,email',
             'password' => 'required|string|min:3|max:8',
-            'role' => 'required|in:Admin,User'
+            'role' => 'required|in:Admin,Customer'
         ]);
 
         if ($request->file('foto_profil')) {
@@ -65,7 +64,7 @@ class ProfileController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return $user;
     }
 
     /**
@@ -93,12 +92,12 @@ class ProfileController extends Controller
             'nama' => 'required|string|max:255',
             'jenis_kelamin' => 'required|string|max:255',
             'no_hp' => 'required|string|max:15',
-            'role' => 'required|in:Admin,User'
+            'role' => 'required|in:Admin,Customer'
         ];
 
         // Conditional validation for email and username
         if ($request->email !== $user->email) {
-            $rules['email'] = 'required|email|unique:users,email';
+            $rules['email'] = 'required|email:dns|unique:users,email';
         }
         if ($request->username !== $user->username) {
             $rules['username'] = 'required|string|max:255|unique:users,username';

@@ -20,10 +20,10 @@
                         <a class="nav-link {{ ($active === 'Beranda') ? 'active' : '' }} d-inline-flex align-items-center" href="/">Beranda</a>
                     </li>
                     <li class="header_nav-list_item">
-                        <a class="nav-link {{ ($active === 'Produk') ? 'active' : '' }} d-inline-flex align-items-center" href="product.html">Produk</a>
+                        <a class="nav-link {{ ($active === 'Produk') ? 'active' : '' }} d-inline-flex align-items-center" href="/produk">Produk</a>
                     </li>
                     <li class="header_nav-list_item">
-                        <a class="nav-link {{ ($active === 'Berita') ? 'active' : '' }} d-inline-flex align-items-center" href="news2.html">Berita</a>
+                        <a class="nav-link {{ ($active === 'Berita') ? 'active' : '' }} d-inline-flex align-items-center" href="/berita">Berita</a>
                     </li>
                     <li class="header_nav-list_item">
                         <a class="nav-link {{ ($active === 'Tim') ? 'active' : '' }} d-inline-flex align-items-center" href="/team">Tim</a>

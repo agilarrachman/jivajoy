@@ -9314,7 +9314,43 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
     margin: 5px;
 }
 
-.popup #cancel{
+.popup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.popup-content {
+    background: white;
+    border-radius: 5px;
+    width: auto;
+    text-align: center;
+}
+
+.popup img{
+    width: 100px;
+    margin: auto;
+}
+
+.close {
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn {
+    margin: 5px;
+}
+
+.popup .cancel{
     background-color: #4682A9;
     color: white;
     border-radius: 8px;
@@ -9322,7 +9358,7 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
     font-weight: 500;
 }
 
-.popup #cancel:hover{
+.popup .cancel:hover{
     background-color: #28668f;
 }
 
@@ -9342,3 +9378,8 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
     background-color: #c2c2c2;
 }
 
+.popup h4{
+    font-family: NunitoSans, sans-serif;
+    color: #4682A9;
+    font-weight: 700;
+}

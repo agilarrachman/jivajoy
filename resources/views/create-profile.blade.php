@@ -38,7 +38,7 @@
                         @csrf
                         <input type="hidden" name="email" value="{{ session('email') }}">
                         <input type="hidden" name="password" value="{{ session('password') }}">
-                        <input type="hidden" name="role" value="User">
+                        <input type="hidden" name="role" value="Customer">
                         <div class="col d-flex flex-column w-80">
                             <img id="profileImagePreview" src="img/default profile picture.jpg" alt="" class="rounded-circle mx-auto my-3">
                             <input type="file" name="foto_profil" id="foto_profil" class="form-control mx-auto @error('foto_profil') is-invalid @enderror" onchange="previewImage(event)">
@@ -50,7 +50,7 @@
                             <div id="rulesProfileImage" class="form-text mb-4">Silakan unggah gambar profil dengan format file gambar (jpeg, png, jpg, gif) dan ukuran maksimum 5 MB</div>
                         </div>
                         <div class="form-floating my-2">
-                            <input type="text" name="nama" class="form-control  @error('nama') is-invalid @enderror" id="nama" placeholder="name@example.com" autofocus required value="{{ old('nama') }}">
+                            <input type="text" name="nama" class="form-control  @error('nama') is-invalid @enderror" id="nama" placeholder="Nama Lengkap" autofocus required value="{{ old('nama') }}">
                             <label for="nama">Nama Lengkap</label>
                             @error('nama')
                             <div class="invalid-feedback">
@@ -59,7 +59,7 @@
                             @enderror
                         </div>
                         <div class="form-floating my-2">
-                            <input type="text" name="username" class="form-control  @error('username') is-invalid @enderror" id="username" placeholder="name@example.com" autofocus required value="{{ old('username') }}">
+                            <input type="text" name="username" class="form-control  @error('username') is-invalid @enderror" id="username" placeholder="username" autofocus required value="{{ old('username') }}">
                             <label for="username">Username</label>
                             @error('username')
                             <div class="invalid-feedback">
@@ -83,7 +83,7 @@
                             </div>
                         </div>
                         <div class="form-floating my-2">
-                            <input type="number" name="no_hp" class="form-control  @error('no_hp') is-invalid @enderror" id="no_hp" placeholder="name@example.com" autofocus required value="{{ old('no_hp') }}">
+                            <input type="number" name="no_hp" class="form-control  @error('no_hp') is-invalid @enderror" id="no_hp" placeholder="Laki-laki" autofocus required value="{{ old('no_hp') }}">
                             <label for="no_hp">Nomor HP</label>
                             @error('no_hp')
                             <div class="invalid-feedback">

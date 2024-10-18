@@ -1,0 +1,29 @@
+#profileImagePreview{
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+}
+
+.container form{
+    max-width: 900px;
+}
+
+#buttonSubmit{
+    background-color: #4682A9;
+    color: white;
+}
+
+.container button:hover{
+    background-color: #164463;
+    color: white;
+}
+
+.form-check-input[type="radio"]:checked {
+    background-color: #4682A9; 
+    /* border-color: #4682A9; */
+}
+
+/* Memberi efek kecil pada saat focus (opsional) */
+.form-check-input[type="radio"]:focus {
+    outline: 2px solid #4682A9;
+}
