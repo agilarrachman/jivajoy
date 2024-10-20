@@ -8,11 +8,9 @@
     <meta property="og:title" content="JivaJoy" />
     <meta property="og:type" content="Website" />
     <meta property="og:url" content="https://jivajoy.id/" />
-    <meta property="og:description"
-        content="Aromaterapi 2in1 (Inhaler & Roll On) dari Kemangi dan Cendana Sebagai Upaya Mencegah Baby Blues dengan Kemasan Website Terintegrasi" />
-    <meta name="description"
-        content="Aromaterapi 2in1 (Inhaler & Roll On) dari Kemangi dan Cendana Sebagai Upaya Mencegah Baby Blues dengan Kemasan Website Terintegrasi">
-    <title>JivaJoy Admin | Create Customer</title>
+    <meta property="og:description" content="Aromaterapi 2in1 (Inhaler & Roll On) dari Kemangi dan Cendana Sebagai Upaya Mencegah Baby Blues dengan Kemasan Website Terintegrasi" />
+    <meta name="description" content="Aromaterapi 2in1 (Inhaler & Roll On) dari Kemangi dan Cendana Sebagai Upaya Mencegah Baby Blues dengan Kemasan Website Terintegrasi">
+    <title>JivaJoy Admin | Edit Stok Produk</title>
 
     <!-- Fonts and Stylesheets -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -20,7 +18,7 @@
     <link rel="stylesheet preload" as="style" href="css/preload.min.css" />
     <link rel="stylesheet preload" as="style" href="css/libs.min.css" />
     <link rel="stylesheet" href="/css/dashboard.css" />
-    <link rel="stylesheet" href="/css/formcustomer.css" />
+    <link rel="stylesheet" href="/css/formproduk.css" />
     <link rel="stylesheet" href="/css/popup.css" />
     <link rel="shortcut icon" type="image/x-icon" href="/img/logo.svg">
 </head>
@@ -56,112 +54,63 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="/dashboard/admin">Data Admin</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Add Data</li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit Stok Produk</li>
                 </ol>
             </nav>
 
-            <h1>Form Tambah Data Admin</h1>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h1 style="color: #4380a8;">Edit Stok Produk</h1>
+            </div>
 
-            <form action="/dashboard/admin" method="post" enctype="multipart/form-data">
+            <!-- Form Input -->
+            <form action="/dashboard/stocks/{{ $stock->id }}" method="POST">
+                @method('put')
                 @csrf
-                <div class="col d-flex flex-column w-80">
-                    <img id="profileImagePreview" src="/img/default profile picture.jpg" alt="" class="rounded-circle my-3">
-                    <input type="file" name="foto_profil" id="foto_profil" class="form-control mx-auto @error('foto_profil') is-invalid @enderror" onchange="previewImage(event)">
-                    @error('foto_profil')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                    <div id="rulesProfileImage" class="form-text mb-4">Silakan unggah gambar profil dengan format file gambar (jpeg, png, jpg, gif) dan ukuran maksimum 5 MB</div>
-                </div>
-                <div class="form-floating my-3">
-                    <input type="text" name="nama" class="form-control  @error('nama') is-invalid @enderror" id="nama" placeholder="Nama Lengkap" autofocus required value="{{ old('nama') }}">
-                    <label for="nama">Nama Lengkap</label>
-                    @error('nama')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                </div>
-                <div class="form-floating my-3">
-                    <input type="text" name="username" class="form-control  @error('username') is-invalid @enderror" id="username" placeholder="username" autofocus required value="{{ old('username') }}">
-                    <label for="username">Username</label>
-                    @error('username')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                </div>
-                <div class="form-floating my-3">
-                    <input type="email" name="email" class="form-control  @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" autofocus required value="{{ old('email') }}">
-                    <label for="email">Email address</label>
-                    @error('email')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                </div>
-                <div class="form-floating my-3">
-                    <input type="password" name="password" class="form-control rounded-bottom  @error('password') is-invalid @enderror" id="password" placeholder="Password" required>
-                    <label for="password">Password</label>
-                    @error('password')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                    <div id="rulesPassword" class="form-text">Password harus memiliki panjang antara 3 hingga 8 karakter</div>
-                </div>
-                <label for="jenis_kelamin">Jenis Kelamin</label>
+                <label for="jenis_kelamin">Pilih Varian Produk</label>
                 <div class="mb-2">
+                    @foreach ($products as $product)
+                    @if(old('id_product', $stock->id_product) == $product->id)
                     <div class="form-check-inline">
-                        <input class="form-check-input" type="radio" name="jenis_kelamin" id="Pria" value="Pria" checked>
-                        <label class="form-check-label" for="Pria">
-                            Pria
+                        <input class="form-check-input" type="radio" name="id_product" id="{{ $product -> varian }}" value="{{ $product -> id }}" checked>
+                        <label class="form-check-label" for="{{ $product -> varian }}">
+                            <img src="{{ $product -> foto_produk }}" alt="{{ $product -> varian }}" style="width: 100px;">
+                            JivaJoy {{ $product -> varian }}
                         </label>
                     </div>
+                    @else
                     <div class="form-check-inline">
-                        <input class="form-check-input" type="radio" name="jenis_kelamin" id="Wanita" value="Wanita">
-                        <label class="form-check-label" for="Wanita">
-                            Wanita
+                        <input class="form-check-input" type="radio" name="id_product" id="{{ $product -> varian }}" value="{{ $product -> id }}">
+                        <label class="form-check-label" for="{{ $product -> varian }}">
+                            <img src="{{ $product -> foto_produk }}" alt="{{ $product -> varian }}" style="width: 100px;">
+                            JivaJoy {{ $product -> varian }}
                         </label>
                     </div>
+                    @endif
+                    @endforeach
                 </div>
 
-                <div class="form-floating my-3">
-                    <input type="number" name="no_hp" class="form-control  @error('no_hp') is-invalid @enderror" id="no_hp" placeholder="Laki-laki" autofocus required value="{{ old('no_hp') }}">
-                    <label for="no_hp">Nomor HP</label>
-                    @error('no_hp')
+                <div class="mb-3 form-input">
+                    <label for="qty" class="form-label">Stok Produk</label>
+                    <input type="number" class="form-control @error('stock') is-invalid @enderror" id="qty" name="qty" placeholder="Masukkan jumlah stok" required value="{{ old('stock', $stock->qty ) }}">
+                    @error('stock')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
                     @enderror
                 </div>
 
-                <input type="hidden" name="role" value="Admin">
-                <button class="btn w-100 py-2 my-3" type="submit" id="buttonSubmit">Simpan Data Diri</button>
+                <input type="hidden" name="id_admin" value="{{ auth()->user()->id }}">
+
+                <button class="btn w-100 py-2 my-3" type="submit" id="buttonSubmit">Simpan Data Stok Produk</button>
             </form>
         </div>
     </div>
 
     @include('partials.popup')
 
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybBLuB8sA8L1hMIdHqGfhSNIYTFu9zGTx93sG4aRl7czb/ZZu" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-kT04WfFiP8HHRRrCq2vnLUyKiRLifclq4S8tx5OlMZV6S5LZYhUbo2B1H4/nvMzO" crossorigin="anonymous"></script>
-
-    <script>
-        function previewImage(event) {
-            var reader = new FileReader(); // Create FileReader object
-
-            reader.onload = function() {
-                var output = document.getElementById('profileImagePreview'); // Get the image preview element
-                output.src = reader.result; // Set the src attribute with the file's data
-            };
-
-            reader.readAsDataURL(event.target.files[0]); // Read the file as a data URL
-        }
-    </script>
+    <!-- JavaScript Files -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-Rpg8bXScjPpr8gr5Dngw2oyhQ/WK7yzXW3Y2tm49dD5aN2scMZt/sS5vTpFHZB1K" crossorigin="anonymous"></script>
+    <script src="js/index.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {

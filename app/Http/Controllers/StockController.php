@@ -31,7 +31,6 @@ class StockController extends Controller
         return view('admin.createproduk', [
             'active' => 'Produk',
             'products' => Product::all(),
-            'admin' => User::where('id', auth()->user()->id)->first(),
         ]);
     }
 
@@ -55,10 +54,13 @@ class StockController extends Controller
         // Tambahkan jumlah stok yang ada di produk dengan qty yang ditambahkan
         $product->increment('stok', $validatedData['qty']);
 
+        // Simpan data stok ke tabel stocks
         Stock::create($validatedData);
 
-        return redirect("/dashboard/products/{$validatedData['id_product']}")->with('success', 'Stock berhasil ditambahkan!');
+        // Redirect menggunakan varian produk, bukan id produk
+        return redirect("/dashboard/products/{$product->varian}")->with('success', 'Stock berhasil ditambahkan!');
     }
+
 
     /**
      * Display the specified resource.
@@ -79,7 +81,11 @@ class StockController extends Controller
      */
     public function edit(Stock $stock)
     {
-        //
+        return view('admin.editproduk', [
+            'active' => 'Produk',
+            'stock' => $stock,
+            'products' => Product::all(),
+        ]);
     }
 
     /**
@@ -91,32 +97,40 @@ class StockController extends Controller
      */
     public function update(Request $request, Stock $stock)
     {
-        // Define validation rules for the fields
-        $rules = [
-            'nama' => 'required|string|max:255',
-            'jenis_kelamin' => 'required|string|max:255',
-            'no_hp' => 'required|string|max:15',
-            'role' => 'required|in:Admin,User'
-        ];
+        // Validasi data yang masuk
+        $validatedData = $request->validate([
+            'id_admin' => 'required',
+            'id_product' => 'required',
+            'qty' => 'required|integer|min:0',
+        ]);
 
-        // Conditional validation for email and username
-        if ($request->email !== $stock->email) {
-            $rules['email'] = 'required|email|unique:users,email';
+        // Cari produk lama yang terkait dengan stok
+        $oldProduct = Product::findOrFail($stock->id_product);
+
+        // Cari produk baru berdasarkan id_product yang baru
+        $newProduct = Product::findOrFail($validatedData['id_product']);
+
+        // Hitung selisih qty lama dan baru
+        $difference = $validatedData['qty'] - $stock->qty;
+
+        // Jika produk yang terkait tidak berubah, update stoknya langsung
+        if ($oldProduct->id == $newProduct->id) {
+            // Update stok produk yang sama
+            $newProduct->increment('stok', $difference);
+        } else {
+            // Jika produk berbeda, kurangi stok dari produk lama
+            $oldProduct->decrement('stok', $stock->qty);
+
+            // Tambahkan stok ke produk baru
+            $newProduct->increment('stok', $validatedData['qty']);
         }
-        if ($request->username !== $stock->username) {
-            $rules['username'] = 'required|string|max:255|unique:users,username';
-        }
 
-        // Validate input data
-        $validatedData = $request->validate($rules);
+        // Perbarui data stok di tabel stocks
+        $stock->update($validatedData);
 
-        // Update the user record with the validated data
-        Stock::where('id', $stock->id)->update($validatedData);
-
-        // Redirect back to the profile page with a success message
-        return redirect('/profile')->with('success', 'Profile has been updated!');
+        // Redirect menggunakan varian produk yang baru
+        return redirect("/dashboard/products/{$newProduct->varian}")->with('success', 'Data Stok berhasil diperbarui!');
     }
-
 
 
     /**
@@ -127,23 +141,16 @@ class StockController extends Controller
      */
     public function destroy(Stock $stock)
     {
-        // Ambil user yang sedang login
-        $currentUser = auth()->user();
+        // Cari produk yang terkait dengan stok yang akan dihapus
+        $product = Product::findOrFail($stock->id_product);
 
-        // Pastikan user yang sedang login sama dengan user yang akan dihapus
-        if ($currentUser->id !== $stock->id) {
-            return response()->json(['error' => 'Unauthorized'], 403);
-        }
+        // Kurangi stok produk dengan jumlah qty yang dihapus
+        $product->decrement('stok', $stock->qty);
 
-        // Hapus foto profil user jika ada
-        // if ($user->foto_profil) {
-        //     Storage::disk('public')->delete($user->foto_profil);
-        // }
-
-        // Hapus data user dari database
+        // Hapus data stok dari database
         $stock->delete();
 
-        // Redirect ke halaman depan dengan pesan sukses
-        return redirect('/')->with('deleteAccountSuccess', 'Your account has been deleted successfully.');
+        // Redirect ke halaman produk terkait dengan pesan sukses
+        return redirect("/dashboard/products/{$product->varian}")->with('success', 'Stock berhasil dihapus!');
     }
 }

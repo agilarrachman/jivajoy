@@ -9,7 +9,7 @@
     <a href="{{ url('/admin/datakeranjang') }}" class="menu {{ ($active === 'Keranjang') ? 'active' : '' }}">Data Keranjang</a>
     <a href="{{ url('/admin/datapesanan') }}" class="menu {{ ($active === 'Pesanan') ? 'active' : '' }}">Data Pesanan</a>
     <a href="{{ url('/admin/chat') }}" class="menu {{ ($active === 'Chat') ? 'active' : '' }}">Chat</a>
-    <a href="{{ url('/admin/chat') }}" class="menu {{ ($active === 'Profil') ? 'active' : '' }}">Pengaturan Profil</a>
+    <a href="/dashboard/profile" class="menu {{ ($active === 'Profil') ? 'active' : '' }}">Pengaturan Profil</a>
     <a href="#" id="logoutButton">Keluar Akun</a>
     <a href="#" id="deleteAccountButton">Hapus Akun</a>
 </div>

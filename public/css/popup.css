@@ -1,0 +1,202 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #868E8C;
+}
+
+a,button,input,textarea {
+    background: 0 0;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    border: none;
+    cursor: pointer;
+    -webkit-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out
+}
+
+@media screen and (min-width: 991.98px) {
+    h4 {
+        font-size: 22px;
+        line-height: 1.1;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: NunitoSans, sans-serif;
+    color: #4682A9;
+}
+h4, h5 {
+    font-weight: 700;
+}
+h4 {
+    font-size: 20px;
+    line-height: 1.3;
+}
+
+.content {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+.stat-box {
+    border-radius: 8px;
+    padding: 20px;
+    color: white;
+}
+
+.bg-blue {
+    background-color: #007bff;
+}
+
+.bg-green {
+    background-color: #28a745;
+}
+
+.bg-orange {
+    background-color: #fd7e14;
+}
+
+.navbar {
+    background-color: #ffffff;
+}
+
+.navbar-brand,
+.nav-link,
+.dropdown-item {
+    color: #000 !important;
+}
+
+.dropdown-menu {
+    background-color: #ffffff;
+    border: 1px solid #eaeaea;
+}
+
+.dropdown-item:hover {
+    background-color: #f1f1f1;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .content {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 769px) {
+    .dropdown-menu {
+        right: 0;
+        left: auto;
+    }
+}
+
+.popup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.popup-content {
+    background: white;
+    border-radius: 5px;
+    width: auto;
+    text-align: center;
+}
+
+.popup img {
+    width: 100px;
+    margin: auto;
+}
+
+.close {
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn {
+    margin: 5px;
+}
+
+.popup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.popup-content {
+    background: white;
+    border-radius: 5px;
+    width: auto;
+    text-align: center;
+}
+
+.popup img {
+    width: 100px;
+    margin: auto;
+}
+
+.close {
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn {
+    margin: 5px;
+}
+
+.popup .cancel {
+    background-color: #4682A9;
+    color: white;
+    border-radius: 8px;
+    width: 100%;
+    font-weight: 500;
+}
+
+.popup .cancel:hover {
+    background-color: #28668f;
+}
+
+.popup form {
+    width: 100%;
+}
+
+.popup form button {
+    background-color: #E6E5E5;
+    color: #556260;
+    border-radius: 8px;
+    width: 100%;
+    font-weight: 500;
+}
+
+.popup form button:hover {
+    background-color: #c2c2c2;
+}
+
+.popup h4 {
+    font-family: NunitoSans, sans-serif;
+    color: #4682A9;
+    font-weight: 700;
+}

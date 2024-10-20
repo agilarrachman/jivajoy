@@ -26,6 +26,9 @@
 
         <!-- Tabel Riwayat Pengelolaan Stok -->
         <h4>Riwayat Pengelolaan Stok</h4>
+        @if(session()->has('success'))
+        <div class="alert alert-success col-lg-10" role="alert">{{ session('success') }}</div>
+        @endif
         <table class="table table-bordered">
             <thead>
                 <tr>

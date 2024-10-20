@@ -21,6 +21,7 @@
     <link rel="stylesheet preload" as="style" href="css/libs.min.css" />
     <link rel="stylesheet" href="/css/dashboard.css" />
     <link rel="stylesheet" href="/css/formcustomer.css" />
+    <link rel="stylesheet" href="/css/popup.css" />
     <link rel="shortcut icon" type="image/x-icon" href="/img/logo.svg">
 </head>
 
@@ -142,6 +143,7 @@
         </div>
     </div>
 
+    @include('partials.popup')
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybBLuB8sA8L1hMIdHqGfhSNIYTFu9zGTx93sG4aRl7czb/ZZu" crossorigin="anonymous"></script>
@@ -158,6 +160,70 @@
 
             reader.readAsDataURL(event.target.files[0]); // Read the file as a data URL
         }
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Handle logout popup
+            const logoutButton = document.getElementById("logoutButton");
+            const logoutPopup = document.getElementById("logoutPopup");
+            const closeLogoutPopup = document.getElementById("closeLogoutPopup");
+            const cancelLogout = document.getElementById("cancelLogout");
+
+            if (logoutButton) {
+                logoutButton.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    logoutPopup.style.display = "flex";
+                });
+            }
+
+            if (closeLogoutPopup) {
+                closeLogoutPopup.addEventListener("click", function() {
+                    logoutPopup.style.display = "none";
+                });
+            }
+
+            if (cancelLogout) {
+                cancelLogout.addEventListener("click", function() {
+                    logoutPopup.style.display = "none";
+                });
+            }
+
+            // Handle delete account popup
+            const deleteAccountButton = document.getElementById("deleteAccountButton");
+            const deleteAccountPopup = document.getElementById("deleteAccountPopup");
+            const closeDeleteAccountPopup = document.getElementById("closeDeleteAccountPopup");
+            const cancelDeleteAccount = document.getElementById("cancelDeleteAccount");
+
+            if (deleteAccountButton) {
+                deleteAccountButton.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    deleteAccountPopup.style.display = "flex";
+                });
+            }
+
+            if (closeDeleteAccountPopup) {
+                closeDeleteAccountPopup.addEventListener("click", function() {
+                    deleteAccountPopup.style.display = "none";
+                });
+            }
+
+            if (cancelDeleteAccount) {
+                cancelDeleteAccount.addEventListener("click", function() {
+                    deleteAccountPopup.style.display = "none";
+                });
+            }
+
+            // Close popups if clicked outside of content
+            window.addEventListener("click", function(event) {
+                if (event.target === logoutPopup) {
+                    logoutPopup.style.display = "none";
+                }
+                if (event.target === deleteAccountPopup) {
+                    deleteAccountPopup.style.display = "none";
+                }
+            });
+        });
     </script>
 </body>
 

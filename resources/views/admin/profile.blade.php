@@ -10,7 +10,7 @@
     <meta property="og:url" content="https://jivajoy.id/" />
     <meta property="og:description" content="Aromaterapi 2in1 (Inhaler & Roll On) dari Kemangi dan Cendana Sebagai Upaya Mencegah Baby Blues dengan Kemasan Website Terintegrasi" />
     <meta name="description" content="Aromaterapi 2in1 (Inhaler & Roll On) dari Kemangi dan Cendana Sebagai Upaya Mencegah Baby Blues dengan Kemasan Website Terintegrasi">
-    <title>JivaJoy Admin | Tambah Stok Produk</title>
+    <title>JivaJoy Admin | Data Admin</title>
 
     <!-- Fonts and Stylesheets -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -18,17 +18,11 @@
     <link rel="stylesheet preload" as="style" href="css/preload.min.css" />
     <link rel="stylesheet preload" as="style" href="css/libs.min.css" />
     <link rel="stylesheet" href="/css/dashboard.css" />
-    <link rel="stylesheet" href="/css/formproduk.css" />
     <link rel="stylesheet" href="/css/popup.css" />
     <link rel="shortcut icon" type="image/x-icon" href="/img/logo.svg">
 </head>
 
 <body>
-
-    @php
-    // Mengambil varian produk yang sebelumnya dipilih dari session, default ke 'hot' jika tidak ada
-    $selectedVarian = session('selected_varian');
-    @endphp
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -59,56 +53,56 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Tambah Stok Produk</li>
+                    <li class="breadcrumb-item active" aria-current="page">Pengaturan Profile</li>
                 </ol>
             </nav>
 
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h1 style="color: #4380a8;">Tambah Stok Produk</h1>
+            <h1 style="color: #4380a8; margin-bottom: 10px;">Detail Admin</h1>
+
+            <div class="mt-4">
+                <form>
+                    <img id="profileImagePreview" src="{{ asset('storage/' . auth()->user()->foto_profil ) }}" alt="" class="rounded-circle my-3" style="width: 140px; height: 140px; object-fit:cover;">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" value="{{ auth()->user()->username }}" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nama</label>
+                        <input type="text" class="form-control" id="name" value="{{ auth()->user()->nama }}" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" value="{{ auth()->user()->email }}" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">No HP</label>
+                        <input type="text" class="form-control" id="phone" value="{{ auth()->user()->no_hp }}" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="gender" class="form-label">Jenis Kelamin</label>
+                        <input type="text" class="form-control" id="gender" value="{{ auth()->user()->jenis_kelamin }}" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="role" class="form-label">Role</label>
+                        <select class="form-select" id="role" disabled>
+                            <option selected>{{ auth()->user()->role }}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Tanggal Bergabung</label>
+                        <input type="text" class="form-control" id="date" value="{{ auth()->user()->created_at }}" disabled>
+                    </div>
+                </form>
             </div>
-
-            <!-- Form Input -->
-            <form action="/dashboard/stocks" method="POST">
-                @csrf
-                <label for="jenis_kelamin">Pilih Varian Produk</label>
-                <div class="mb-2">
-                    @foreach ($products as $product)
-                    @if(old('product_id') == $product->id)
-                    <div class="form-check-inline">
-                        <input class="form-check-input" type="radio" name="id_product" id="{{ $product -> varian }}" value="{{ $product -> id }}" checked>
-                        <label class="form-check-label" for="{{ $product -> varian }}">
-                            <img src="{{ $product -> foto_produk }}" alt="{{ $product -> varian }}" style="width: 100px;">
-                            JivaJoy {{ $product -> varian }}
-                        </label>
-                    </div>
-                    @else
-                    <div class="form-check-inline">
-                        <input class="form-check-input" type="radio" name="id_product" id="{{ $product -> varian }}" value="{{ $product -> id }}" @if(old('product_id') == $product->id || $selectedVarian == $product->varian) checked @endif>
-                        <label class="form-check-label" for="{{ $product -> varian }}">
-                            <img src="{{ $product -> foto_produk }}" alt="{{ $product -> varian }}" style="width: 100px;">
-                            JivaJoy {{ $product -> varian }}
-                        </label>
-                    </div>
-                    @endif
-                    @endforeach
-                </div>
-
-                <div class="mb-3 form-input">
-                    <label for="qty" class="form-label">Stok Produk</label>
-                    <input type="number" class="form-control" id="qty" name="qty" placeholder="Masukkan jumlah stok" required>
-                </div>
-
-                <input type="hidden" name="id_admin" value="{{ auth()->user()->id }}">
-
-                <button class="btn w-100 py-2 my-3" type="submit" id="buttonSubmit">Simpan Data Stok Produk</button>
-            </form>
         </div>
     </div>
 
     @include('partials.popup')
 
-    <!-- JavaScript Files -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-Rpg8bXScjPpr8gr5Dngw2oyhQ/WK7yzXW3Y2tm49dD5aN2scMZt/sS5vTpFHZB1K" crossorigin="anonymous"></script>
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ux8wzG9GCrnL2NFO1Q9V2BTcp8lELP2HIWjIHg7jLSX0FGS/ECMSE4RhM8YyD3Z0" crossorigin="anonymous"></script>
+    <script src="js/preload.min.js"></script>
+    <script src="js/libs.min.js"></script>
     <script src="js/index.js"></script>
 
     <script>

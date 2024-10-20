@@ -48,12 +48,6 @@ Route::get('/produk', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard', [
-        "active" => "beranda",
-    ]);
-});
-
 Route::get('/profile', function () {
     return view('profile');
 });
@@ -90,9 +84,17 @@ Route::get('/profile/{user:id}', [ProfileController::class, 'show'])->middleware
 
 Route::resource('/dashboard/customers', AdminCustomerController::class)->middleware('auth');
 Route::resource('/dashboard/admin', AdminAccountController::class)->middleware('auth');
+Route::get('/dashboard/profile', function () {
+    return view('admin.profile', [
+        "active" => "Profil",
+    ]);
+});
 
 Route::resource('/dashboard/stocks', StockController::class)->middleware('auth');
 Route::resource('/dashboard/products', ProductController::class)->middleware('auth');
+Route::get('/dashboard/products/{product}/stocks', [ProductController::class, 'getStocks']);
+
+
 Route::resource('/dashboard/keranjang', CartController::class)->middleware('auth');
 
 

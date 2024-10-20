@@ -38,7 +38,7 @@ h1{
 
 .sidebar .menu:hover {
     border-radius: 30px;
-    background-color: #4380a8;
+    background-color: #8fbad6;
     /* Background color on hover */
     color: white;
     transition: .3s ease-in-out;
@@ -111,7 +111,9 @@ h1{
 }
 
 .sidebar .active {
-    text-decoration: underline;
+    border-radius: 30px;
+    background-color: #4380a8;
+    color: #ffffff;
     font-weight: 700;
 }
 

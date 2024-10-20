@@ -17,7 +17,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet preload" as="style" href="css/preload.min.css" />
     <link rel="stylesheet preload" as="style" href="css/libs.min.css" />
+    <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/popup.css" />
     <link rel="shortcut icon" type="image/x-icon" href="/img/logo.svg">
 </head>
 
@@ -130,6 +132,8 @@
         </div>
     </div>
 
+    @include('partials.popup')
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybRA9tJ9VRXkIKvC16wMKjD7RPpLAzzgDqj9cW1/9Tayb0zXm" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-1zPekF9kk7wF5Q+aLsyB7Z1QxYB5DPIqH5q66zB1mqyYhHxlHlT65QjAkZ1A+JgA" crossorigin="anonymous"></script>
@@ -154,6 +158,70 @@
             }
             const modal = bootstrap.Modal.getInstance(document.getElementById('deleteModal'));
             modal.hide(); // Hide the modal after deletion
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Handle logout popup
+            const logoutButton = document.getElementById("logoutButton");
+            const logoutPopup = document.getElementById("logoutPopup");
+            const closeLogoutPopup = document.getElementById("closeLogoutPopup");
+            const cancelLogout = document.getElementById("cancelLogout");
+
+            if (logoutButton) {
+                logoutButton.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    logoutPopup.style.display = "flex";
+                });
+            }
+
+            if (closeLogoutPopup) {
+                closeLogoutPopup.addEventListener("click", function() {
+                    logoutPopup.style.display = "none";
+                });
+            }
+
+            if (cancelLogout) {
+                cancelLogout.addEventListener("click", function() {
+                    logoutPopup.style.display = "none";
+                });
+            }
+
+            // Handle delete account popup
+            const deleteAccountButton = document.getElementById("deleteAccountButton");
+            const deleteAccountPopup = document.getElementById("deleteAccountPopup");
+            const closeDeleteAccountPopup = document.getElementById("closeDeleteAccountPopup");
+            const cancelDeleteAccount = document.getElementById("cancelDeleteAccount");
+
+            if (deleteAccountButton) {
+                deleteAccountButton.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    deleteAccountPopup.style.display = "flex";
+                });
+            }
+
+            if (closeDeleteAccountPopup) {
+                closeDeleteAccountPopup.addEventListener("click", function() {
+                    deleteAccountPopup.style.display = "none";
+                });
+            }
+
+            if (cancelDeleteAccount) {
+                cancelDeleteAccount.addEventListener("click", function() {
+                    deleteAccountPopup.style.display = "none";
+                });
+            }
+
+            // Close popups if clicked outside of content
+            window.addEventListener("click", function(event) {
+                if (event.target === logoutPopup) {
+                    logoutPopup.style.display = "none";
+                }
+                if (event.target === deleteAccountPopup) {
+                    deleteAccountPopup.style.display = "none";
+                }
+            });
         });
     </script>
 </body>

@@ -51,14 +51,34 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        // Memuat relasi stok dengan admin yang menambahkan
+        // Memuat relasi stok terkait dengan produk yang dipilih
         $product->load('stocks.admin');
 
         // Mendefinisikan variabel active
         $active = "Produk";
 
-        // Mengembalikan view dengan data produk dan variabel active
-        return view('admin.detailproduk', compact('product', 'active'));
+        // Simpan varian yang dilihat di session (misalkan varian produk disimpan dalam field `varian`)
+        session(['selected_varian' => $product->varian]);
+
+        // Mengambil stok berdasarkan id produk yang dipilih
+        $stocks = Stock::where('id_product', $product->id)->get();
+
+        // Buat variabel labels & data untuk grafik
+        $labels = [];
+        $data = [];
+
+        foreach ($stocks as $stock) {
+            $labels[] = $stock->updated_at->format('Y-m-d H:i:s');
+            $data[] = $stock->qty;
+        }
+
+        // Mengembalikan view dengan data produk, labels, dan data untuk chart
+        return view('admin.detailproduk', [
+            'product' => $product,
+            'active' => $active,
+            'labels' => json_encode($labels), // Mengirim dalam bentuk JSON
+            'data' => json_encode($data) // Mengirim dalam bentuk JSON
+        ]);
     }
 
 
@@ -94,5 +114,24 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+
+    public function getStocks(Product $product)
+    {
+        // Mengambil stok berdasarkan id produk yang dipilih
+        $stocks = Stock::where('id_product', $product->id)->orderBy('updated_at')->get();
+
+        // Siapkan data untuk dikembalikan
+        $labels = $stocks->map(function ($stock) {
+            return $stock->updated_at->format('Y-m-d H:i:s');
+        });
+
+        $data = $stocks->pluck('qty');
+
+        // Kembalikan data dalam format JSON
+        return response()->json([
+            'labels' => $labels,
+            'data' => $data,
+        ]);
     }
 }
