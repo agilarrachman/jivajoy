@@ -99,6 +99,10 @@ footer .container{
     gap: 10px;
 }
 
+#cart-form button:hover{
+    background-color: #b8d1e2;
+}
+
 #checkout-form button{
     background-color: #4682A9;
     padding: 12px;
@@ -111,6 +115,10 @@ footer .container{
     gap: 10px
 }
 
+#checkout-form button:hover{
+    background-color: #084e7e;
+}
+
 .button-login{
     background-color: #4682A9;
     margin-top: 20px;
@@ -120,4 +128,8 @@ footer .container{
     font-weight: 600;
     border-radius: 30px;
     text-align: center;
+}
+
+.button-login:hover{
+    background-color: #084e7e;    
 }

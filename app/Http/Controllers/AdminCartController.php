@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Requests\UpdateCartRequest;
 
-class CartController extends Controller
+class AdminCartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,9 @@ class CartController extends Controller
      */
     public function index()
     {
-        return view('cart', [
+        return view('admin.datakeranjang', [
             "active" => "Keranjang",
-            'carts' => Cart::where('id_customer', auth()->user()->id)->get(),
+            'carts' => Cart::with(['customer', 'product'])->get(),
         ]);
     }
 
@@ -29,29 +29,22 @@ class CartController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.createproduk', [
+            'active' => 'Produk',
+            'products' => Product::all(),
+            'customers' => User::where('role', 'Customer')->get(),
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCartRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'id_customer' => 'required',
-            'id_product' => 'required',
-            'qty' => 'required|integer|min:0',
-            'total_harga' => 'required|integer|min:0',
-        ]);
-
-        // Simpan data stok ke tabel stocks
-        Cart::create($validatedData);
-
-        // Redirect menggunakan varian produk, bukan id produk
-        return redirect("/carts")->with('success', 'Berhasil menambahkan data keranjang!');
+        //
     }
 
     /**
@@ -62,7 +55,12 @@ class CartController extends Controller
      */
     public function show(Cart $cart)
     {
-        return $cart;
+        $cart = $cart->load(['customer', 'product']);
+
+        return view('admin.detailkeranjang', [
+            "active" => "Keranjang",
+            'cart' => $cart
+        ]);
     }
 
     /**
@@ -73,34 +71,19 @@ class CartController extends Controller
      */
     public function edit(Cart $cart)
     {
-        return view('editcart', [
-            "active" => "Keranjang",
-            'cart' => $cart,
-            'products' => Product::where('stok', '>', 0)->get()
-        ]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateCartRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Cart  $cart
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Cart $cart)
     {
-        $validatedData = $request->validate([
-            'id_customer' => 'required',
-            'id_product' => 'required',
-            'qty' => 'required|integer|min:0',
-            'total_harga' => 'required|integer|min:0',
-        ]);
-
-        // Simpan data stok ke tabel stocks
-        $cart->update($validatedData);
-
-        // Redirect menggunakan varian produk, bukan id produk
-        return redirect("/carts")->with('success', 'Berhasil mengupdate data keranjang!');
+        //
     }
 
     /**
@@ -115,6 +98,6 @@ class CartController extends Controller
         $cart->delete();
 
         // Redirect ke halaman produk terkait dengan pesan sukses
-        return redirect("/carts")->with('success', 'Data keranjang berhasil dihapus!');
+        return redirect("/dashboard/carts")->with('success', 'Data keranjang berhasil dihapus!');
     }
 }

@@ -57,7 +57,7 @@
 
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h1 style="color: #4380a8;">Detail Produk</h1>
-                <a href="/dashboard/products/{{ $product->varian }}" class="btn btn-secondary btn-rounded">Kembali</a>
+                <a href="/dashboard/products" class="btn btn-secondary btn-rounded">Kembali</a>
             </div>
 
             <!-- Form Input -->

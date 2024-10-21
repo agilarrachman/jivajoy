@@ -4,7 +4,7 @@
             <a class="brand header_logo d-flex align-items-center" href="/" style="text-decoration: none; position: relative; bottom: 5px;">
                 <span class="logo">
                     <svg width="48" height="45" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <image href="img/logo.svg" width="100%" height="100%" clip-path="url(#logoHeader)" />
+                        <image href="/img/logo.svg" width="100%" height="100%" clip-path="url(#logoHeader)" />
                         <defs>
                             <clipPath id="logoHeader">
                                 <rect width="60" height="60" fill="white" />
@@ -20,7 +20,7 @@
                         <a class="nav-link {{ ($active === 'Beranda') ? 'active' : '' }} d-inline-flex align-items-center" href="/">Beranda</a>
                     </li>
                     <li class="header_nav-list_item">
-                        <a class="nav-link {{ ($active === 'Produk') ? 'active' : '' }} d-inline-flex align-items-center" href="/produk">Produk</a>
+                        <a class="nav-link {{ ($active === 'Produk') ? 'active' : '' }} d-inline-flex align-items-center" href="/product">Produk</a>
                     </li>
                     <li class="header_nav-list_item">
                         <a class="nav-link {{ ($active === 'Berita') ? 'active' : '' }} d-inline-flex align-items-center" href="/berita">Berita</a>
@@ -55,7 +55,7 @@
                         </svg>
                         Akun Profil
                     </a></li>
-                <li><a class="dropdown-item" href="/cart">
+                <li><a class="dropdown-item" href="/carts">
                         <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M16.4745 13.106H19.7037C20.1933 13.106 20.578 12.7012 20.578 12.213C20.578 11.713 20.1933 11.3201 19.7037 11.3201H16.4745C15.9849 11.3201 15.6002 11.713 15.6002 12.213C15.6002 12.7012 15.9849 13.106 16.4745 13.106ZM23.539 6.91606C24.2501 6.91606 24.7164 7.16608 25.1827 7.71376C25.649 8.26143 25.7306 9.04722 25.6257 9.76039L24.5182 17.5707C24.3084 19.072 23.0494 20.1781 21.5689 20.1781H8.85046C7.3 20.1781 6.01767 18.9649 5.88944 17.3933L4.81694 4.41462L3.05664 4.10507C2.59034 4.02173 2.26393 3.55739 2.34553 3.08116C2.42713 2.5942 2.88178 2.27155 3.35974 2.34418L6.14007 2.7716C6.53643 2.84423 6.82787 3.1764 6.86284 3.58121L7.08434 6.24814C7.11931 6.63032 7.42241 6.91606 7.79545 6.91606H23.539ZM8.66371 22.0598C7.68447 22.0598 6.89175 22.8694 6.89175 23.8695C6.89175 24.8577 7.68447 25.6673 8.66371 25.6673C9.63129 25.6673 10.424 24.8577 10.424 23.8695C10.424 22.8694 9.63129 22.0598 8.66371 22.0598ZM21.7785 22.0598C20.7992 22.0598 20.0065 22.8694 20.0065 23.8695C20.0065 24.8577 20.7992 25.6673 21.7785 25.6673C22.7461 25.6673 23.5388 24.8577 23.5388 23.8695C23.5388 22.8694 22.7461 22.0598 21.7785 22.0598Z" fill="currentColor" />
                         </svg>

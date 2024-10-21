@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminAccountController;
+use App\Http\Controllers\AdminCartController;
 use App\Http\Controllers\AdminCustomerController;
 use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,15 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/dashboard', function () {
+    return view('admin.dashboard', [
+        "active" => "Beranda",
+        'customerCount' => User::where('role', 'Customer')->count(),
+        'warmStock' => Product::where('varian', 'Warm')->value('stok'),
+        'hotStock' => Product::where('varian', 'Hot')->value('stok'),
+    ]);
+});
+
 Route::get('/team', function () {
     return view('team', [
         "active" => "Tim"
@@ -41,19 +51,17 @@ Route::get('/berita', function () {
     ]);
 });
 
-Route::get('/produk', function () {
+Route::get('/product', function () {
     return view('product', [
         "active" => "Produk",
-        'products' => Product::all()
+        'products' => Product::where('stok', '>', 0)->get()
     ]);
 });
 
 Route::get('/profile', function () {
-    return view('profile');
-});
-
-Route::get('/cart', function () {
-    return view('cart');
+    return view('profile',[
+        "active" => "Profile"
+    ]);
 });
 
 Route::get('/order', function () {
@@ -90,12 +98,13 @@ Route::get('/dashboard/profile', function () {
     ]);
 });
 
+Route::resource('/carts', CartController::class)->middleware('auth');
+
 Route::resource('/dashboard/stocks', StockController::class)->middleware('auth');
 Route::resource('/dashboard/products', ProductController::class)->middleware('auth');
 Route::get('/dashboard/products/{product}/stocks', [ProductController::class, 'getStocks']);
 
-
-Route::resource('/dashboard/keranjang', CartController::class)->middleware('auth');
+Route::resource('/dashboard/carts', AdminCartController::class)->middleware('auth');
 
 
 

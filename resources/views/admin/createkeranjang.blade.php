@@ -10,7 +10,7 @@
     <meta property="og:url" content="https://jivajoy.id/" />
     <meta property="og:description" content="Aromaterapi 2in1 (Inhaler & Roll On) dari Kemangi dan Cendana Sebagai Upaya Mencegah Baby Blues dengan Kemasan Website Terintegrasi" />
     <meta name="description" content="Aromaterapi 2in1 (Inhaler & Roll On) dari Kemangi dan Cendana Sebagai Upaya Mencegah Baby Blues dengan Kemasan Website Terintegrasi">
-    <title>JivaJoy Admin | Tambah Stok Produk</title>
+    <title>JivaJoy Admin | Tambah Keranjang</title>
 
     <!-- Fonts and Stylesheets -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -24,12 +24,6 @@
 </head>
 
 <body>
-
-    @php
-    // Mengambil varian produk yang sebelumnya dipilih dari session, default ke 'hot' jika tidak ada
-    $selectedVarian = session('selected_varian');
-    @endphp
-
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
@@ -59,17 +53,17 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="/dashboard/products">Data Produk</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Tambah Stok Produk</li>
+                    <li class="breadcrumb-item"><a href="/dashboard/carts">Data Keranjang</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Tambah Data Keranjang</li>
                 </ol>
             </nav>
 
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h1 style="color: #4380a8;">Tambah Stok Produk</h1>
+                <h1 style="color: #4380a8;">Tambah Data Keranjang</h1>
             </div>
 
             <!-- Form Input -->
-            <form action="/dashboard/stocks" method="POST">
+            <form action="/dashboard/carts" method="POST">
                 @csrf
                 <label for="id_product">Pilih Varian Produk</label>
                 <div class="mb-2">

@@ -10,12 +10,14 @@ class Cart extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+    
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'id_product');
+    }
 
-    public function customer(){
-        return $this -> belongsTo(User::class, 'user_id');
-    }    
-
-    public function product(){
-        return $this -> belongsTo(Product::class);
-    }    
+    public function customer()
+    {
+        return $this->belongsTo(User::class, 'id_customer');
+    }
 }

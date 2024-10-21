@@ -36,7 +36,7 @@ h1{
     display: block;
 }
 
-.sidebar .menu:hover {
+.sidebar .menu:hover, #logoutButton:hover, #deleteAccountButton:hover {
     border-radius: 30px;
     background-color: #8fbad6;
     /* Background color on hover */

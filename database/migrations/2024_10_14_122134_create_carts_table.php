@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_customer');
-            $table->foreignId('id_product');
+            $table->foreignId('id_customer')->references(column:'id')->on(table:'users');
+            $table->foreignId('id_product')->references(column:'id')->on(table:'products');
             $table->integer('qty')->unsigned();
             $table->integer('total_harga');
             $table->timestamps();

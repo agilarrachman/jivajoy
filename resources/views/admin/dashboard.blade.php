@@ -12,7 +12,7 @@
         content="Aromaterapi 2in1 (Inhaler & Roll On) dari Kemangi dan Cendana Sebagai Upaya Mencegah Baby Blues dengan Kemasan Website Terintegrasi" />
     <meta name="description"
         content="Aromaterapi 2in1 (Inhaler & Roll On) dari Kemangi dan Cendana Sebagai Upaya Mencegah Baby Blues dengan Kemasan Website Terintegrasi">
-    <title>JivaJoy Admin Dashboard</title>
+    <title>JivaJoy Admin | Dashboard</title>
 
     <!-- Fonts and Stylesheets -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -261,7 +261,7 @@
                     <div class="card border-info mb-3" style="max-width: 18rem; background-color: #ffffff;">
                         <div class="card-header" style="background-color: #cfdee8; color: #4380a8;">Jumlah Customer Aktif</div>
                         <div class="card-body text-info">
-                            <h5 class="card-title" style="color: #4380a8; font-size: 2rem;">900.000</h5>
+                            <h5 class="card-title" style="color: #4380a8; font-size: 2rem;">{{ number_format($customerCount) }}</h5>
                             <p class="card-text">Jumlah Customer Aktif</p>
                         </div>
                     </div>
@@ -277,18 +277,18 @@
                 </div>
                 <div class="col">
                     <div class="card border-info mb-3" style="max-width: 18rem; background-color: #ffffff;">
-                        <div class="card-header" style="background-color: #cfdee8; color: #4380a8;">Jivajoy Hot</div>
+                        <div class="card-header" style="background-color: #cfdee8; color: #4380a8;">Jivajoy Warm</div>
                         <div class="card-body text-info">
-                            <h5 class="card-title" style="color: #4380a8; font-size: 2rem;">90</h5>
+                            <h5 class="card-title" style="color: #4380a8; font-size: 2rem;">{{ $warmStock }}</h5>
                             <p class="card-text">Stok Tersedia</p>
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="card border-info mb-3" style="max-width: 18rem; background-color: #ffffff;">
-                        <div class="card-header" style="background-color: #cfdee8; color: #4380a8;">Jivajoy Warm</div>
+                        <div class="card-header" style="background-color: #cfdee8; color: #4380a8;">Jivajoy Hot</div>
                         <div class="card-body text-info">
-                            <h5 class="card-title" style="color: #4380a8; font-size: 2rem;">90</h5>
+                            <h5 class="card-title" style="color: #4380a8; font-size: 2rem;">{{ $hotStock }}</h5>
                             <p class="card-text">Stok Tersedia</p>
                         </div>
                     </div>
@@ -332,7 +332,7 @@
     @include('partials.popup')
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gyb+7fIjfH5DoVZESpPpMZ8KnwxBqPe3/Ql2TPTD2A4JmO4SQc" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-UGxXeHBL/JIVhBL0P04j+ik09ETElbElD70JxlAqZT5h6owVu0T/Sv6x5BYafJNh" crossorigin="anonymous"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-UGxXeHBL/JIVhBL0P04j+ik09ETElbElD70JxlAqZT5h6owVu0T/Sv6x5BYafJNh" crossorigin="anonymous"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
