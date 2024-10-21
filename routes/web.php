@@ -58,12 +58,6 @@ Route::get('/product', function () {
     ]);
 });
 
-Route::get('/profile', function () {
-    return view('profile',[
-        "active" => "Profile"
-    ]);
-});
-
 Route::get('/order', function () {
     return view('order');
 });
@@ -83,7 +77,8 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::post('/store-profile', [ProfileController::class, 'store']);
 Route::get('/profile', function () {
     return view('profile', [
-        'user' => User::where('id', auth()->user()->id)->first()
+        'user' => User::where('id', auth()->user()->id)->first(),
+        "active" => "Profile",
     ]);
 });
 Route::put('/profile/{user:username}', [ProfileController::class, 'update'])->middleware('auth');

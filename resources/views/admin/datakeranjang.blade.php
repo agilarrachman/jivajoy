@@ -64,6 +64,10 @@
                 </button>
             </div>
 
+            @if(session()->has('success'))
+            <div class="alert alert-success col-lg-10" role="alert">{{ session('success') }}</div>
+            @endif
+
             <!-- Keranjang Table -->
             <div class="table-responsive mt-4">
                 <table class="table table-bordered">

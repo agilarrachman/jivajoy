@@ -29,9 +29,9 @@ class AdminCartController extends Controller
      */
     public function create()
     {
-        return view('admin.createproduk', [
-            'active' => 'Produk',
-            'products' => Product::all(),
+        return view('admin.createkeranjang', [
+            'active' => 'Keranjang',
+            'products' => Product::where('stok', '>', 0)->get(),
             'customers' => User::where('role', 'Customer')->get(),
         ]);
     }
@@ -44,7 +44,18 @@ class AdminCartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'id_customer' => 'required',
+            'id_product' => 'required',
+            'qty' => 'required|integer|min:0',
+            'total_harga' => 'required|integer|min:0',
+        ]);
+
+        // Simpan data stok ke tabel stocks
+        Cart::create($validatedData);
+
+        // Redirect menggunakan varian produk, bukan id produk
+        return redirect("/dashboard/carts")->with('success', 'Berhasil menambahkan data keranjang!');
     }
 
     /**
@@ -59,7 +70,8 @@ class AdminCartController extends Controller
 
         return view('admin.detailkeranjang', [
             "active" => "Keranjang",
-            'cart' => $cart
+            'cart' => $cart,
+            'customers' => User::where('role', 'Customer')->get(),
         ]);
     }
 
@@ -71,7 +83,12 @@ class AdminCartController extends Controller
      */
     public function edit(Cart $cart)
     {
-        //
+        return view('admin.editkeranjang', [
+            "active" => "Keranjang",
+            'cart' => $cart,
+            'products' => Product::where('stok', '>', 0)->get(),
+            'customers' => User::where('role', 'Customer')->get()
+        ]);
     }
 
     /**
@@ -83,7 +100,18 @@ class AdminCartController extends Controller
      */
     public function update(Request $request, Cart $cart)
     {
-        //
+        $validatedData = $request->validate([
+            'id_customer' => 'required',
+            'id_product' => 'required',
+            'qty' => 'required|integer|min:0',
+            'total_harga' => 'required|integer|min:0',
+        ]);
+
+        // Simpan data stok ke tabel stocks
+        $cart->update($validatedData);
+
+        // Redirect menggunakan varian produk, bukan id produk
+        return redirect("/dashboard/carts")->with('success', 'Berhasil mengupdate data keranjang!');
     }
 
     /**

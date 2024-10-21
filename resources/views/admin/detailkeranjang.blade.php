@@ -97,6 +97,14 @@
                     <label for="lastUpdate" class="form-label">Tanggal Dibuat</label>
                     <input type="text" class="form-control" id="lastUpdate" name="last_update" value="{{ $cart->updated_at }}" readonly>
                 </div>
+
+                <a href="/dashboard/carts" class="btn btn-rounded my-3" id="buttonPrimary">Kembali</a>
+                <button class="btn btn-warning btn-rounded" style="min-width: 80px;"><a href="/dashboard/carts/{{ $cart->id }}/edit" class="text-white text-decoration-none">Edit</a></button>
+                <form action="/dashboard/carts/{{ $cart->id }}" method="post" class="d-inline" style="min-width: 80px;">
+                    @method('delete')
+                    @csrf
+                    <button class="btn btn-danger btn-rounded" onclick="return confirm('Are you sure?')">Delete</button>
+                </form>
             </div>
         </div>
     </div>

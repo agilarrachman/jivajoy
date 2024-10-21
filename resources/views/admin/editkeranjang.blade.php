@@ -10,7 +10,7 @@
     <meta property="og:url" content="https://jivajoy.id/" />
     <meta property="og:description" content="Aromaterapi 2in1 (Inhaler & Roll On) dari Kemangi dan Cendana Sebagai Upaya Mencegah Baby Blues dengan Kemasan Website Terintegrasi" />
     <meta name="description" content="Aromaterapi 2in1 (Inhaler & Roll On) dari Kemangi dan Cendana Sebagai Upaya Mencegah Baby Blues dengan Kemasan Website Terintegrasi">
-    <title>JivaJoy Admin | Tambah Keranjang</title>
+    <title>JivaJoy Admin | Edit Keranjang</title>
 
     <!-- Fonts and Stylesheets -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -79,22 +79,23 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
                     <li class="breadcrumb-item"><a href="/dashboard/carts">Data Keranjang</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Tambah Data Keranjang</li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit Data Keranjang</li>
                 </ol>
             </nav>
 
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h1 style="color: #4380a8;">Tambah Data Keranjang</h1>
+                <h1 style="color: #4380a8;">Edit Data Keranjang</h1>
             </div>
 
             <!-- Form Input -->
-            <form action="/dashboard/carts" method="POST">
+            <form action="/dashboard/carts/{{ $cart->id }}" method="POST">
+                @method('put')
                 @csrf
                 <div class="mb-4">
                     <label for="id_customer" class="form-label">Username</label>
                     <select class="form-select" name="id_customer">
                         @foreach ($customers as $customer)
-                        @if(old('username') == $customer->id)
+                        @if(old('username', $cart->id_customer) == $customer->id)
                         <option value="{{ $customer->id }}" selected>{{ $customer->username }}</option>
                         @else
                         <option value="{{ $customer->id }}">{{ $customer->username }}</option>
@@ -106,20 +107,20 @@
                 <!-- Pilih Varian -->
                 <div class="variant-section col-12" style="margin-bottom: 15px;">
                     <p style="margin-right: 10px;" class="mt-2 fs-5">Pilih Varian:</p>
-                    <select id="variant" class="form-select w-100" required>
+                    <select id="variant" class="form-select" required style="width: 100%;">
                         @if($products->isEmpty())
                         <option selected>Tidak tersedia</option>
                         @else
                         @foreach ($products as $product)
-                        @if(old('id_product') == $product->id)
-                        <option value="{{ $product->id }}" data-stock="{{ $product->stok }}" selected>{{ $product->varian }}</option>
-                        @elseif($product->stok > 0)
-                        <option value="{{ $product->id }}" data-stock="{{ $product->stok }}">{{ $product->varian }}</option>
+                        @if($product->stok > 0)
+                        <option value="{{ $product->id }}" data-stock="{{ $product->stok }}"
+                            {{ old('id_product', $cart->id_product) == $product->id ? 'selected' : '' }}>
+                            {{ $product->varian }}
+                        </option>
                         @endif
                         @endforeach
                         @endif
                     </select>
-
                 </div>
 
 
@@ -129,7 +130,7 @@
                     <p class="mt-4 mb-0 fs-5">Jumlah</p>
                     <div class="d-flex align-items-center w-100">
                         <button type="button" id="decrease-qty">-</button>
-                        <input type="number" id="quantity" value="1" min="1" class="form-control text-center" readonly>
+                        <input type="number" id="quantity" value="{{ $cart->qty }}" min="1" class="form-control text-center" readonly>
                         <button type="button" id="increase-qty">+</button>
                     </div>
                     <p class="my-1" id="stock-info">
@@ -145,7 +146,7 @@
                     <!-- Jumlah Harga -->
                     <div class="price-section col-3">
                         <p class="my-0 fs-5">Jumlah Harga</p>
-                        <h5 id="total-price" style="font-weight: bold;">Rp 0</h5>
+                        <h5 id="total-price" style="font-weight: bold;">Rp {{ number_format($cart->total_harga) }}</h5>
                     </div>
 
                     <button class="btn col-9 py-1 my-1" type="submit" id="buttonSubmit">Tambah Data Keranjang</button>
@@ -268,6 +269,7 @@
             // Update harga dengan kuantitas baru (jika ada perubahan)
             updatePrice();
         });
+
 
         function updatePrice() {
             var qty = document.getElementById('quantity').value;

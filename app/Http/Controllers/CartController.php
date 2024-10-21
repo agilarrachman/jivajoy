@@ -19,6 +19,7 @@ class CartController extends Controller
         return view('cart', [
             "active" => "Keranjang",
             'carts' => Cart::where('id_customer', auth()->user()->id)->get(),
+            'total_harga' => Cart::where('id_customer', auth()->user()->id)->sum('total_harga')
         ]);
     }
 
