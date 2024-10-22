@@ -69,6 +69,14 @@ Route::get('/order', function () {
     ]);
 });
 
+Route::get('/status', function () {
+    return view('show-order-status', [
+        "active" => "Pesanan",
+        'carts' => Cart::where('id_customer', auth()->user()->id)->get(),
+        'total_harga' => Cart::where('id_customer', auth()->user()->id)->sum('total_harga')
+    ]);
+});
+
 Route::get('/createProfile', function () {
     return view('create-profile');
 });

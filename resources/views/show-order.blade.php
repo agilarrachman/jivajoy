@@ -149,69 +149,6 @@
     <script src="js/common.min.js"></script>
     <script src="js/shop.min.js"></script>
     <script src="/js/script.js"></script>
-
-    <script>
-        document.getElementById('increase-qty').addEventListener('click', function() {
-            var qty = document.getElementById('quantity');
-            var selectedVariant = document.getElementById('variant');
-            var maxStock = selectedVariant.options[selectedVariant.selectedIndex].getAttribute('data-stock');
-
-            if (parseInt(qty.value) < parseInt(maxStock)) {
-                qty.value = parseInt(qty.value) + 1;
-                updatePrice();
-            } else {
-                alert('Jumlah melebihi stok yang tersedia!');
-            }
-        });
-
-        document.getElementById('decrease-qty').addEventListener('click', function() {
-            var qty = document.getElementById('quantity');
-            if (parseInt(qty.value) > 1) {
-                qty.value = parseInt(qty.value) - 1;
-                updatePrice();
-            }
-        });
-
-        document.getElementById('variant').addEventListener('change', function() {
-            var selectedVariant = document.getElementById('variant');
-            var stockInfo = selectedVariant.options[selectedVariant.selectedIndex].getAttribute('data-stock');
-            var quantityInput = document.getElementById('quantity');
-
-            // Tampilkan jumlah stok dari varian yang dipilih
-            document.getElementById('stock-info').textContent = 'Jumlah stok yang tersedia ' + stockInfo + ' pcs';
-
-            // Cek apakah kuantitas melebihi stok varian baru
-            if (parseInt(quantityInput.value) > parseInt(stockInfo)) {
-                alert('Jumlah melebihi stok yang tersedia!');
-                // Atur kuantitas menjadi maksimal yang tersedia
-                quantityInput.value = stockInfo;
-            }
-
-            // Update harga dengan kuantitas baru (jika ada perubahan)
-            updatePrice();
-        });
-
-        function updatePrice() {
-            var qty = document.getElementById('quantity').value;
-            var variant = document.getElementById('variant').value;
-            var pricePerItem = 30000;
-            var totalPrice = qty * pricePerItem;
-
-            document.getElementById('total-price').textContent = 'Rp ' + totalPrice.toLocaleString();
-
-            // Update nilai input hidden di kedua form
-            document.getElementById('cart-quantity').value = qty;
-            document.getElementById('cart-total-price').value = totalPrice;
-            document.getElementById('cart-variant').value = variant;
-
-            document.getElementById('checkout-quantity').value = qty;
-            document.getElementById('checkout-total-price').value = totalPrice;
-            document.getElementById('checkout-variant').value = variant;
-        }
-
-        // Initial update for price when page loads
-        updatePrice();
-    </script>
 </body>
 
 </html>

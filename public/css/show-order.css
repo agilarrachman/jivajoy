@@ -40,6 +40,15 @@
     width: fit-content;
 }
 
+.status.active {
+    background-color: #4682A9;
+    font-weight: 600;
+    color: white;
+    font-size: 14px;
+    border-radius: 20px;
+    width: fit-content;
+}
+
 .title-product {
     font-weight: 700;
     color: #4682A9;
