@@ -6,7 +6,7 @@
                     <span class="logo">
                         <svg width="48" height="45" viewBox="0 0 48 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#logoFooter)">
-                                <image href="img/logo3.svg" width="100%" height="100%" clip-path="url(#logoHeader)" />
+                                <image href="/img/logo3.svg" width="100%" height="100%" clip-path="url(#logoHeader)" />
                                 <defs>
                                     <clipPath id="logoFooter">
                                         <rect width="48" height="45" fill="white" />

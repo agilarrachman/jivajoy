@@ -10,6 +10,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StockController;
+use App\Http\Controllers\OrderController;
+use App\Models\Cart;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 
@@ -59,7 +62,11 @@ Route::get('/product', function () {
 });
 
 Route::get('/order', function () {
-    return view('order');
+    return view('show-order', [
+        "active" => "Pesanan",
+        'carts' => Cart::where('id_customer', auth()->user()->id)->get(),
+        'total_harga' => Cart::where('id_customer', auth()->user()->id)->sum('total_harga')
+    ]);
 });
 
 Route::get('/createProfile', function () {
@@ -94,13 +101,10 @@ Route::get('/dashboard/profile', function () {
 });
 
 Route::resource('/carts', CartController::class)->middleware('auth');
+Route::resource('/orders', OrderController::class)->middleware('auth');
 
 Route::resource('/dashboard/stocks', StockController::class)->middleware('auth');
 Route::resource('/dashboard/products', ProductController::class)->middleware('auth');
 Route::get('/dashboard/products/{product}/stocks', [ProductController::class, 'getStocks']);
 
 Route::resource('/dashboard/carts', AdminCartController::class)->middleware('auth');
-
-
-
-

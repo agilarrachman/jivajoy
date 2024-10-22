@@ -1,0 +1,136 @@
+.svg-active {
+    color: #4682A9;
+}
+
+.svg-inactive {
+    color: #868E8C;
+}
+
+.label {
+    font-size: 16px;
+    font-weight: 600;    
+}
+
+.form-control {
+    font-size: 16px;
+}
+
+.btn-submit {
+    background-color: #4682A9;
+    color: white;
+}
+
+.btn-submit:hover {
+    background-color: #316384;
+    color: white;
+}
+
+.img-cc {
+    width: auto;
+    height: 100px;
+    object-fit: cover;
+}
+
+.title-product {
+    font-weight: 700;
+    color: #4682A9;
+    font-size: 24px;
+}
+
+.price-total {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #4682A9;
+}
+
+.price{
+    font-size: 1.0em;
+    font-weight: 600;
+    color: #4682A9;
+}
+
+.title-price, .title-price-total {
+    font-weight: 500;
+    font-size: 0.8em;
+    color: #868E8C;
+}
+
+@media (max-width:576px) {
+    .title-product{
+        font-size: 1.2em;
+    }
+
+    .title-price {
+        font-size: 0.7em;
+    }
+
+    .price {
+        font-size: 0.8em;
+    }
+}
+
+.btn-bucket {
+    font-size: 14px;
+    font-weight: 700;
+    color: #4682A9;
+    border: 1px solid #4682A9;
+}
+
+.btn-bucket:hover {
+    background-color: #b8d1e2;
+    font-size: 14px;
+    font-weight: 700;
+    color: #4682A9;
+    border: 1px solid #4682A9;
+}
+
+.btn-checkout {
+    background-color: #4682A9;
+    color: white;
+    width: 320px;
+    font-weight: 600;
+}
+
+.btn-checkout:hover {
+    background-color: #084e7e;
+    color: white;
+    width: 320px;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+#checkout-btn{
+    background-color: #4682A9;
+    padding: 12px;
+    width: 100%;
+    color: white;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px
+}
+
+#checkout-btn:hover{
+    background-color: #084e7e;
+}
+
+#back-button{
+    outline: 2px solid #4682A9;
+    padding: 12px;
+    width: 100%;
+    color: #4682A9;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#back-button:hover{
+    background-color: #b8d1e2;
+}
+
+

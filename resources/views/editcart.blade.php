@@ -252,9 +252,14 @@
 
                             </div>
 
-                            <div class="row d-flex flex-column flex-md-row w-100 my-3 g-3">
+                            <div class="row d-flex flex-column flex-md-row w-100 my-3">
+                                <a href="/carts" class="col-12 col-md-6 h-100 my-md-auto mb-3" id="cart-form">
+                                    <button style="border-radius: 30px;">
+                                        Batal
+                                    </button>
+                                </a>
                                 <!-- Form untuk Checkout -->
-                                <form class="col-12" action="/carts/{{ $cart->id }}" method="POST" id="checkout-form">
+                                <form class="col-12 col-md-6 my-auto" action="/carts/{{ $cart->id }}" method="POST" id="checkout-form">
                                     @method('put')
                                     @csrf
                                     <input type="hidden" name="id_customer" value="{{ auth()->user()->id }}">

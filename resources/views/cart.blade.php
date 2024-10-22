@@ -101,16 +101,37 @@
             font-size: 24px;
         }
 
+        .price-total {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #4682A9;
+        }
+
         .price {
-            font-size: 20px;
+            font-size: 1.2em;
             font-weight: 600;
             color: #4682A9;
         }
 
-        .title-price {
-            font-weight: 600;
-            font-size: 17px;
+        .title-price,
+        .title-price-total {
+            font-weight: 500;
+            font-size: 0.9em;
             color: #868E8C;
+        }
+
+        @media (max-width:576px) {
+            .title-product {
+                font-size: 1.2em;
+            }
+
+            .title-price {
+                font-size: 0.7em;
+            }
+
+            .price {
+                font-size: 0.8em;
+            }
         }
 
         .btn-bucket {
@@ -188,7 +209,7 @@
     @include('partials.navbar')
     <div class="container" id="container-profile">
         <div class="row flex-md-row flex-sm-column">
-            <div class="col-md-3 mb-5 w-sm-100">
+            <div class="col-md-3 mb-5 w-sm-100 d-none d-md-flex flex-column">
                 <div class="d-flex flex-column gap-3">
                     <a href="/profile">
                         <button id="btn-open-profil" type="button" class="btn-side btn btn text-start p-3 rounded-4 shadow-sm d-flex items-center gap-2 border">
@@ -239,12 +260,12 @@
                     <div class="alert my-2 alert-success col-lg-10" role="alert">{{ session('success') }}</div>
                     @endif
 
-                    <div class="d-flex flex-column gap-4 mt-5">
+                    <div class="d-flex flex-column gap-2 mt-4 mt-md-5">
                         @foreach ($carts as $cart)
-                        <div class="d-flex align-items-center justify-content-between border-bottom pb-3">
-                            <div class="d-flex">
-                                <img src="{{ $cart->product->foto_produk }}" alt="" class="img-cc me-3">
-                                <div>
+                        <div class="d-flex flex-column gap-1 flex-xl-row align-items-center border-bottom pb-3">
+                            <div class="d-flex ms-0 me-auto col-12 col-md-6 mb-2 mb-md-0">
+                                <img src="{{ $cart->product->foto_produk }}" alt="" class="img-cc me-3 img-fluid">
+                                <div class="my-auto">
                                     <p class="title-product mb-1">JivaJoy: Aromatherapy 2in1</p>
                                     <div class="d-flex justify-content-start gap-4">
                                         <div class="">
@@ -262,9 +283,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-center gap-2">
+                            <div class="d-flex gap-2 col-xl-6 col-12">
                                 <a href="/carts/{{ $cart->id }}/edit">
-                                    <button type="submit" class="btn btn-bucket d-flex gap-2 rounded-pill px-3 py-2">
+                                    <button type="submit" class="btn btn-bucket d-flex gap-1 rounded-pill m-0 px-3 py-2 w-100">
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M16 16C16.5304 16 17.0391 16.2107 17.4142 16.5858C17.7893 16.9609 18 17.4696 18 18C18 18.5304 17.7893 19.0391 17.4142 19.4142C17.0391 19.7893 16.5304 20 16 20C15.4696 20 14.9609 19.7893 14.5858 19.4142C14.2107 19.0391 14 18.5304 14 18C14 16.89 14.89 16 16 16ZM0 0H3.27L4.21 2H19C19.2652 2 19.5196 2.10536 19.7071 2.29289C19.8946 2.48043 20 2.73478 20 3C20 3.17 19.95 3.34 19.88 3.5L16.3 9.97C15.96 10.58 15.3 11 14.55 11H7.1L6.2 12.63L6.17 12.75C6.17 12.8163 6.19634 12.8799 6.24322 12.9268C6.29011 12.9737 6.3537 13 6.42 13H18V15H6C5.46957 15 4.96086 14.7893 4.58579 14.4142C4.21071 14.0391 4 13.5304 4 13C4 12.65 4.09 12.32 4.24 12.04L5.6 9.59L2 2H0V0ZM6 16C6.53043 16 7.03914 16.2107 7.41421 16.5858C7.78929 16.9609 8 17.4696 8 18C8 18.5304 7.78929 19.0391 7.41421 19.4142C7.03914 19.7893 6.53043 20 6 20C5.46957 20 4.96086 19.7893 4.58579 19.4142C4.21071 19.0391 4 18.5304 4 18C4 16.89 4.89 16 6 16ZM15 9L17.78 4H5.14L7.5 9H15Z" fill="#4682A9" />
                                         </svg>
@@ -272,7 +293,7 @@
                                     </button>
                                 </a>
                                 <form action="carts/{{ $cart->id }}" method="post">
-                                    <button type="submit" class="btn btn-bucket d-flex gap-2 rounded-pill px-3 py-2" onclick="return confirm('Apakah kamu yakin akan menghapus data tersebut?')">
+                                    <button type="submit" class="btn btn-bucket d-flex gap-1 rounded-pill m-0 py-2 w-100" onclick="return confirm('Apakah kamu yakin akan menghapus data tersebut?')">
                                         @method('delete')
                                         @csrf
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -286,15 +307,17 @@
                         @endforeach
                     </div>
 
-                    <div class="d-flex justify-content-end mt-5 gap-4 align-items-top">
-                        <div class="">
-                            <p class="mb-0 title-price">Total Harga</p>
-                            <p class="price">Rp {{ number_format($total_harga, 0, ',', '.') }}</p>
+                    <div class="d-flex justify-content-end mt-5 align-items-top w-100">
+                        <div class="col-4">
+                            <p class="mb-0 title-price-total">Total Harga</p>
+                            <p class="price-total">Rp {{ number_format($total_harga, 0, ',', '.') }}</p>
                         </div>
-                        <button class="btn btn-checkout rounded-pill py-3 d-flex align-items-center gap-2" type="submit">
-                            <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M19.0466 7.875C19.0824 7.79527 19.0991 7.70838 19.0956 7.62111H19.125C18.9992 4.61915 16.5205 2.25 13.5056 2.25C10.4906 2.25 8.01194 4.61915 7.88612 7.62111C7.87129 7.7051 7.87129 7.79102 7.88612 7.875H7.79818C6.3565 7.875 4.81539 8.82671 4.36797 11.3851L3.49302 18.3541C2.77715 23.4708 5.41195 24.75 8.8521 24.75H18.1783C21.6085 24.75 24.1637 22.8977 23.5274 18.3541L22.6624 11.3851C22.1354 8.89835 20.6441 7.875 19.2223 7.875H19.0466ZM17.4299 7.875C17.3986 7.79394 17.382 7.70797 17.3809 7.62111C17.3809 5.46393 15.6261 3.71518 13.4615 3.71518C11.2968 3.71518 9.54207 5.46393 9.54207 7.62111C9.5569 7.7051 9.5569 7.79102 9.54207 7.875H17.4299ZM10.2341 13.6671C9.68501 13.6671 9.23986 13.209 9.23986 12.6438C9.23986 12.0786 9.68501 11.6205 10.2341 11.6205C10.7832 11.6205 11.2284 12.0786 11.2284 12.6438C11.2284 13.209 10.7832 13.6671 10.2341 13.6671ZM15.7523 12.6438C15.7523 13.209 16.1974 13.6671 16.7465 13.6671C17.2957 13.6671 17.7408 13.209 17.7408 12.6438C17.7408 12.0786 17.2957 11.6205 16.7465 11.6205C16.1974 11.6205 15.7523 12.0786 15.7523 12.6438Z" fill="currentColor" />
-                            </svg>Checkout</button>
+                        <a href="/orders/create" class="col-8">
+                            <button class="btn btn-checkout rounded-pill py-3 d-flex align-items-center gap-2 w-100" type="submit">
+                                <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M19.0466 7.875C19.0824 7.79527 19.0991 7.70838 19.0956 7.62111H19.125C18.9992 4.61915 16.5205 2.25 13.5056 2.25C10.4906 2.25 8.01194 4.61915 7.88612 7.62111C7.87129 7.7051 7.87129 7.79102 7.88612 7.875H7.79818C6.3565 7.875 4.81539 8.82671 4.36797 11.3851L3.49302 18.3541C2.77715 23.4708 5.41195 24.75 8.8521 24.75H18.1783C21.6085 24.75 24.1637 22.8977 23.5274 18.3541L22.6624 11.3851C22.1354 8.89835 20.6441 7.875 19.2223 7.875H19.0466ZM17.4299 7.875C17.3986 7.79394 17.382 7.70797 17.3809 7.62111C17.3809 5.46393 15.6261 3.71518 13.4615 3.71518C11.2968 3.71518 9.54207 5.46393 9.54207 7.62111C9.5569 7.7051 9.5569 7.79102 9.54207 7.875H17.4299ZM10.2341 13.6671C9.68501 13.6671 9.23986 13.209 9.23986 12.6438C9.23986 12.0786 9.68501 11.6205 10.2341 11.6205C10.7832 11.6205 11.2284 12.0786 11.2284 12.6438C11.2284 13.209 10.7832 13.6671 10.2341 13.6671ZM15.7523 12.6438C15.7523 13.209 16.1974 13.6671 16.7465 13.6671C17.2957 13.6671 17.7408 13.209 17.7408 12.6438C17.7408 12.0786 17.2957 11.6205 16.7465 11.6205C16.1974 11.6205 15.7523 12.0786 15.7523 12.6438Z" fill="currentColor" />
+                                </svg>Checkout</button>
+                        </a>
                     </div>
                 </div>
             </div>

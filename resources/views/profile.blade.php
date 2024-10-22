@@ -183,7 +183,7 @@
     @include('partials.navbar')
     <div class="container" id="container-profile">
         <div class="row flex-md-row flex-sm-column">
-            <div class="col-md-3 mb-5 w-sm-100">
+            <div class="col-md-3 mb-5 w-sm-100 d-none d-md-flex flex-column">
                 <div class="d-flex flex-column gap-3">
                     <a href="/profile">
                         <button id="btn-open-profil" type="button" class="btn-side btn-active btn text-start p-3 rounded-4 shadow-sm d-flex items-center gap-2 border">
