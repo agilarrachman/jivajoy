@@ -130,7 +130,7 @@
             }
 
             .price {
-                font-size: 0.8em;
+                font-size: 0.9em;
             }
         }
 
@@ -227,7 +227,7 @@
                             Keranjang Saya
                         </button>
                     </a>
-                    <a href="/order">
+                    <a href="/orders">
                         <button id="btn-open-history" type="button" class="btn-side btn text-start p-3 rounded-4 shadow-sm d-flex items-center gap-2 border">
                             <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M19.0466 7.875C19.0824 7.79527 19.0991 7.70838 19.0956 7.62111H19.125C18.9992 4.61915 16.5205 2.25 13.5056 2.25C10.4906 2.25 8.01194 4.61915 7.88612 7.62111C7.87129 7.7051 7.87129 7.79102 7.88612 7.875H7.79818C6.3565 7.875 4.81539 8.82671 4.36797 11.3851L3.49302 18.3541C2.77715 23.4708 5.41195 24.75 8.8521 24.75H18.1783C21.6085 24.75 24.1637 22.8977 23.5274 18.3541L22.6624 11.3851C22.1354 8.89835 20.6441 7.875 19.2223 7.875H19.0466ZM17.4299 7.875C17.3986 7.79394 17.382 7.70797 17.3809 7.62111C17.3809 5.46393 15.6261 3.71518 13.4615 3.71518C11.2968 3.71518 9.54207 5.46393 9.54207 7.62111C9.5569 7.7051 9.5569 7.79102 9.54207 7.875H17.4299ZM10.2341 13.6671C9.68501 13.6671 9.23986 13.209 9.23986 12.6438C9.23986 12.0786 9.68501 11.6205 10.2341 11.6205C10.7832 11.6205 11.2284 12.0786 11.2284 12.6438C11.2284 13.209 10.7832 13.6671 10.2341 13.6671ZM15.7523 12.6438C15.7523 13.209 16.1974 13.6671 16.7465 13.6671C17.2957 13.6671 17.7408 13.209 17.7408 12.6438C17.7408 12.0786 17.2957 11.6205 16.7465 11.6205C16.1974 11.6205 15.7523 12.0786 15.7523 12.6438Z" fill="currentColor" />
@@ -253,37 +253,40 @@
                     </a>
                 </div>
             </div>
-            <div class="col-md-9 w-md-60 m-sm-auto w-sm-100">
+            <div class="col-md-9 w-md-60 m-sm-auto m-md-0 w-sm-100">
                 <div id="section-bucket" class="px-md-5 pt-0 w-100">
-                    <h1>Keranjang Saya</h1>
+                    <h1 class="heading fw-bold">Keranjang Saya</h1>
                     @if(session()->has('success'))
                     <div class="alert my-2 alert-success col-lg-10" role="alert">{{ session('success') }}</div>
                     @endif
+                    @if(session()->has('error'))
+                    <div class="alert my-2 alert-danger col-lg-10" role="alert">{{ session('error') }}</div>
+                    @endif
 
                     <div class="d-flex flex-column gap-2 mt-4 mt-md-5">
-                        @foreach ($carts as $cart)
+                        @foreach ($carts->sortByDesc('updated_at') as $cart)
                         <div class="d-flex flex-column gap-1 flex-xl-row align-items-center border-bottom pb-3">
-                            <div class="d-flex ms-0 me-auto col-12 col-md-6 mb-2 mb-md-0">
+                            <div class="d-flex ms-0 me-auto col-12 col-xl-7 mb-2 mb-md-0">
                                 <img src="{{ $cart->product->foto_produk }}" alt="" class="img-cc me-3 img-fluid">
-                                <div class="my-auto">
+                                <div class="my-auto col-10">
                                     <p class="title-product mb-1">JivaJoy: Aromatherapy 2in1</p>
-                                    <div class="d-flex justify-content-start gap-4">
-                                        <div class="">
+                                    <div class="d-flex justify-xl-content-start gap-4">
+                                        <div class="col-3 col-md-4">
                                             <p class="mb-0 title-price">Total Harga</p>
                                             <p class="price">Rp {{ number_format($cart->total_harga, 0, ',', '.') }}</p>
                                         </div>
-                                        <div class="">
+                                        <div class="col-2 col-md-3">
                                             <p class="mb-0 title-price">Jumlah</p>
                                             <p class="price">{{ $cart->qty }} pcs</p>
                                         </div>
-                                        <div class="">
+                                        <div class="col-2 col-md-3">
                                             <p class="mb-0 title-price">Varian</p>
                                             <p class="price">{{ $cart->product->varian }}</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="d-flex gap-2 col-xl-6 col-12">
+                            <div class="d-flex gap-2 col-xl-5 col-12">
                                 <a href="/carts/{{ $cart->id }}/edit">
                                     <button type="submit" class="btn btn-bucket d-flex gap-1 rounded-pill m-0 px-3 py-2 w-100">
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -299,7 +302,7 @@
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M5 2C5 1.46957 5.21071 0.960859 5.58579 0.585786C5.96086 0.210714 6.46957 0 7 0H13C13.5304 0 14.0391 0.210714 14.4142 0.585786C14.7893 0.960859 15 1.46957 15 2V4H19C19.2652 4 19.5196 4.10536 19.7071 4.29289C19.8946 4.48043 20 4.73478 20 5C20 5.26522 19.8946 5.51957 19.7071 5.70711C19.5196 5.89464 19.2652 6 19 6H17.931L17.064 18.142C17.0281 18.6466 16.8023 19.1188 16.4321 19.4636C16.0619 19.8083 15.5749 20 15.069 20H4.93C4.42414 20 3.93707 19.8083 3.56688 19.4636C3.1967 19.1188 2.97092 18.6466 2.935 18.142L2.07 6H1C0.734784 6 0.48043 5.89464 0.292893 5.70711C0.105357 5.51957 0 5.26522 0 5C0 4.73478 0.105357 4.48043 0.292893 4.29289C0.48043 4.10536 0.734784 4 1 4H5V2ZM7 4H13V2H7V4ZM4.074 6L4.931 18H15.07L15.927 6H4.074ZM8 8C8.26522 8 8.51957 8.10536 8.70711 8.29289C8.89464 8.48043 9 8.73478 9 9V15C9 15.2652 8.89464 15.5196 8.70711 15.7071C8.51957 15.8946 8.26522 16 8 16C7.73478 16 7.48043 15.8946 7.29289 15.7071C7.10536 15.5196 7 15.2652 7 15V9C7 8.73478 7.10536 8.48043 7.29289 8.29289C7.48043 8.10536 7.73478 8 8 8ZM12 8C12.2652 8 12.5196 8.10536 12.7071 8.29289C12.8946 8.48043 13 8.73478 13 9V15C13 15.2652 12.8946 15.5196 12.7071 15.7071C12.5196 15.8946 12.2652 16 12 16C11.7348 16 11.4804 15.8946 11.2929 15.7071C11.1054 15.5196 11 15.2652 11 15V9C11 8.73478 11.1054 8.48043 11.2929 8.29289C11.4804 8.10536 11.7348 8 12 8Z" fill="#4682A9" />
                                         </svg>
-                                        Hapus dari Keranjang
+                                        Hapus Keranjang
                                     </button>
                                 </form>
                             </div>

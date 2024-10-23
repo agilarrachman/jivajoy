@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use App\Http\Requests\UpdateCartRequest;
 
 class CartController extends Controller
 {

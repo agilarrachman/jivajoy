@@ -20,6 +20,10 @@ class Product extends Model
         return $this->hasMany(Stock::class, 'id_product');
     }
 
+    public function orderItems(){
+        return $this->hasMany(OrderItem::class, 'kode_pesanan');
+    }
+
     public function getRouteKeyName(){
         return 'varian';
     }

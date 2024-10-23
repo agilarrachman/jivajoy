@@ -39,11 +39,10 @@
                 <h1 class="text-center" style="font-size: 40px; font-weight: 800; color: #4682A9;">Detail Pesanan</h1>
 
                 <div class="d-flex flex-column gap-2 mt-4 mt-md-5">
-                    @foreach ($carts as $cart)
                     <div class="row align-items-center border-bottom py-3">
                         <!-- Image Section -->
                         <div class="col-3 col-md-1">
-                            <img src="{{ $cart->product->foto_produk }}" alt="Product Image" class="img-fluid" style="height: 100px; width: auto;">
+                            <img src="{{ $product->foto_produk }}" alt="Product Image" class="img-fluid" style="height: 100px; width: auto;">
                         </div>
                         <!-- Product Details Section -->
                         <div class="col-9 col-md-11">
@@ -54,27 +53,29 @@
                             <div class="d-flex">
                                 <div class="detail me-4">
                                     <p class="mb-0 title-price">Total Harga</p>
-                                    <p class="price">Rp {{ number_format($cart->total_harga, 0, ',', '.') }}</p>
+                                    <p class="price">Rp {{ number_format($total_harga, 0, ',', '.') }}</p>
                                 </div>
                                 <div class="detail me-4">
                                     <p class="mb-0 title-price">Jumlah</p>
-                                    <p class="price">{{ $cart->qty }} pcs</p>
+                                    <p class="price">{{ $qty }} pcs</p>
                                 </div>
                                 <div class="detail me-4">
                                     <p class="mb-0 title-price">Varian</p>
-                                    <p class="price">{{ $cart->product->varian }}</p>
+                                    <p class="price">{{ $product->varian }}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @endforeach
                 </div>
 
-                <form action="/orders" method="post" class="my-5">
+                <form action="/checkout" method="post" class="my-5">
                     @csrf
                     <h5 style="font-size: 24px; font-weight: 700; color: #4682A9;">Informasi Penerima</h5>
 
                     <input type="hidden" name="id_customer" value="{{ auth()->user()->id }}">
+                    <input type="hidden" name="id_product" value="{{ $product->id }}">
+                    <input type="hidden" name="qty" value="{{ $qty }}">
+                    <input type="hidden" name="total_harga" value="{{ $total_harga }}">
 
                     <div class="mb-3 form-input">
                         <label for="nama_penerima" class="form-label">Nama Lengkap</label>

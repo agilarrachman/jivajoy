@@ -53,6 +53,11 @@ class User extends Authenticatable
         return $this->hasMany(Stock::class, 'id_admin');
     }  
 
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'id_customer');
+    }  
+
     public function getRouteKeyName(){
         return 'username';
     }

@@ -61,6 +61,12 @@
             color: #4682A9;
         }
 
+        h4 {
+            font-size: 20px;
+            font-weight: 800;
+            color: #4682A9;
+        }
+
         .label {
             font-size: 16px;
             font-weight: 600;
@@ -80,35 +86,84 @@
             color: white;
         }
 
+        /* Agil Style Start */
+        h1 {
+            font-size: 40px;
+            font-weight: 700;
+            color: #4682A9;
+        }
+
+        .info {
+            font-family: NunitoSans, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: #556260;
+        }
+
         .img-cc {
-            width: 178px;
-            height: 178px;
-        }
-
-        .img-cc2 {
-            width: 100px;
+            width: auto;
             height: 100px;
+            object-fit: cover;
         }
 
-        .position-relative {
-            width: 178px;
+        .status {
+            background-color: #E4E4E4;
+            font-weight: 600;
+            color: #4682A9;
+            font-size: 14px;
+            border-radius: 20px;
+            width: fit-content;
+        }
+
+        .status.active {
+            background-color: #4682A9;
+            font-weight: 600;
+            color: white;
+            font-size: 14px;
+            border-radius: 20px;
+            width: fit-content;
         }
 
         .title-product {
-            font-weight: 600;
+            font-weight: 700;
             color: #4682A9;
-            font-size: 20px;
+            font-size: 21px;
+        }
+
+        .price-total {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #4682A9;
         }
 
         .price {
-            font-size: 18px;
+            font-size: 1.0em;
             font-weight: 600;
             color: #4682A9;
         }
 
-        .title-price {
+        .title-price,
+        .title-price-total {
+            font-weight: 500;
+            font-size: 0.8em;
             color: #868E8C;
         }
+
+        @media (max-width:576px) {
+            .title-product {
+                font-size: 1.2em;
+            }
+
+            .title-price {
+                font-size: 0.8em;
+            }
+
+            .price {
+                font-size: 1em;
+            }
+        }
+
+        /* Agil Style End */
 
         .btn-bucket {
             font-size: 14px;
@@ -118,6 +173,7 @@
         }
 
         .btn-bucket:hover {
+            background-color: #b8d1e2;
             font-size: 14px;
             font-weight: 700;
             color: #4682A9;
@@ -201,7 +257,7 @@
                             Keranjang Saya
                         </button>
                     </a>
-                    <a href="/order">
+                    <a href="/orders">
                         <button id="btn-open-history" type="button" class="btn-side btn text-start p-3 rounded-4 shadow-sm d-flex items-center gap-2 border btn-active">
                             <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M19.0466 7.875C19.0824 7.79527 19.0991 7.70838 19.0956 7.62111H19.125C18.9992 4.61915 16.5205 2.25 13.5056 2.25C10.4906 2.25 8.01194 4.61915 7.88612 7.62111C7.87129 7.7051 7.87129 7.79102 7.88612 7.875H7.79818C6.3565 7.875 4.81539 8.82671 4.36797 11.3851L3.49302 18.3541C2.77715 23.4708 5.41195 24.75 8.8521 24.75H18.1783C21.6085 24.75 24.1637 22.8977 23.5274 18.3541L22.6624 11.3851C22.1354 8.89835 20.6441 7.875 19.2223 7.875H19.0466ZM17.4299 7.875C17.3986 7.79394 17.382 7.70797 17.3809 7.62111C17.3809 5.46393 15.6261 3.71518 13.4615 3.71518C11.2968 3.71518 9.54207 5.46393 9.54207 7.62111C9.5569 7.7051 9.5569 7.79102 9.54207 7.875H17.4299ZM10.2341 13.6671C9.68501 13.6671 9.23986 13.209 9.23986 12.6438C9.23986 12.0786 9.68501 11.6205 10.2341 11.6205C10.7832 11.6205 11.2284 12.0786 11.2284 12.6438C11.2284 13.209 10.7832 13.6671 10.2341 13.6671ZM15.7523 12.6438C15.7523 13.209 16.1974 13.6671 16.7465 13.6671C17.2957 13.6671 17.7408 13.209 17.7408 12.6438C17.7408 12.0786 17.2957 11.6205 16.7465 11.6205C16.1974 11.6205 15.7523 12.0786 15.7523 12.6438Z" fill="currentColor" />
@@ -227,139 +283,143 @@
                     </a>
                 </div>
             </div>
-            <div class="col-md-9 w-md-60 m-sm-auto w-sm-100">
-                <div id="section-history" class="px-md-5 pt-0 w-100">
-                    <h1>Riwayat Pemesanan</h1>
 
+            <div class="col-md-9 w-md-60 m-sm-auto m-md-0 w-sm-100">
+                <div id="section-history" class="px-md-5 pt-0 w-100">
+                    <h1 class="heading fw-bold">Riwayat Pemesanan</h1>
+                    @if(session()->has('success'))
+                    <div class="alert my-2 alert-success col-lg-10" role="alert">{{ session('success') }}</div>
+                    @endif
+                    @if(session()->has('error'))
+                    <div class="alert my-2 alert-danger col-lg-10" role="alert">{{ session('error') }}</div>
+                    @endif
                     <div class="d-flex mt-4">
-                        <button onclick="openOnProgres()" id="btn-on-progres" class="btn toggle toggle-active">
+                        <button onclick="openOnProgres()" id="btn-on-progres" class="btn toggle toggle-active p-0 m-0">
                             Sedang Berlangsung
                         </button>
-                        <button onclick="openFinish()" id="btn-finish" class="btn toggle">
+                        <button onclick="openFinish()" id="btn-finish" class="btn toggle p-0 m-0">
                             Selesai
                         </button>
                     </div>
                     <div class="border-top border" style="margin-top: -1px;"></div>
 
                     <div id="proses-product" class="d-flex flex-column gap-4 mt-4">
-                        <div class="d-flex align-items-center justify-content-between border-bottom pb-3">
-                            <div class="d-flex">
-                                <img src="/img/cc.png" alt="" class="img-cc2">
-                                <div>
-                                    <p class="on-proses px-3 py-1 rounded-pill mb-1">Dalam Proses</p>
-                                    <p class="title-product mb-1">JivaJoy: Aromatherapy 2in1
-                                        (Inhaler & Roll On)</p>
-                                    <div class="d-flex justify-content-start gap-5">
-                                        <div class="">
-                                            <p class="mb-0 title-price">Varian: <span class="price">Hot</span></p>
-                                            <p class="mb-0 title-price">Jumlah: <span class="price">1 pcs</span></p>
-                                        </div>
-                                        <div class="">
-                                            <p class="mb-0 title-price">Varian: <span class="price">Warm</span></p>
-                                            <p class="mb-0 title-price">Jumlah: <span class="price">1 pcs</span></p>
-                                        </div>
-                                        <div class="">
-                                            <p class="mb-0 title-price">Total Harga</p>
-                                            <p class="price">Rp.24.999,-</p>
-                                        </div>
-                                    </div>
+                        <div class="d-flex flex-column gap-2">
+                            @if($ordersPending->isEmpty())
+                            <img src="img/404.png" class="my-3 mx-auto img-fluid" alt="No Orders" style="width: 200px;">
+                            <h4 class="heading text-center">Kamu belum membuat pesanan</h4>
+                            @else
+                            @foreach ($ordersPending->sortByDesc('created_at') as $order)
+                            <div class="order border-bottom py-1">
+                                <div class="info-order">
+                                    <p class="status {{ $order->status == 'Belum Dibayar' ? '' : 'active' }} px-3 py-1 mb-1">{{ $order->status }}</p>
+                                    <p class="info my-auto fw-semibold">Kode Pesanan : {{ $order->kode_pesanan }}</p>
+                                    <p class="info my-auto fw-semibold">Waktu Pemesanan : {{ $order->created_at->format('H:i - d/m/Y') }}</p>
                                 </div>
-                            </div>
-                            <div class="d-flex justify-content-center gap-4">
-                                <button type="submit" class="btn btn-bucket d-flex gap-2 rounded-pill px-3 py-2">
-                                    Lihat Detail Pesanan
-                                </button>
-                            </div>
-                        </div>
 
-                        <div class="d-flex align-items-center justify-content-between border-bottom pb-3">
-                            <div class="d-flex">
-                                <img src="/img/cc.png" alt="" class="img-cc2">
-                                <div>
-                                    <p class="not-pay px-3 py-1 rounded-pill mb-1">Belum Dibayar</p>
-                                    <p class="title-product mb-1">JivaJoy: Aromatherapy 2in1
-                                        (Inhaler & Roll On)</p>
-                                    <div class="d-flex justify-content-start gap-5">
-                                        <div class="">
-                                            <p class="mb-0 title-price">Varian: <span class="price">Hot</span></p>
-                                            <p class="mb-0 title-price">Jumlah: <span class="price">1 pcs</span></p>
-                                        </div>
-                                        <div class="">
-                                            <p class="mb-0 title-price">Varian: <span class="price">Warm</span></p>
-                                            <p class="mb-0 title-price">Jumlah: <span class="price">1 pcs</span></p>
-                                        </div>
-                                        <div class="">
-                                            <p class="mb-0 title-price">Total Harga</p>
-                                            <p class="price">Rp.24.999,-</p>
+                                @foreach ($order->orderItems as $item)
+                                <div class="row gap-1 align-items-center my-2">
+                                    <!-- Image Section -->
+                                    <img src="{{ $item->product->foto_produk }}" alt="Product Image" class="img-fluid" style="height: 100px; width: auto;">
+                                    <!-- Product Details Section -->
+                                    <div class="my-auto col-9">
+                                        <!-- Product Name -->
+                                        <p class="title-product mb-1">JivaJoy: Aromatherapy 2in1
+                                            (Inhaler & Roll On)</p>
+                                        <!-- Product Info: Price, Quantity, Variant -->
+                                        <div class="d-flex">
+                                            <div class="detail me-4">
+                                                <p class="mb-0 title-price">Total Harga</p>
+                                                <p class="price">Rp {{ number_format($item->harga, 0, ',', '.') }}</p>
+                                            </div>
+                                            <div class="detail me-4">
+                                                <p class="mb-0 title-price">Jumlah</p>
+                                                <p class="price">{{ $item->qty }} pcs</p>
+                                            </div>
+                                            <div class="detail me-4">
+                                                <p class="mb-0 title-price">Varian</p>
+                                                <p class="price">{{ $item->product->varian }}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
+
+                                <!-- Total harga order -->
+                                <div class="d-flex justify-content-between my-1">
+                                    <div class="col">
+                                        <p class="mb-0 title-price-total">Total Harga</p>
+                                        <p class="price-total">Rp {{ number_format($order->total_harga, 0, ',', '.') }}</p>
+                                    </div>
+                                    <div class="d-flex justify-content-center gap-4">
+                                        <a href="/orders/{{ $order->kode_pesanan }}" class="btn btn-bucket d-flex gap-2 rounded-pill px-3 py-2">
+                                            Lihat Detail Pesanan
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="d-flex justify-content-center gap-4">
-                                <button type="submit" class="btn btn-bucket d-flex gap-2 rounded-pill px-3 py-2">
-                                    Lihat Detail Pesanan
-                                </button>
-                            </div>
+                            @endforeach
+                            @endif
                         </div>
                     </div>
 
                     <div id="finish-product" class="d-flex flex-column gap-4 mt-4 d-none">
-                        <div class="d-flex align-items-center justify-content-between border-bottom pb-3">
-                            <div class="d-flex">
-                                <img src="/img/cc.png" alt="" class="img-cc2">
-                                <div>
-                                    <p class="title-product mb-1">JivaJoy: Aromatherapy 2in1
-                                        (Inhaler & Roll On)</p>
-                                    <div class="d-flex justify-content-start gap-5">
-                                        <div class="">
-                                            <p class="mb-0 title-price">Varian: <span class="price">Hot</span></p>
-                                            <p class="mb-0 title-price">Jumlah: <span class="price">1 pcs</span></p>
-                                        </div>
-                                        <div class="">
-                                            <p class="mb-0 title-price">Varian: <span class="price">Warm</span></p>
-                                            <p class="mb-0 title-price">Jumlah: <span class="price">1 pcs</span></p>
-                                        </div>
-                                        <div class="">
-                                            <p class="mb-0 title-price">Total Harga</p>
-                                            <p class="price">Rp.24.999,-</p>
-                                        </div>
-                                    </div>
+                        <div class="d-flex d-flex flex-column gap-2">
+                            @if($ordersCompleted->isEmpty())
+                            <img src="img/404.png" class="my-3 mx-auto img-fluid" alt="No Orders" style="width: 200px;">
+                            <h4 class="heading text-center">Kamu belum membuat pesanan</h4>
+                            @else
+                            @foreach ($ordersCompleted->sortByDesc('created_at') as $order)
+                            <div class="order border-bottom py-1">
+                                <div class="info-order">
+                                    <p class="status {{ $order->status == 'Belum Dibayar' ? '' : 'active' }} px-3 py-1 mb-1">{{ $order->status }}</p>
+                                    <p class="info my-auto fw-semibold">Kode Pesanan : {{ $order->kode_pesanan }}</p>
+                                    <p class="info my-auto fw-semibold">Waktu Pemesanan : {{ $order->created_at->format('H:i - d/m/Y') }}</p>
                                 </div>
-                            </div>
-                            <div class="d-flex justify-content-center gap-4">
-                                <button type="submit" class="btn btn-bucket d-flex gap-2 rounded-pill px-3 py-2">
-                                    Berikan Ulasan
-                                </button>
-                            </div>
-                        </div>
 
-                        <div class="d-flex align-items-center justify-content-between border-bottom pb-3">
-                            <div class="d-flex">
-                                <img src="/img/cc.png" alt="" class="img-cc2">
-                                <div>
-                                    <p class="title-product mb-1">JivaJoy: Aromatherapy 2in1
-                                        (Inhaler & Roll On)</p>
-                                    <div class="d-flex justify-content-start gap-5">
-                                        <div class="">
-                                            <p class="mb-0 title-price">Varian: <span class="price">Hot</span></p>
-                                            <p class="mb-0 title-price">Jumlah: <span class="price">1 pcs</span></p>
-                                        </div>
-                                        <div class="">
-                                            <p class="mb-0 title-price">Varian: <span class="price">Warm</span></p>
-                                            <p class="mb-0 title-price">Jumlah: <span class="price">1 pcs</span></p>
-                                        </div>
-                                        <div class="">
-                                            <p class="mb-0 title-price">Total Harga</p>
-                                            <p class="price">Rp.24.999,-</p>
+                                @foreach ($order->orderItems as $item)
+                                <div class="row gap-1 align-items-center my-2">
+                                    <!-- Image Section -->
+                                    <img src="{{ $item->product->foto_produk }}" alt="Product Image" class="img-fluid" style="height: 100px; width: auto;">
+                                    <!-- Product Details Section -->
+                                    <div class="my-auto col-9">
+                                        <!-- Product Name -->
+                                        <p class="title-product mb-1">JivaJoy: Aromatherapy 2in1
+                                            (Inhaler & Roll On)</p>
+                                        <!-- Product Info: Price, Quantity, Variant -->
+                                        <div class="d-flex">
+                                            <div class="detail me-4">
+                                                <p class="mb-0 title-price">Total Harga</p>
+                                                <p class="price">Rp {{ number_format($item->harga * $item->qty, 0, ',', '.') }}</p>
+                                            </div>
+                                            <div class="detail me-4">
+                                                <p class="mb-0 title-price">Jumlah</p>
+                                                <p class="price">{{ $item->qty }} pcs</p>
+                                            </div>
+                                            <div class="detail me-4">
+                                                <p class="mb-0 title-price">Varian</p>
+                                                <p class="price">{{ $item->product->varian }}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
+
+                                <!-- Total harga order -->
+                                <div class="d-flex justify-content-between my-1">
+                                    <div class="col">
+                                        <p class="mb-0 title-price-total">Total Harga</p>
+                                        <p class="price-total">Rp {{ number_format($order->total_harga, 0, ',', '.') }}</p>
+                                    </div>
+                                    <div class="d-flex justify-content-center gap-4">
+                                        <a href="/orders/{{ $order->kode_pesanan }}" class="btn btn-bucket d-flex gap-2 rounded-pill px-3 py-2">
+                                            Lihat Detail Pesanan
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="d-flex justify-content-center gap-4">
-                                <button type="submit" class="btn btn-bucket d-flex gap-2 rounded-pill px-3 py-2">
-                                    Berikan Ulasan
-                                </button>
-                            </div>
+                            @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>

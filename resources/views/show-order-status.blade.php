@@ -125,9 +125,9 @@
 
                 <div class="content d-flex flex-column-reverse flex-md-row my-5 gap-5">
                     <div class="col-md-7">
-                        <p class="status active px-3 py-1 mb-1">Belum dibayar</p>
                         <div class="d-flex flex-column gap-2">
                             @foreach ($carts as $cart)
+                            <p class="status active px-3 py-1 mb-1">Belum dibayar</p>
                             <div class="row align-items-center border-bottom py-3">
                                 <!-- Image Section -->
                                 <div class="col-3 col-md-2">
