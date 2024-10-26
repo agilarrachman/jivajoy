@@ -6,7 +6,7 @@
     <a href="/dashboard/admin" class="menu {{ ($active === 'Admin') ? 'active' : '' }}">Data Admin</a>
     <a href="/dashboard/products" class="menu {{ ($active === 'Produk') ? 'active' : '' }}">Data Produk</a>
     <a href="/dashboard/carts" class="menu {{ ($active === 'Keranjang') ? 'active' : '' }}">Data Keranjang</a>
-    <a href="{{ url('/admin/datapesanan') }}" class="menu {{ ($active === 'Pesanan') ? 'active' : '' }}">Data Pesanan</a>
+    <a href="/dashboard/orders" class="menu {{ ($active === 'Pesanan') ? 'active' : '' }}">Data Pesanan</a>
     <a href="/dashboard/profile" class="menu {{ ($active === 'Profil') ? 'active' : '' }}">Pengaturan Profil</a>
     <a href="#" id="logoutButton">Keluar Akun</a>
     <a href="#" id="deleteAccountButton">Hapus Akun</a>

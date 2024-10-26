@@ -70,7 +70,7 @@
                     @endforeach
                 </div>
 
-                <form action="/orders" method="post" class="my-5">
+                <form action="/orders" method="post" class="my-5" >
                     @csrf
                     <h5 style="font-size: 24px; font-weight: 700; color: #4682A9;">Informasi Penerima</h5>
 

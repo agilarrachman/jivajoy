@@ -139,7 +139,6 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        // Return ke view dengan data order
         return view('show-order', [
             "active" => "Pesanan",
             'order' => $order,

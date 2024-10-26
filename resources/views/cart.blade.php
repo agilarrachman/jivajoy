@@ -202,6 +202,12 @@
         a {
             text-decoration: none;
         }
+
+        h4 {
+            font-size: 20px;
+            font-weight: 800;
+            color: #4682A9;
+        }
     </style>
 </head>
 
@@ -264,6 +270,10 @@
                     @endif
 
                     <div class="d-flex flex-column gap-2 mt-4 mt-md-5">
+                        @if($carts->isEmpty())
+                        <img src="img/404.png" class="my-3 mx-auto img-fluid" alt="No Orders" style="width: 200px;">
+                        <h4 class="heading text-center">Anda belum menambahkan keranjang</h4>
+                        @else
                         @foreach ($carts->sortByDesc('updated_at') as $cart)
                         <div class="d-flex flex-column gap-1 flex-xl-row align-items-center border-bottom pb-3">
                             <div class="d-flex ms-0 me-auto col-12 col-xl-7 mb-2 mb-md-0">
@@ -308,6 +318,7 @@
                             </div>
                         </div>
                         @endforeach
+                        @endif
                     </div>
 
                     <div class="d-flex justify-content-end mt-5 align-items-top w-100">

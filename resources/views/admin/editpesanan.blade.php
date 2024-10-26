@@ -10,7 +10,7 @@
     <meta property="og:url" content="https://jivajoy.id/" />
     <meta property="og:description" content="Aromaterapi 2in1 (Inhaler & Roll On) dari Kemangi dan Cendana Sebagai Upaya Mencegah Baby Blues dengan Kemasan Website Terintegrasi" />
     <meta name="description" content="Aromaterapi 2in1 (Inhaler & Roll On) dari Kemangi dan Cendana Sebagai Upaya Mencegah Baby Blues dengan Kemasan Website Terintegrasi">
-    <title>JivaJoy Admin | Edit Keranjang</title>
+    <title>JivaJoy Admin | Edit Pesanan</title>
 
     <!-- Fonts and Stylesheets -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -78,24 +78,36 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="/dashboard/carts">Data Keranjang</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Edit Data Keranjang</li>
+                    <li class="breadcrumb-item"><a href="/dashboard/orders">Data Pesanan</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit Data Pesanan</li>
                 </ol>
             </nav>
 
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h1 style="color: #4380a8;">Edit Data Keranjang</h1>
+                <h1 style="color: #4380a8;">Edit Data Pesanan</h1>
             </div>
 
             <!-- Form Input -->
-            <form action="/dashboard/carts/{{ $cart->id }}" method="POST">
+            <form action="/dashboard/orders/{{ $order->kode_pesanan }}" method="POST" enctype="multipart/form-data">
                 @method('put')
                 @csrf
+                <div class="mb-4">
+                    <label for="status" class="form-label">Status Pesanan</label>
+                    <select class="form-select" name="status">
+                        <option value="Belum Dibayar" {{ old('status', $order->status) == 'Belum Dibayar' ? 'selected' : '' }}>Belum Dibayar</option>
+                        <option value="Menunggu Konfirmasi Pembayaran" {{ old('status', $order->status) == 'Menunggu Konfirmasi Pembayaran' ? 'selected' : '' }}>Menunggu Konfirmasi Pembayaran</option>
+                        <option value="Sedang Dikemas" {{ old('status', $order->status) == 'Sedang Dikemas' ? 'selected' : '' }}>Sedang Dikemas</option>
+                        <option value="Sedang Dikirim" {{ old('status', $order->status) == 'Sedang Dikirim' ? 'selected' : '' }}>Sedang Dikirim</option>
+                        <option value="Pesanan Selesai" {{ old('status', $order->status) == 'Pesanan Selesai' ? 'selected' : '' }}>Pesanan Selesai</option>
+                        <option value="Dibatalkan" {{ old('status', $order->status) == 'Dibatalkan' ? 'selected' : '' }}>Dibatalkan</option> <!-- Tambahkan opsi baru di sini -->
+                    </select>
+                </div>
+
                 <div class="mb-4">
                     <label for="id_customer" class="form-label">Username</label>
                     <select class="form-select" name="id_customer">
                         @foreach ($customers as $customer)
-                        @if(old('username', $cart->id_customer) == $customer->id)
+                        @if(old('username', $order->id_customer) == $customer->id)
                         <option value="{{ $customer->id }}" selected>{{ $customer->username }}</option>
                         @else
                         <option value="{{ $customer->id }}">{{ $customer->username }}</option>
@@ -106,28 +118,29 @@
 
                 <!-- Pilih Varian -->
                 <div class="variant-section col-12" style="margin-bottom: 15px;">
-                    <p style="margin-right: 10px;" class="mt-2 fs-5">Pilih Varian:</p>
-                    <select id="variant" class="form-select" required style="width: 100%;">
+                    <label style="margin-right: 10px;" class="mt-2 fs-5">Pilih Varian:</label>
+                    <select id="variant" class="form-select w-100" required>
                         @if($products->isEmpty())
                         <option selected>Tidak tersedia</option>
                         @else
                         @foreach ($products as $product)
-                        @if($product->stok > 0)
-                        <option value="{{ $product->id }}" data-stock="{{ $product->stok }}" {{ old('id_product', $cart->id_product) == $product->id ? 'selected' : '' }}>
-                            {{ $product->varian }}
-                        </option>
+                        @if(old('id_product', $order->id_product) == $product->id)
+                        <option value="{{ $product->id }}" data-stock="{{ $product->stok }}" selected>{{ $product->varian }}</option>
+                        @elseif($product->stok > 0)
+                        <option value="{{ $product->id }}" data-stock="{{ $product->stok }}">{{ $product->varian }}</option>
                         @endif
                         @endforeach
                         @endif
                     </select>
+
                 </div>
 
                 <!-- Jumlah Qty -->
                 <div class="quantity-section col-12 col-md-4 mb-3">
-                    <p class="mt-4 mb-0 fs-5">Jumlah</p>
+                    <label class="mt-4 mb-0 fs-5">Jumlah</label>
                     <div class="d-flex align-items-center w-100">
                         <button type="button" id="decrease-qty">-</button>
-                        <input type="number" id="quantity" value="{{ $cart->qty }}" min="1" class="form-control text-center" readonly>
+                        <input type="number" id="quantity" value="{{ $order->orderItems->first()->qty }}" min="1" class="form-control text-center" readonly>
                         <button type="button" id="increase-qty">+</button>
                     </div>
                     <p class="my-1" id="stock-info">
@@ -139,19 +152,79 @@
                     </p>
                 </div>
 
+                <div class="col d-flex flex-column w-80 mb-5">
+                    <label for="bukti_pembayaran">Bukti Pembayaran</label>
+                    @if($order->bukti_pembayaran)
+                    <img src="{{ asset('storage/' . $order->bukti_pembayaran) }}" alt="Bukti Pembayaran" class="img-fluid shadow mt-3 mb-5" style="width: 350px; border-radius:20px; object-fit:contain;">
+                    @else
+                    <p style="color: black;">Customer belum mengunggah bukti pembayaran</p>
+                    @endif
+                    <label for="bukti_pembayaran" class="mb-2">Masukkan bukti pembayaran</label>
+                    <input type="file" name="bukti_pembayaran" id="bukti_pembayaran" class="form-control mx-auto @error('bukti_pembayaran') is-invalid @enderror">
+                    @error('bukti_pembayaran')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                    <div id="rulesProfileImage" class="form-text mb-4">Silakan unggah gambar profil dengan format file gambar (jpeg, png, jpg, gif) dan ukuran maksimum 5 MB</div>
+                </div>
+
+                <h5 style="font-size: 24px; font-weight: 700; color: #4682A9;">Informasi Penerima</h5>
+
+                <div class="mb-3 form-input">
+                    <label for="nama_penerima" class="form-label">Nama Lengkap</label>
+                    <input type="text" class="form-control" id="nama_penerima" name="nama_penerima" placeholder="Masukkan nama penerima" required value="{{ old('nama_penerima', $order->nama_penerima) }}">
+                    @error('nama_penerima')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+
+                <div class="mb-3 form-input">
+                    <label for="no_wa" class="form-label">Nomor WhatsApp</label>
+                    <input type="text" class="form-control" id="no_wa" name="no_wa" placeholder="Masukkan nomor WhatsApp penerima" required value="{{ old('no_wa', $order->no_wa) }}">
+                    @error('no_wa')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+
+                <div class="mb-3 form-input">
+                    <label for="link_gmaps" class="form-label">Link Google Maps</label>
+                    <input type="text" class="form-control" id="link_gmaps" name="link_gmaps" placeholder="Masukkan link Google Maps lokasi tujuan" required value="{{ old('link_gmaps', $order->link_gmaps) }}">
+                    @error('link_gmaps')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+
+                <div class="text-area w-100 my-1">
+                    <label for="detail_alamat" class="form-label my-0 mb-2">Detail Alamat</label>
+                    <textarea name="detail_alamat" class="form-control @error('detail_alamat') is-invalid @enderror" id="detail_alamat" placeholder="Contoh: Nama Jalan, Gedung, No. Rumah, Blok/Unit, Patokan" required style="min-height: 100px;">{{ old('detail_alamat', $order->detail_alamat) }}</textarea>
+                    @error('detail_alamat')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+
                 <div class="d-flex my-5">
                     <!-- Jumlah Harga -->
                     <div class="price-section col-3">
                         <p class="my-0 fs-5">Jumlah Harga</p>
-                        <h5 id="total-price" style="font-weight: bold;">Rp {{ number_format($cart->total_harga) }}</h5>
+                        <h5 id="total-price" style="font-weight: bold;">Rp 0</h5>
                     </div>
 
-                    <button class="btn col-9 py-1 my-1" type="submit" id="buttonSubmit">Update Data Keranjang</button>
+                    <button class="btn col-9 py-1 my-1" type="submit" id="buttonSubmit">Ubah Data Pesanan</button>
                 </div>
 
                 <input type="hidden" name="id_product" id="cart-variant">
                 <input type="hidden" name="qty" id="cart-quantity">
                 <input type="hidden" name="total_harga" id="cart-total-price">
+                <input type="hidden" name="id_order" id="id_order" value="$order->id">
             </form>
         </div>
     </div>
@@ -248,30 +321,22 @@
             }
         });
 
-        // Pengaturan awal untuk menampilkan informasi stok yang benar untuk varian yang dipilih
-        document.addEventListener('DOMContentLoaded', function() {
-            var selectedVariant = document.getElementById('variant');
-            var stockInfo = selectedVariant.options[selectedVariant.selectedIndex].getAttribute('data-stock');
-            document.getElementById('stock-info').textContent = 'Jumlah stok yang tersedia ' + stockInfo + ' pcs';
-        });
-
-
         document.getElementById('variant').addEventListener('change', function() {
             var selectedVariant = document.getElementById('variant');
             var stockInfo = selectedVariant.options[selectedVariant.selectedIndex].getAttribute('data-stock');
             var quantityInput = document.getElementById('quantity');
 
-            // Display stock info for the selected variant
+            // Tampilkan jumlah stok dari varian yang dipilih
             document.getElementById('stock-info').textContent = 'Jumlah stok yang tersedia ' + stockInfo + ' pcs';
 
-            // Check if the quantity exceeds the available stock
+            // Cek apakah kuantitas melebihi stok varian baru
             if (parseInt(quantityInput.value) > parseInt(stockInfo)) {
                 alert('Jumlah melebihi stok yang tersedia!');
-                // Set quantity to the maximum available stock
+                // Atur kuantitas menjadi maksimal yang tersedia
                 quantityInput.value = stockInfo;
             }
 
-            // Update price with the new quantity (if there is a change)
+            // Update harga dengan kuantitas baru (jika ada perubahan)
             updatePrice();
         });
 

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminAccountController;
 use App\Http\Controllers\AdminCartController;
 use App\Http\Controllers\AdminCustomerController;
+use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
@@ -111,3 +112,4 @@ Route::resource('/dashboard/products', ProductController::class)->middleware('au
 Route::get('/dashboard/products/{product}/stocks', [ProductController::class, 'getStocks']);
 
 Route::resource('/dashboard/carts', AdminCartController::class)->middleware('auth');
+Route::resource('/dashboard/orders', AdminOrderController::class)->middleware('auth');
