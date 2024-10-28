@@ -38,7 +38,7 @@ class GeminiController extends Controller
 
     Fungsi JivaJoy: JivaJoy berfungsi sebagai pereda baby blues dengan membantu menurunkan stres, depresi, kecemasan, dan sakit kepala. Aromaterapi ini dirancang untuk mendukung kesehatan mental ibu setelah melahirkan.
 
-    Bahan Baku JivaJoy: JivaJoy terbuat dari bahan baku berkualitas tinggi, termasuk minyak atsiri dari kayu cendana dan daun kemangi, serta bahan penunjang seperti menthol, champor, dan metil salisilat. 
+    Bahan Baku JivaJoy: JivaJoy terbuat dari bahan baku berkualitas tinggi, termasuk minyak atsiri dari kayu cendana dan daun kemangi, serta bahan penunjang seperti menthol, champor, dan metil salisilat. Komposisi bahan sebagai berikut Mentol 24% b/v, Camphor 24% b/v, Metil Salisilat 24% v/v, Minyak cendana 48% v/v, Minyak kemangi 28% v/v.
 
     Tagline JivaJoy: JivaJoy hadir dengan tagline 'Roll Anywhere, Instant Refresh,' yang mencerminkan kemudahan penggunaan dan manfaat instan yang diberikan. Dengan JivaJoy, Anda bisa mendapatkan efek ketenangan di mana saja.
 
