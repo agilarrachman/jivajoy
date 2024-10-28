@@ -7625,6 +7625,72 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
     }
 }
 
+/* Container Chat styling */
+.chat-window {
+    padding: 15px;
+    height: 400px;
+    overflow-y: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #4682A9;
+    font-size: 12px;
+}
+
+/* Chat bubble styling */
+.chat-bubble {
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin: 5px 0; /* Mengatur margin untuk jarak antar chat */
+    max-width: 80%;
+    display: inline-block;
+}
+
+.chat-bubble.user {
+    background-color: #4682A9;
+    color: white;
+    margin-left: auto;
+    align-self: flex-end;
+}
+
+.chat-bubble.user h5 {
+    color: white;
+}
+
+.chat-bubble.bot {
+    background-color: #e0e0e0;
+    color: #556260;
+    align-self: flex-start;
+}
+
+/* Chat input styling */
+.chat-input {
+    display: flex;    
+    padding-top: 10px;
+}
+
+.chat-input input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #4682A9;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.chat-input button {
+    background-color: #4682A9;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.chat-input button:hover {
+    background-color: #0e4b74;
+}
+
 .info {
     background: url(../img/quote.png) center,0 0/cover #4682A9;
     background-size: cover;

@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminCartController;
 use App\Http\Controllers\AdminCustomerController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\GeminiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
@@ -32,6 +33,12 @@ use App\Models\User;
 Route::get('/', function () {
     return view('index', [
         "active" => "Beranda"
+    ]);
+});
+
+Route::get('/konseling', function () {
+    return view('index', [
+        "active" => "Konsultasi"
     ]);
 });
 
@@ -113,3 +120,5 @@ Route::get('/dashboard/products/{product}/stocks', [ProductController::class, 'g
 
 Route::resource('/dashboard/carts', AdminCartController::class)->middleware('auth');
 Route::resource('/dashboard/orders', AdminOrderController::class)->middleware('auth');
+
+Route::post('/question', [GeminiController::class, 'index']);

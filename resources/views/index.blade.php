@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="css/index.css" />
     <link rel="shortcut icon" type="image/x-icon" href="img/logo.svg">
     <script src="js/script.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
@@ -73,7 +74,7 @@
                                 <div class="hero_slider-slide_media">
                                     <picture>
                                         <source data-srcset="img/productrv.png" srcset="img/productrv.png" type="image/webp" />
-                                        <img class="lazy" data-src="img/productrv.png" src="img/productrv.png" alt="media" style="margin-right: 43%;"/>
+                                        <img class="lazy" data-src="img/productrv.png" src="img/productrv.png" alt="media" style="margin-right: 43%;" />
                                     </picture>
                                 </div>
                                 <div class="hero_slider-slide_main">
@@ -202,7 +203,7 @@
         </section>
         <!-- About section end -->
         <!-- Product section start -->
-        <div class="product section">
+        <div class="product section pb-0">
             <div class="container d-flex flex-column flex-lg-row">
                 <div class="product_media">
                     <picture>
@@ -275,10 +276,41 @@
             </div>
         </div>
         <!-- Product section end -->
+
+        <!-- Chatbot Section Start -->
+        <div class="chatbot section" id="chatbot">
+            <div class="container">
+                <div class="row gap-5">
+                    <div class="col-md-6">
+                        <img src="/img/jivajoy logo nobg.png" alt="JivaJoy Logo" style="width: 200px;" class="mb-3">
+                        <h2 class="mb-2" style="width: 70%;">Konsultasi Chatbot AI seputar Baby Blues</h2>
+                        <p>JivaBot dapat menjadi solusi bagi para ibu yang mengalami baby blues. Dengan fitur konsultasi ini, para ibu bisa dengan mudah mendapatkan dukungan emosional dan informasi kapan saja mereka membutuhkannya. JivaBot dapat menyediakan informasi terkait gejala, cara mengatasi, serta saran untuk perawatan diri. Selain itu, chatbot ini juga bisa mengarahkan pengguna ke ahli atau layanan kesehatan jika diperlukan, sehingga memberikan rasa aman dan dukungan yang tepat.</p>
+                    </div>
+                    <div class="col-md-6 p-3">
+                        <form id="ask">
+                            <!-- Chat Window -->
+                            <div class="chat-window" id="chat-window">
+                            </div>
+                            <!-- Chat Input -->
+                            <div class="chat-input">
+                                <input id="question" name="question" type="text" placeholder="Ketik pertanyaan disini.." required />
+                                <button type="submit">
+                                    <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M24.0431 13.886C24.5682 13.6234 24.8999 13.0867 24.8999 12.4996C24.8999 11.9125 24.5682 11.3758 24.0431 11.1133L2.34309 0.263263C1.7933 -0.0116297 1.13302 0.0643301 0.66002 0.456886C0.187018 0.849442 -0.00932183 1.48441 0.159543 2.07544L2.37382 9.82543C2.56394 10.4908 3.17214 10.9496 3.86418 10.9496L10.9499 10.9496C11.8059 10.9496 12.4999 11.6436 12.4999 12.4996C12.4999 13.3557 11.8059 14.0496 10.9499 14.0496L3.86419 14.0496C3.17215 14.0496 2.56395 14.5084 2.37383 15.1738L0.159542 22.9238C-0.0093228 23.5148 0.187017 24.1498 0.660019 24.5424C1.13302 24.9349 1.7933 25.0109 2.34308 24.736L24.0431 13.886Z" fill="white" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Chatbot Section End -->
+
         <!-- Promo info section start -->
         <section class="info section" style="position: relative;">
             <div class="container">
-                
+
                 <div class="info_content d-flex flex-column align-items-center">
                     <h3 class="info_content-header" style="position: relative; z-index: 1;">
                         “Melalui air mata dan kelelahan akibat baby blues, ingatlah bahwa setiap matahari terbit membawa peluang baru untuk kegembiraan dan kekuatan untuk menerima kekacauan indah sebagai ibu.”
@@ -588,6 +620,100 @@
 
     <script src="js/common.min.js"></script>
     <script src="js/index.min.js"></script>
+
+    <script>
+        // Pastikan script ini dijalankan setelah halaman dimuat
+        window.addEventListener('load', function() {
+            // Periksa jika URL mengandung hash untuk scroll
+            if (window.location.hash === '#chatbot') {
+                const targetElement = document.getElementById('chatbot');
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/gemini.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#chat-window').html(`
+            <div class="chat-bubble bot">
+                <h5 style="font-weight: 800;">JivaBot</h5>
+                Halo JivFriend! Ada yang bisa saya bantu hari ini? Jika Anda membutuhkan informasi atau dukungan, saya siap membantu!
+            </div>
+        `);
+        });
+
+        // Handle form submission
+        $('#ask').submit(function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get the question input
+            let question = $('#question').val();
+            if (question.trim() === '') return; // Avoid empty submission
+
+            // Display user's message in chat window
+            addMessageToChatWindow(question, 'user');
+
+            // Clear input field
+            $('#question').val('');
+
+            // Show thinking message from bot
+            addMessageToChatWindow('JivaBot sedang berpikir...', 'bot');
+
+            // Send question to server using AJAX
+            $.ajax({
+                url: '/question', // Endpoint for your chatbot
+                type: 'POST',
+                data: {
+                    question: question,
+                    _token: $('meta[name="csrf-token"]').attr('content') // Include CSRF token
+                },
+                success: function(data) {
+                    // Update the last bot message with the actual response
+                    const lastBotMessage = $('#chat-window .bot').last();
+                    lastBotMessage.remove(); // Remove "JivaBot sedang berpikir..." message
+
+                    // Display bot's response in chat window
+                    addMessageToChatWindow(data.answer, 'bot');
+                },
+                error: function(jqXHR) {
+                    const lastBotMessage = $('#chat-window .bot').last();
+                    lastBotMessage.remove(); // Remove "JivaBot sedang berpikir..." message
+
+                    let errorMessage = "Terjadi kesalahan, silakan coba lagi.";
+                    if (jqXHR.status === 422) {
+                        // Handle validation errors
+                        errorMessage = "Input tidak valid, silakan coba lagi.";
+                    }
+                    addMessageToChatWindow(errorMessage, 'bot');
+                }
+            });
+        });
+
+        function addMessageToChatWindow(message, sender) {
+            const chatWindow = $('#chat-window');
+
+            // Format message: replace **text** with <strong>text</strong> and \n with <br>
+            const formattedMessage = message
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Format bold
+                .replace(/\n/g, '<br>'); // Replace newlines with <br>
+
+            const messageElement = `
+            <div class="chat-bubble ${sender}">
+                <h5 style="font-weight: 800;">${sender === 'user' ? 'Anda' : 'JivaBot'}</h5>
+                ${formattedMessage}
+            </div>`;
+
+            chatWindow.append(messageElement);
+            chatWindow.scrollTop(chatWindow[0].scrollHeight); // Auto-scroll to the bottom
+        }
+    </script>
 </body>
 
 </html>

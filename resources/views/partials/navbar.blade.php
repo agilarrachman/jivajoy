@@ -29,7 +29,7 @@
                         <a class="nav-link {{ ($active === 'Tim') ? 'active' : '' }} d-inline-flex align-items-center" href="/team">Tim</a>
                     </li>
                     <li class="header_nav-list_item">
-                        <a class="nav-link {{ ($active === 'Konsultasi') ? 'active' : '' }} d-inline-flex align-items-center" href="konsultasi.html">Konsultasi</a>
+                        <a class="nav-link {{ ($active === 'Konsultasi') ? 'active' : '' }} d-inline-flex align-items-center" href="/konseling#chatbot" id="consultationLink">Konsultasi</a>
                     </li>
                 </ul>
             </nav>
