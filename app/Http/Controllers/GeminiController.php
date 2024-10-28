@@ -17,7 +17,6 @@ class GeminiController extends Controller
 
         $question = $request->question;
 
-        // Cek apakah pertanyaan hanya "hai" atau "halo"
         if (stripos($question, 'hai') !== false || stripos($question, 'halo') !== false) {
             return response()->json([
                 'question' => $question,
@@ -45,91 +44,11 @@ class GeminiController extends Controller
 
     Legalitas JivaJoy: JivaJoy telah memperoleh legalitas usaha NIB, hak cipta, hak paten, dan hak merek, menjadikannya produk yang terpercaya dan aman untuk digunakan oleh ibu-ibu pasca melahirkan.
 
-    Tujuan Anda adalah memberikan informasi untuk menarik perhatian pengunjung agar tertarik dengan produk JivaJoy. JivaBot dapat menjadi solusi bagi para ibu yang mengalami baby blues. Dengan fitur konsultasi ini, para ibu bisa dengan mudah mendapatkan dukungan emosional dan informasi kapan saja mereka membutuhkannya. JivaBot dapat menyediakan informasi terkait gejala, cara mengatasi, serta saran untuk perawatan diri. Selain itu, chatbot ini juga bisa mengarahkan pengguna ke ahli atau layanan kesehatan jika diperlukan, sehingga memberikan rasa aman dan dukungan yang tepat. Sekarang, silakan jawab pertanyaan pengguna yang berkaitan dengan baby blues dan produk JivaJoy. 
-    ";
+    Tujuan Anda adalah memberikan informasi untuk menarik perhatian pengunjung agar tertarik dengan produk JivaJoy. JivaBot dapat menjadi solusi bagi para ibu yang mengalami baby blues. Dengan fitur konsultasi ini, para ibu bisa dengan mudah mendapatkan dukungan emosional dan informasi kapan saja mereka membutuhkannya. JivaBot dapat menyediakan informasi terkait gejala, cara mengatasi, serta saran untuk perawatan diri. Selain itu, chatbot ini juga bisa mengarahkan pengguna ke ahli atau layanan kesehatan jika diperlukan, sehingga memberikan rasa aman dan dukungan yang tepat.
 
-        $keywords = [
-            'apa',
-            'manfaat',
-            'siapa',
-            'berapa',
-            'dimana',
-            'kapan',
-            'mengapa',
-            'kenapa',
-            'bagaimana',
-            'keren',
-            'baby blues',
-            'gelisah',
-            'moodswing',
-            'pasca',
-            'melahirkan',
-            'bayi',
-            'ibu',
-            'depresi',
-            'postpartum',
-            'emosi',
-            'stress',
-            'kecemasan',
-            'lelah',
-            'cape',
-            'marah',
-            'benci',
-            'mental',
-            'mengatasi',
-            'antisipasi',
-            'kesehatan',
-            'kesadaran',
-            'perubahan hormon',
-            'JivaJoy',
-            'kandungan',
-            'JivaJoy aromaterapi 2in1',
-            'harga',
-            'roll',
-            'roll on',
-            'inhaler',
-            'roll on dan inhaler untuk baby blues',
-            'ekstrak kayu cendana dan daun kemangi',
-            'keunggulan JivaJoy',
-            'kemasan praktis aromaterapi',
-            'aromaterapi',
-            'aromaterapi portabel',
-            'meredakan',
-            'pereda',
-            'fungsi',
-            'pereda',
-            'mengurangi',
-            'bahan',
-            'bahan baku JivaJoy',
-            'cendana',
-            'minyak atsiri kayu cendana',
-            'minyak daun kemangi',
-            'kemangi',
-            'tagline JivaJoy',
-            'instant',
-            'instant refresh aromaterapi',
-            'ketenangan di mana saja',
-            'legalitas',
-            'legalitas JivaJoy',
-            'NIB',
-            'hak cipta',
-            'NIB dan hak cipta',
-            'produk aromaterapi terpercaya',
-            'terpercaya',
-        ];
+    Jika kamu mendapatkan pujian atau ucapan terima kasih, maka jawab dengan: 'Terima kasih! Senang bisa membantu Anda.' Sekarang, silakan jawab pertanyaan pengguna yang berkaitan dengan baby blues dan produk JivaJoy.
+";
 
-        // Cek apakah pertanyaan mengandung salah satu kata kunci
-        $isRelevant = collect($keywords)->contains(function ($keyword) use ($question) {
-            return stripos($question, $keyword) !== false;
-        });
-
-        // Jika pertanyaan tidak relevan, kembalikan pesan pembatasan
-        if (!$isRelevant) {
-            return response()->json([
-                'question' => $question,
-                'answer' => "Mohon maaf, JivaBot saat ini hanya memiliki pengetahuan seputar baby blues syndrome dan produk JivaJoy."
-            ]);
-        }
 
         // Gabungkan pre-prompt dengan pertanyaan pengguna
         $formattedQuestion = $prePrompt . " " . $question;
