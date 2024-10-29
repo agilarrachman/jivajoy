@@ -306,7 +306,7 @@
                     <div id="proses-product" class="d-flex flex-column gap-4 mt-4">
                         <div class="d-flex flex-column gap-2">
                             @if($ordersPending->isEmpty())
-                            <img src="img/404.png" class="my-3 mx-auto img-fluid" alt="No Orders" style="width: 200px;">
+                            <img src="img/pesanan kosong.png" class="my-3 mx-auto img-fluid" alt="No Orders" style="width: 200px;">
                             <h4 class="heading text-center">Anda belum membuat pesanan</h4>
                             @else
                             @foreach ($ordersPending->sortByDesc('created_at') as $order)

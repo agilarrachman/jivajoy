@@ -160,7 +160,7 @@
 
                                 <div class="mb-3 form-input">
                                     <label for="no_wa" class="form-label">Nomor WhatsApp</label>
-                                    <input type="text" class="form-control" id="no_wa" name="no_wa" placeholder="Masukkan nomor WhatsApp penerima" required value="{{ $order->no_wa }}">
+                                    <input type="text" class="form-control bg-white" id="no_wa" name="no_wa" placeholder="Masukkan nomor WhatsApp penerima" required value="{{ $order->no_wa }}" disabled>
                                     @error('no_wa')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -170,7 +170,7 @@
 
                                 <div class="mb-3 form-input">
                                     <label for="link_gmaps" class="form-label">Link Google Maps</label>
-                                    <input type="text" class="form-control" id="link_gmaps" name="link_gmaps" placeholder="Masukkan link Google Maps lokasi tujuan" required value="{{ $order->link_gmaps }}">
+                                    <input type="text" class="form-control bg-white" id="link_gmaps" name="link_gmaps" placeholder="Masukkan link Google Maps lokasi tujuan" required value="{{ $order->link_gmaps }}" disabled>
                                     @error('link_gmaps')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -180,7 +180,7 @@
 
                                 <div class="text-area w-100 my-1">
                                     <label for="detail_alamat" class="form-label my-0 mb-2">Detail Alamat</label>
-                                    <textarea name="detail_alamat" class="form-control @error('detail_alamat') is-invalid @enderror" id="detail_alamat" placeholder="Contoh: Nama Jalan, Gedung, No. Rumah, Blok/Unit, Patokan" required style="min-height: 100px;">{{ $order->detail_alamat }}</textarea>
+                                    <textarea name="detail_alamat" class="form-control bg-white @error('detail_alamat') is-invalid @enderror" id="detail_alamat" placeholder="Contoh: Nama Jalan, Gedung, No. Rumah, Blok/Unit, Patokan" required style="min-height: 100px;" disabled>{{ $order->detail_alamat }}</textarea>
                                     @error('detail_alamat')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -193,8 +193,8 @@
                 </div>
 
                 <a href="/dashboard/orders" class="btn btn-rounded my-3" id="buttonPrimary">Kembali</a>
-                <button class="btn btn-warning btn-rounded" style="min-width: 80px;"><a href="/dashboard/orders/{{ $order->id }}/edit" class="text-white text-decoration-none">Edit</a></button>
-                <form action="/dashboard/orders/{{ $order->id }}" method="post" class="d-inline" style="min-width: 80px;">
+                <button class="btn btn-warning btn-rounded" style="min-width: 80px;"><a href="/dashboard/orders/{{ $order->kode_pesanan }}/edit" class="text-white text-decoration-none">Edit</a></button>
+                <form action="/dashboard/orders/{{ $order->kode_pesanan }}" method="post" class="d-inline" style="min-width: 80px;">
                     @method('delete')
                     @csrf
                     <button class="btn btn-danger btn-rounded" onclick="return confirm('Are you sure?')">Delete</button>

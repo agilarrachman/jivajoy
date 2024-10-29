@@ -75,6 +75,7 @@
                     <h5 style="font-size: 24px; font-weight: 700; color: #4682A9;">Informasi Penerima</h5>
 
                     <input type="hidden" name="id_customer" value="{{ auth()->user()->id }}">
+                    <input type="hidden" name="total_harga" value="{{ $total_harga }}">
 
                     <div class="mb-3 form-input">
                         <label for="nama_penerima" class="form-label">Nama Lengkap</label>

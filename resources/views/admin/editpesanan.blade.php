@@ -45,6 +45,18 @@
         #buttonSubmit:hover {
             background-color: #084e7e;
         }
+
+        .price-total {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #4682A9;
+        }
+
+        .title-price-total {
+            font-weight: 500;
+            font-size: 0.8em;
+            color: #868E8C;
+        }
     </style>
 </head>
 
@@ -92,6 +104,48 @@
                 @method('put')
                 @csrf
                 <div class="mb-4">
+                    <label for="id_customer" class="form-label">Username Customer</label>
+                    <input type="text" class="form-control bg-white" id="nama" value="{{ $order->customer->username }}" disabled>
+                </div>
+
+                <label for="order" class="form-label">Detail Pesanan</label>
+                <p class="info m-0">Kode Pesanan : <strong style="color: #4682A9;">{{ $order->kode_pesanan }}</strong></p>
+                <p class="info mt-0 mb-2">Waktu Pemesanan : <strong style="color: #4682A9;">{{ $order->created_at->format('H:i - d/m/Y') }}</strong></p>
+                @foreach ($order->orderItems as $item)
+                <div class="d-flex gap-2 border-bottom">
+                    <!-- Image Section -->
+                    <div class="column">
+                        <img src="{{ $item->product->foto_produk }}" alt="Product Image" class="img-fluid" style="height: 100px; width: auto;">
+                    </div>
+                    <!-- Product Details Section -->
+                    <div class="column mt-2">
+                        <!-- Product Name -->
+                        <p class="title-product mb-1"><strong style="color: #4682A9;">JivaJoy: Aromatherapy 2in1
+                            (Inhaler & Roll On)</strong></p>
+                        <!-- Product Info: Price, Quantity, Variant -->
+                        <div class="d-flex">
+                            <div class="detail me-4">
+                                <p class="mb-0 title-price">Total Harga</p>
+                                <p class="price">Rp {{ number_format($item->harga, 0, ',', '.') }}</p>
+                            </div>
+                            <div class="detail me-4">
+                                <p class="mb-0 title-price">Jumlah</p>
+                                <p class="price">{{ $item->qty }} pcs</p>
+                            </div>
+                            <div class="detail me-4">
+                                <p class="mb-0 title-price">Varian</p>
+                                <p class="price">{{ $item->product->varian }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                <div class="price py-2 border-bottom">
+                    <p class="mb-0 title-price-total">Total Harga</p>
+                    <p class="price-total m-0">Rp {{ number_format($order->total_harga, 0, ',', '.') }}</p>
+                </div>
+
+                <div class="my-4">
                     <label for="status" class="form-label">Status Pesanan</label>
                     <select class="form-select" name="status">
                         <option value="Belum Dibayar" {{ old('status', $order->status) == 'Belum Dibayar' ? 'selected' : '' }}>Belum Dibayar</option>
@@ -101,55 +155,6 @@
                         <option value="Pesanan Selesai" {{ old('status', $order->status) == 'Pesanan Selesai' ? 'selected' : '' }}>Pesanan Selesai</option>
                         <option value="Dibatalkan" {{ old('status', $order->status) == 'Dibatalkan' ? 'selected' : '' }}>Dibatalkan</option> <!-- Tambahkan opsi baru di sini -->
                     </select>
-                </div>
-
-                <div class="mb-4">
-                    <label for="id_customer" class="form-label">Username</label>
-                    <select class="form-select" name="id_customer">
-                        @foreach ($customers as $customer)
-                        @if(old('username', $order->id_customer) == $customer->id)
-                        <option value="{{ $customer->id }}" selected>{{ $customer->username }}</option>
-                        @else
-                        <option value="{{ $customer->id }}">{{ $customer->username }}</option>
-                        @endif
-                        @endforeach
-                    </select>
-                </div>
-
-                <!-- Pilih Varian -->
-                <div class="variant-section col-12" style="margin-bottom: 15px;">
-                    <label style="margin-right: 10px;" class="mt-2 fs-5">Pilih Varian:</label>
-                    <select id="variant" class="form-select w-100" required>
-                        @if($products->isEmpty())
-                        <option selected>Tidak tersedia</option>
-                        @else
-                        @foreach ($products as $product)
-                        @if(old('id_product', $order->id_product) == $product->id)
-                        <option value="{{ $product->id }}" data-stock="{{ $product->stok }}" selected>{{ $product->varian }}</option>
-                        @elseif($product->stok > 0)
-                        <option value="{{ $product->id }}" data-stock="{{ $product->stok }}">{{ $product->varian }}</option>
-                        @endif
-                        @endforeach
-                        @endif
-                    </select>
-
-                </div>
-
-                <!-- Jumlah Qty -->
-                <div class="quantity-section col-12 col-md-4 mb-3">
-                    <label class="mt-4 mb-0 fs-5">Jumlah</label>
-                    <div class="d-flex align-items-center w-100">
-                        <button type="button" id="decrease-qty">-</button>
-                        <input type="number" id="quantity" value="{{ $order->orderItems->first()->qty }}" min="1" class="form-control text-center" readonly>
-                        <button type="button" id="increase-qty">+</button>
-                    </div>
-                    <p class="my-1" id="stock-info">
-                        @if($products->isEmpty())
-                        Produk sedang tidak tersedia!
-                        @else
-                        Jumlah stok yang tersedia {{ $products->first()->stok }} pcs
-                        @endif
-                    </p>
                 </div>
 
                 <div class="col d-flex flex-column w-80 mb-5">
@@ -211,20 +216,8 @@
                     @enderror
                 </div>
 
-                <div class="d-flex my-5">
-                    <!-- Jumlah Harga -->
-                    <div class="price-section col-3">
-                        <p class="my-0 fs-5">Jumlah Harga</p>
-                        <h5 id="total-price" style="font-weight: bold;">Rp 0</h5>
-                    </div>
 
-                    <button class="btn col-9 py-1 my-1" type="submit" id="buttonSubmit">Ubah Data Pesanan</button>
-                </div>
-
-                <input type="hidden" name="id_product" id="cart-variant">
-                <input type="hidden" name="qty" id="cart-quantity">
-                <input type="hidden" name="total_harga" id="cart-total-price">
-                <input type="hidden" name="id_order" id="id_order" value="$order->id">
+                <button class="btn w-100 py-2 my-3" type="submit" id="buttonSubmit">Perbarui Data Pesanan</button>
             </form>
         </div>
     </div>
@@ -297,70 +290,6 @@
                 }
             });
         });
-    </script>
-
-    <script>
-        document.getElementById('increase-qty').addEventListener('click', function() {
-            var qty = document.getElementById('quantity');
-            var selectedVariant = document.getElementById('variant');
-            var maxStock = selectedVariant.options[selectedVariant.selectedIndex].getAttribute('data-stock');
-
-            if (parseInt(qty.value) < parseInt(maxStock)) {
-                qty.value = parseInt(qty.value) + 1;
-                updatePrice();
-            } else {
-                alert('Jumlah melebihi stok yang tersedia!');
-            }
-        });
-
-        document.getElementById('decrease-qty').addEventListener('click', function() {
-            var qty = document.getElementById('quantity');
-            if (parseInt(qty.value) > 1) {
-                qty.value = parseInt(qty.value) - 1;
-                updatePrice();
-            }
-        });
-
-        document.getElementById('variant').addEventListener('change', function() {
-            var selectedVariant = document.getElementById('variant');
-            var stockInfo = selectedVariant.options[selectedVariant.selectedIndex].getAttribute('data-stock');
-            var quantityInput = document.getElementById('quantity');
-
-            // Tampilkan jumlah stok dari varian yang dipilih
-            document.getElementById('stock-info').textContent = 'Jumlah stok yang tersedia ' + stockInfo + ' pcs';
-
-            // Cek apakah kuantitas melebihi stok varian baru
-            if (parseInt(quantityInput.value) > parseInt(stockInfo)) {
-                alert('Jumlah melebihi stok yang tersedia!');
-                // Atur kuantitas menjadi maksimal yang tersedia
-                quantityInput.value = stockInfo;
-            }
-
-            // Update harga dengan kuantitas baru (jika ada perubahan)
-            updatePrice();
-        });
-
-
-        function updatePrice() {
-            var qty = document.getElementById('quantity').value;
-            var variant = document.getElementById('variant').value;
-            var pricePerItem = 30000;
-            var totalPrice = qty * pricePerItem;
-
-            document.getElementById('total-price').textContent = 'Rp ' + totalPrice.toLocaleString();
-
-            // Update nilai input hidden di kedua form
-            document.getElementById('cart-quantity').value = qty;
-            document.getElementById('cart-total-price').value = totalPrice;
-            document.getElementById('cart-variant').value = variant;
-
-            document.getElementById('checkout-quantity').value = qty;
-            document.getElementById('checkout-total-price').value = totalPrice;
-            document.getElementById('checkout-variant').value = variant;
-        }
-
-        // Initial update for price when page loads
-        updatePrice();
     </script>
 </body>
 

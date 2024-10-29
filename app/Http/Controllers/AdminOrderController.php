@@ -148,11 +148,8 @@ class AdminOrderController extends Controller
     public function update(Request $request, $kode_pesanan)
     {
         // Validasi input dari form
-        $validatedData = $request->validate([
-            'id_product' => 'required|exists:products,id',
+        $validatedData = $request->validate([            
             'bukti_pembayaran' => 'image|file|max:5000',
-            'qty' => 'required|integer|min:1',
-            'total_harga' => 'required|numeric',
             'nama_penerima' => 'required|string|max:255',
             'no_wa' => 'required|string|max:15',
             'link_gmaps' => 'required|string',
@@ -162,26 +159,9 @@ class AdminOrderController extends Controller
 
         // Temukan order berdasarkan kode_pesanan
         $order = Order::where('kode_pesanan', $kode_pesanan)->firstOrFail();
-        $oldOrderItem = OrderItem::where('id_order', $order->id)->first();
-        $product = Product::find($validatedData['id_product']);
-
-        // Cek jika qty berubah, maka sesuaikan stok produk
-        if ($validatedData['qty'] != $oldOrderItem->qty) {
-            $quantityDifference = $validatedData['qty'] - $oldOrderItem->qty;
-
-            // Pastikan stok cukup jika qty bertambah
-            if ($quantityDifference > 0 && $product->stok < $quantityDifference) {
-                return redirect()->back()->with('error', 'Stok produk tidak mencukupi!');
-            }
-
-            // Update stok produk
-            $product->stok -= $quantityDifference;
-            $product->save();
-        }
 
         // Update data pesanan termasuk status
         $order->update([
-            'total_harga' => $validatedData['total_harga'],
             'nama_penerima' => $validatedData['nama_penerima'],
             'no_wa' => $validatedData['no_wa'],
             'link_gmaps' => $validatedData['link_gmaps'],
@@ -199,13 +179,6 @@ class AdminOrderController extends Controller
                 'status' => 'Menunggu Konfirmasi Pembayaran',
             ]);
         }
-
-        // Update data item pesanan
-        $oldOrderItem->update([
-            'id_product' => $validatedData['id_product'],
-            'qty' => $validatedData['qty'],
-            'harga' => $validatedData['total_harga'],
-        ]);
 
         return redirect("/dashboard/orders")->with('success', 'Berhasil memperbarui data pesanan!');
     }
