@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Carbon;
 
 class AdminOrderController extends Controller
 {
@@ -148,7 +149,7 @@ class AdminOrderController extends Controller
     public function update(Request $request, $kode_pesanan)
     {
         // Validasi input dari form
-        $validatedData = $request->validate([            
+        $validatedData = $request->validate([
             'bukti_pembayaran' => 'image|file|max:5000',
             'nama_penerima' => 'required|string|max:255',
             'no_wa' => 'required|string|max:15',
@@ -207,5 +208,25 @@ class AdminOrderController extends Controller
 
         // Redirect ke halaman dashboard dengan pesan sukses
         return redirect('/dashboard/orders')->with('success', 'Pesanan Anda telah berhasil dibatalkan!');
+    }
+
+    public function getOrderQuantitiesPerDay()
+    {
+        $orders = OrderItem::join('orders', 'order_items.id_order', '=', 'orders.id')
+            ->selectRaw('DATE(orders.created_at) as date, SUM(order_items.qty) as total_qty')
+            ->where('orders.created_at', '>=', Carbon::now()->subDays(30))
+            ->groupBy('date')
+            ->orderBy('date', 'ASC')
+            ->get();
+
+        $labels = $orders->pluck('date')->map(function ($date) {
+            return Carbon::parse($date)->format('d M');
+        });
+        $data = $orders->pluck('total_qty');
+
+        return response()->json([
+            'labels' => $labels,
+            'data' => $data
+        ]);
     }
 }

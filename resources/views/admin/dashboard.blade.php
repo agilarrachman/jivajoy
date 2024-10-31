@@ -270,7 +270,7 @@
                     <div class="card border-info mb-3" style="max-width: 18rem; background-color: #ffffff; min-width: 260px;">
                         <div class="card-header" style="background-color: #cfdee8; color: #4380a8;">Jumlah Pemesanan</div>
                         <div class="card-body text-info">
-                            <h5 class="card-title" style="color: #4380a8; font-size: 2rem;">500</h5>
+                            <h5 class="card-title" style="color: #4380a8; font-size: 2rem;">{{ $orderCount }}</h5>
                             <p class="card-text">Jumlah Pemesanan</p>
                         </div>
                     </div>
@@ -298,7 +298,7 @@
             <!-- Sales Chart -->
             <div class="row mt-4">
                 <div class="col-md-12">
-                    <canvas id="salesChart" style="height: 300px;"></canvas>
+                    <canvas id="orderItemsChart" style="height: 300px;"></canvas>
                 </div>
             </div>
 
@@ -332,7 +332,47 @@
     @include('partials.popup')
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gyb+7fIjfH5DoVZESpPpMZ8KnwxBqPe3/Ql2TPTD2A4JmO4SQc" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-UGxXeHBL/JIVhBL0P04j+ik09ETElbElD70JxlAqZT5h6owVu0T/Sv6x5BYafJNh" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: '/dashboard/order-items/daily',
+                method: 'GET',
+                success: function(response) {
+                    const labels = response.labels; // Dapatkan labels
+                    const data = response.data; // Dapatkan data
+
+                    // Inisialisasi Chart.js
+                    const ctx = document.getElementById('orderItemsChart').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'bar', // Ganti dengan 'line' jika ingin grafik garis
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Jumlah Order Item per Hari',
+                                data: data,
+                                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                                borderColor: 'rgba(54, 162, 235, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                },
+                error: function(error) {
+                    console.error('Error fetching order items data:', error);
+                }
+            });
+        });
+    </script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {

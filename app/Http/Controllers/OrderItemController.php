@@ -6,6 +6,7 @@ use App\Models\OrderItem;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OrderItemController extends Controller
 {
@@ -146,6 +147,30 @@ class OrderItemController extends Controller
             'product' => $product,
             'qty' => $qty,
             'total_harga' => $total_harga,
+        ]);
+    }
+
+    public function getOrderItemsPerDay()
+    {
+        // Mengambil jumlah qty order item tiap hari
+        $orderItems = DB::table('order_items')
+            ->select(DB::raw('DATE(created_at) as date'), DB::raw('SUM(qty) as total_qty'))
+            ->groupBy('date')
+            ->orderByDesc('date') // Mengurutkan dari yang terbaru
+            ->limit(7) // Membatasi hasil maksimal 7
+            ->get()
+            ->reverse();
+
+        // Siapkan data untuk dikembalikan
+        $labels = $orderItems->pluck('date')->map(function($date) {
+            return date('d F Y', strtotime($date));
+        });        
+        $data = $orderItems->pluck('total_qty');
+
+        // Kembalikan data dalam format JSON
+        return response()->json([
+            'labels' => $labels,
+            'data' => $data,
         ]);
     }
 }

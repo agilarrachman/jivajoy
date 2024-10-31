@@ -140,28 +140,6 @@
 
     <script>
         $(document).ready(function() {
-            // Ganti {productId} dengan ID produk yang ingin Anda ambil
-            var productId = '{{ $product->varian }}';
-
-            $.ajax({
-                url: '/dashboard/products/' + productId + '/stocks', // URL endpoint
-                type: 'GET',
-                dataType: 'json',
-                success: function(response) {
-                    // Menampilkan data di console log
-                    console.log("Labels:", response.labels);
-                    console.log("Data:", response.data);
-                },
-                error: function(xhr, status, error) {
-                    console.error("Error fetching stocks:", error);
-                }
-            });
-        });
-    </script>
-
-
-    <script>
-        $(document).ready(function() {
             var product = '{{ $product->varian }}';
 
             // Mengambil data stok produk

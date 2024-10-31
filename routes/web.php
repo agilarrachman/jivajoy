@@ -42,10 +42,13 @@ Route::get('/konseling', function () {
     ]);
 });
 
+Route::get('/dashboard/order-items/daily', [OrderItemController::class, 'getOrderItemsPerDay']);
+
 Route::get('/dashboard', function () {
     return view('admin.dashboard', [
         "active" => "Beranda",
         'customerCount' => User::where('role', 'Customer')->count(),
+        'orderCount' => Order::count(),
         'warmStock' => Product::where('varian', 'Warm')->value('stok'),
         'hotStock' => Product::where('varian', 'Hot')->value('stok'),
     ]);
