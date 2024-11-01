@@ -104,11 +104,26 @@ Route::put('/profile/{user:username}', [ProfileController::class, 'update'])->mi
 Route::delete('/profile/{user:username}', [ProfileController::class, 'destroy'])->middleware('auth');
 Route::get('/profile/{user:id}', [ProfileController::class, 'show'])->middleware('auth');
 
+Route::get('/password', function () {
+    return view('password', [
+        'user' => User::where('id', auth()->user()->id)->first(),
+        "active" => "Profile",
+    ]);
+});
+
+Route::put('/password/{user:username}', [ProfileController::class, 'updatePassword'])->middleware('auth');
+
 Route::resource('/dashboard/customers', AdminCustomerController::class)->middleware('auth');
 Route::resource('/dashboard/admin', AdminAccountController::class)->middleware('auth');
 Route::get('/dashboard/profile', function () {
     return view('admin.profile', [
         "active" => "Profil",
+    ]);
+});
+Route::get('/dashboard/password', function () {
+    return view('admin.password', [
+        "active" => "Password",
+        'user' => User::where('id', auth()->user()->id)->first(),
     ]);
 });
 

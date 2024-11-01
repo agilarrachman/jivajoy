@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -150,5 +151,33 @@ class ProfileController extends Controller
 
         // Redirect ke halaman depan dengan pesan sukses
         return redirect('/')->with('deleteAccountSuccess', 'Your account has been deleted successfully.');
+    }
+
+    public function updatePassword(Request $request, User $user)
+    {
+        // Validasi data input untuk password baru
+        $validatedData = $request->validate([
+            'current_password' => 'required',
+            'password' => 'required|string|min:3|max:8|confirmed',
+        ], [
+            'password.confirmed' => 'Password dan Konfirmasi Password tidak cocok.',        
+        ]);
+
+        // Cek apakah current_password cocok dengan password lama
+        if (!Hash::check($validatedData['current_password'], $user->password)) {
+            return back()->with('false', 'Password lama tidak sesuai, Mohon masukkan password lama dengan benar!');
+        }
+
+        // Update password
+        $user->update([
+            'password' => Hash::make($validatedData['password']),
+        ]);
+
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+
+        // Redirect dengan pesan sukses
+        return redirect('/login')->with('success', 'Password telah berhasil diupdate, Silakan login kembali!');
     }
 }

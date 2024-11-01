@@ -12,7 +12,7 @@
     <meta property="og:description"
         content="Aromaterapi 2in1 (Inhaler & Roll On) dari Kemangi dan Cendana Sebagai Upaya Mencegah Baby Blues dengan Kemasan Website Terintegrasi" />
     <meta name="description" content="Aromaterapi 2in1 (Inhaler & Roll On) dari Kemangi dan Cendana Sebagai Upaya Mencegah Baby Blues dengan Kemasan Website Terintegrasi">
-    <title> JivaJoy | Riwayat Pemesanan</title>
+    <title> JivaJoy | Ganti Password</title>
     <link rel="stylesheet preload" as="style" href="css/preload.min.css" />
     <link rel="stylesheet preload" as="style" href="css/libs.min.css" />
     <link rel="stylesheet" href="css/profile.css" />
@@ -61,12 +61,6 @@
             color: #4682A9;
         }
 
-        h4 {
-            font-size: 20px;
-            font-weight: 800;
-            color: #4682A9;
-        }
-
         .label {
             font-size: 16px;
             font-weight: 600;
@@ -86,84 +80,35 @@
             color: white;
         }
 
-        /* Agil Style Start */
-        h1 {
-            font-size: 40px;
-            font-weight: 700;
-            color: #4682A9;
-        }
-
-        .info {
-            font-family: NunitoSans, sans-serif;
-            font-weight: 500;
-            font-size: 16px;
-            color: #556260;
-        }
-
         .img-cc {
-            width: auto;
+            width: 178px;
+            height: 178px;
+        }
+
+        .img-cc2 {
+            width: 100px;
             height: 100px;
-            object-fit: cover;
         }
 
-        .status {
-            background-color: #E4E4E4;
-            font-weight: 600;
-            color: #4682A9;
-            font-size: 14px;
-            border-radius: 20px;
-            width: fit-content;
-        }
-
-        .status.active {
-            background-color: #4682A9;
-            font-weight: 600;
-            color: white;
-            font-size: 14px;
-            border-radius: 20px;
-            width: fit-content;
+        .position-relative {
+            width: 178px;
         }
 
         .title-product {
-            font-weight: 700;
+            font-weight: 600;
             color: #4682A9;
-            font-size: 21px;
-        }
-
-        .price-total {
-            font-size: 1.2em;
-            font-weight: 700;
-            color: #4682A9;
+            font-size: 20px;
         }
 
         .price {
-            font-size: 1.0em;
+            font-size: 18px;
             font-weight: 600;
             color: #4682A9;
         }
 
-        .title-price,
-        .title-price-total {
-            font-weight: 500;
-            font-size: 0.8em;
+        .title-price {
             color: #868E8C;
         }
-
-        @media (max-width:576px) {
-            .title-product {
-                font-size: 1.2em;
-            }
-
-            .title-price {
-                font-size: 0.8em;
-            }
-
-            .price {
-                font-size: 1em;
-            }
-        }
-
-        /* Agil Style End */
 
         .btn-bucket {
             font-size: 14px;
@@ -173,7 +118,6 @@
         }
 
         .btn-bucket:hover {
-            background-color: #b8d1e2;
             font-size: 14px;
             font-weight: 700;
             color: #4682A9;
@@ -242,7 +186,7 @@
             <div class="col-md-3 mb-5 w-sm-100 d-none d-md-flex flex-column">
                 <div class="d-flex flex-column gap-3">
                     <a href="/profile">
-                        <button id="btn-open-profil" type="button" class="btn-side btn btn text-start px-4 py-3 rounded-4 shadow-sm d-flex items-center gap-2 border">
+                        <button id="btn-open-profil" type="button" class="btn-side btn text-start px-4 py-3 rounded-4 shadow-sm d-flex items-center gap-2 border">
                             <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M22.3384 9.41826C22.3384 13.2119 19.2967 16.2538 15.5003 16.2538C11.7053 16.2538 8.66226 13.2119 8.66226 9.41826C8.66226 5.6246 11.7053 2.58398 15.5003 2.58398C19.2967 2.58398 22.3384 5.6246 22.3384 9.41826ZM15.5003 28.4173C9.89756 28.4173 5.16699 27.5067 5.16699 23.9933C5.16699 20.4787 9.92728 19.6003 15.5003 19.6003C21.1044 19.6003 25.8337 20.5109 25.8337 24.0243C25.8337 27.539 21.0734 28.4173 15.5003 28.4173Z" fill="currentColor" />
                             </svg>
@@ -258,7 +202,7 @@
                         </button>
                     </a>
                     <a href="/orders">
-                        <button id="btn-open-history" type="button" class="btn-side btn text-start px-4 py-3 rounded-4 shadow-sm d-flex items-center gap-2 border btn-active">
+                        <button id="btn-open-history" type="button" class="btn-side btn text-start px-4 py-3 rounded-4 shadow-sm d-flex items-center gap-2 border">
                             <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M19.0466 7.875C19.0824 7.79527 19.0991 7.70838 19.0956 7.62111H19.125C18.9992 4.61915 16.5205 2.25 13.5056 2.25C10.4906 2.25 8.01194 4.61915 7.88612 7.62111C7.87129 7.7051 7.87129 7.79102 7.88612 7.875H7.79818C6.3565 7.875 4.81539 8.82671 4.36797 11.3851L3.49302 18.3541C2.77715 23.4708 5.41195 24.75 8.8521 24.75H18.1783C21.6085 24.75 24.1637 22.8977 23.5274 18.3541L22.6624 11.3851C22.1354 8.89835 20.6441 7.875 19.2223 7.875H19.0466ZM17.4299 7.875C17.3986 7.79394 17.382 7.70797 17.3809 7.62111C17.3809 5.46393 15.6261 3.71518 13.4615 3.71518C11.2968 3.71518 9.54207 5.46393 9.54207 7.62111C9.5569 7.7051 9.5569 7.79102 9.54207 7.875H17.4299ZM10.2341 13.6671C9.68501 13.6671 9.23986 13.209 9.23986 12.6438C9.23986 12.0786 9.68501 11.6205 10.2341 11.6205C10.7832 11.6205 11.2284 12.0786 11.2284 12.6438C11.2284 13.209 10.7832 13.6671 10.2341 13.6671ZM15.7523 12.6438C15.7523 13.209 16.1974 13.6671 16.7465 13.6671C17.2957 13.6671 17.7408 13.209 17.7408 12.6438C17.7408 12.0786 17.2957 11.6205 16.7465 11.6205C16.1974 11.6205 15.7523 12.0786 15.7523 12.6438Z" fill="currentColor" />
                             </svg>
@@ -266,7 +210,7 @@
                         </button>
                     </a>
                     <a href="/password">
-                        <button id="btn-open-profil" type="button" class="btn-side btn text-start px-4 py-3 rounded-4 shadow-sm d-flex items-center gap-2 border">
+                        <button id="btn-open-profil" type="button" class="btn-side btn-active btn text-start px-4 py-3 rounded-4 shadow-sm d-flex items-center gap-2 border">
                             <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M13.5 19.6875C14.0967 19.6875 14.669 19.4504 15.091 19.0285C15.5129 18.6065 15.75 18.0342 15.75 17.4375C15.75 16.8408 15.5129 16.2685 15.091 15.8465C14.669 15.4246 14.0967 15.1875 13.5 15.1875C12.9033 15.1875 12.331 15.4246 11.909 15.8465C11.4871 16.2685 11.25 16.8408 11.25 17.4375C11.25 18.0342 11.4871 18.6065 11.909 19.0285C12.331 19.4504 12.9033 19.6875 13.5 19.6875ZM20.25 9.5625C20.8467 9.5625 21.419 9.79955 21.841 10.2215C22.2629 10.6435 22.5 11.2158 22.5 11.8125V23.0625C22.5 23.6592 22.2629 24.2315 21.841 24.6535C21.419 25.0754 20.8467 25.3125 20.25 25.3125H6.75C6.15326 25.3125 5.58097 25.0754 5.15901 24.6535C4.73705 24.2315 4.5 23.6592 4.5 23.0625V11.8125C4.5 11.2158 4.73705 10.6435 5.15901 10.2215C5.58097 9.79955 6.15326 9.5625 6.75 9.5625H7.875V7.3125C7.875 5.82066 8.46763 4.38992 9.52252 3.33502C10.5774 2.28013 12.0082 1.6875 13.5 1.6875C14.2387 1.6875 14.9701 1.83299 15.6526 2.11568C16.3351 2.39836 16.9551 2.81269 17.4775 3.33502C17.9998 3.85735 18.4141 4.47745 18.6968 5.15991C18.9795 5.84236 19.125 6.57381 19.125 7.3125V9.5625H20.25ZM13.5 3.9375C12.6049 3.9375 11.7464 4.29308 11.1135 4.92601C10.4806 5.55895 10.125 6.41739 10.125 7.3125V9.5625H16.875V7.3125C16.875 6.41739 16.5194 5.55895 15.8865 4.92601C15.2536 4.29308 14.3951 3.9375 13.5 3.9375Z" fill="currentColor" />
                             </svg>
@@ -291,145 +235,50 @@
                     </a>
                 </div>
             </div>
-
-            <div class="col-md-9 w-md-60 m-sm-auto m-md-0 w-sm-100">
-                <div id="section-history" class="px-md-5 pt-0 w-100">
-                    <h1 class="heading fw-bold">Riwayat Pemesanan</h1>
+            <div class="col-md-9 w-md-60 m-auto w-sm-100 m-md-0">
+                <div id="section-profil" class="px-md-5 pt-0 w-100">
                     @if(session()->has('success'))
-                    <div class="alert my-2 alert-success col-lg-10" role="alert">{{ session('success') }}</div>
+                    <div class="alert alert-success col-lg-10" role="alert">{{ session('success') }}</div>
                     @endif
-                    @if(session()->has('error'))
-                    <div class="alert my-2 alert-danger col-lg-10" role="alert">{{ session('error') }}</div>
+
+                    @if(session()->has('false'))
+                    <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                        {{ session('false') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
                     @endif
-                    <div class="d-flex mt-4">
-                        <button onclick="openOnProgres()" id="btn-on-progres" class="btn toggle toggle-active p-0 m-0">
-                            Sedang Berlangsung
-                        </button>
-                        <button onclick="openFinish()" id="btn-finish" class="btn toggle p-0 m-0">
-                            Selesai
-                        </button>
-                    </div>
-                    <div class="border-top border" style="margin-top: -1px;"></div>
 
-                    <div id="proses-product" class="d-flex flex-column gap-4 mt-4">
-                        <div class="d-flex flex-column gap-2">
-                            @if($ordersPending->isEmpty())
-                            <img src="img/pesanan kosong.png" class="my-3 mx-auto img-fluid" alt="No Orders" style="width: 200px;">
-                            <h4 class="heading text-center">Anda belum membuat pesanan</h4>
-                            @else
-                            @foreach ($ordersPending->sortByDesc('created_at') as $order)
-                            <div class="order border-bottom py-1">
-                                <div class="info-order">
-                                    <p class="status {{ $order->status == 'Belum Dibayar' ? '' : 'active' }} px-3 py-1 mb-1">{{ $order->status }}</p>
-                                    <p class="info my-auto fw-semibold">Kode Pesanan : {{ $order->kode_pesanan }}</p>
-                                    <p class="info my-auto fw-semibold">Waktu Pemesanan : {{ $order->created_at->format('H:i - d/m/Y') }}</p>
-                                </div>
-
-                                @foreach ($order->orderItems as $item)
-                                <div class="row gap-1 align-items-center my-2">
-                                    <!-- Image Section -->
-                                    <img src="{{ $item->product->foto_produk }}" alt="Product Image" class="img-fluid" style="height: 100px; width: auto;">
-                                    <!-- Product Details Section -->
-                                    <div class="my-auto col-9">
-                                        <!-- Product Name -->
-                                        <p class="title-product mb-1">JivaJoy: Aromatherapy 2in1
-                                            (Inhaler & Roll On)</p>
-                                        <!-- Product Info: Price, Quantity, Variant -->
-                                        <div class="d-flex">
-                                            <div class="detail me-4">
-                                                <p class="mb-0 title-price">Total Harga</p>
-                                                <p class="price">Rp {{ number_format($item->harga, 0, ',', '.') }}</p>
-                                            </div>
-                                            <div class="detail me-4">
-                                                <p class="mb-0 title-price">Jumlah</p>
-                                                <p class="price">{{ $item->qty }} pcs</p>
-                                            </div>
-                                            <div class="detail me-4">
-                                                <p class="mb-0 title-price">Varian</p>
-                                                <p class="price">{{ $item->product->varian }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
-
-                                <!-- Total harga order -->
-                                <div class="d-flex justify-content-between my-1">
-                                    <div class="col">
-                                        <p class="mb-0 title-price-total">Total Harga</p>
-                                        <p class="price-total">Rp {{ number_format($order->total_harga, 0, ',', '.') }}</p>
-                                    </div>
-                                    <div class="d-flex justify-content-center gap-4">
-                                        <a href="/orders/{{ $order->kode_pesanan }}" class="btn btn-bucket d-flex gap-2 rounded-pill px-3 py-2">
-                                            Lihat Detail Pesanan
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                            @endif
+                    <h1 class="heading fw-bold">Ganti Password</h1>
+                    <form method="post" action="/password/{{ $user->username }}" class="mt-1">
+                        @method('put')
+                        @csrf
+                        <div class="form-floating my-3">
+                            <input type="password" name="current_password" class="form-control" id="current_password" placeholder="Masukkan Password Lama" required>
+                            <label for="current_password">Password Lama</label>
                         </div>
-                    </div>
 
-                    <div id="finish-product" class="d-flex flex-column gap-4 mt-4 d-none">
-                        <div class="d-flex d-flex flex-column gap-2">
-                            @if($ordersCompleted->isEmpty())
-                            <img src="img/404.png" class="my-3 mx-auto img-fluid" alt="No Orders" style="width: 200px;">
-                            <h4 class="heading text-center">Kamu belum membuat pesanan</h4>
-                            @else
-                            @foreach ($ordersCompleted->sortByDesc('created_at') as $order)
-                            <div class="order border-bottom py-1">
-                                <div class="info-order">
-                                    <p class="status {{ $order->status == 'Belum Dibayar' ? '' : 'active' }} px-3 py-1 mb-1">{{ $order->status }}</p>
-                                    <p class="info my-auto fw-semibold">Kode Pesanan : {{ $order->kode_pesanan }}</p>
-                                    <p class="info my-auto fw-semibold">Waktu Pemesanan : {{ $order->created_at->format('H:i - d/m/Y') }}</p>
-                                </div>
-
-                                @foreach ($order->orderItems as $item)
-                                <div class="row gap-1 align-items-center my-2">
-                                    <!-- Image Section -->
-                                    <img src="{{ $item->product->foto_produk }}" alt="Product Image" class="img-fluid" style="height: 100px; width: auto;">
-                                    <!-- Product Details Section -->
-                                    <div class="my-auto col-9">
-                                        <!-- Product Name -->
-                                        <p class="title-product mb-1">JivaJoy: Aromatherapy 2in1
-                                            (Inhaler & Roll On)</p>
-                                        <!-- Product Info: Price, Quantity, Variant -->
-                                        <div class="d-flex">
-                                            <div class="detail me-4">
-                                                <p class="mb-0 title-price">Total Harga</p>
-                                                <p class="price">Rp {{ number_format($item->harga * $item->qty, 0, ',', '.') }}</p>
-                                            </div>
-                                            <div class="detail me-4">
-                                                <p class="mb-0 title-price">Jumlah</p>
-                                                <p class="price">{{ $item->qty }} pcs</p>
-                                            </div>
-                                            <div class="detail me-4">
-                                                <p class="mb-0 title-price">Varian</p>
-                                                <p class="price">{{ $item->product->varian }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
-
-                                <!-- Total harga order -->
-                                <div class="d-flex justify-content-between my-1">
-                                    <div class="col">
-                                        <p class="mb-0 title-price-total">Total Harga</p>
-                                        <p class="price-total">Rp {{ number_format($order->total_harga, 0, ',', '.') }}</p>
-                                    </div>
-                                    <div class="d-flex justify-content-center gap-4">
-                                        <a href="/orders/{{ $order->kode_pesanan }}" class="btn btn-bucket d-flex gap-2 rounded-pill px-3 py-2">
-                                            Lihat Detail Pesanan
-                                        </a>
-                                    </div>
-                                </div>
+                        <div class="form-floating my-3">
+                            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password Baru" required>
+                            <label for="password">Password Baru</label>
+                            @error('password')
+                            <div class="invalid-feedback">
+                                {{ $message }}
                             </div>
-                            @endforeach
-                            @endif
+                            @enderror
                         </div>
-                    </div>
+
+                        <div class="form-floating my-3">
+                            <input type="password" name="password_confirmation" class="form-control @error('password') is-invalid @enderror" id="password_confirmation" placeholder="Konfirmasi Password" required>
+                            <label for="password_confirmation">Konfirmasi Password</label>
+                            @error('password')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
+                        <button class="btn btn-submit w-100 py-2 my-3" type="submit" onclick="return confirm('Apakah Anda yakin akan mengganti password akun Anda? Setelah mengganti password Anda diharuskan untuk login ulang.')">Perbarui Password</button>
+                    </form>
                 </div>
             </div>
         </div>
