@@ -34,7 +34,7 @@
         <!-- Hero section start -->
         <section class="hero">
             <div class="container d-xl-flex align-items-start">
-                <div class="hero_about col-md-6">
+                <div class="hero_about col-xl-6">
                     <div class="hero_header">
                         <h1 class="hero_header-title">JivaJoy</h1>
                         <p class="hero_header-text">
@@ -57,7 +57,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="hero_promo col-md-6">
+                <div class="hero_promo col-xl-6">
                     <div class="hero_promo-underlay"></div>
                     <div class="hero_promo-underlay--highlight"></div>
                     <div class="hero_slider swiper">
@@ -66,18 +66,18 @@
                                 class="
                                         hero_slider-slide
                                         d-flex
-                                        flex-column flex-md-row
+                                        flex-column flex-xl-row
                                         justify-content-between justify-content-md-start
                                         align-items-md-center
                                         swiper-slide
                                     ">
-                                <div class="hero_slider-slide_media">
-                                    <picture>
+                                <div class="hero_slider-slide_media d-flex justify-content-center">
+                                    <picture style="height: 100%;">
                                         <source data-srcset="img/productrv.png" srcset="img/productrv.png" type="image/webp" />
-                                        <img class="lazy" data-src="img/productrv.png" src="img/productrv.png" alt="media" style="margin-right: 43%;" />
+                                        <img class="lazy" data-src="img/productrv.png" src="img/productrv.png" alt="media" style="margin-left: 10%; max-height: 500px; width: auto;" />
                                     </picture>
                                 </div>
-                                <div class="hero_slider-slide_main">
+                                <div class="hero_slider-slide_main mt-3 mt-xl-0">
                                     <h2 class="title">JivaJoy Warm</h2>
                                     <p class="text">
                                         Nikmati kehangatan lembut dengan kombinasi kemangi yang menenangkan dan cendana yang hangat untuk Anda yang mencari kenyamanan sehari-hari.
@@ -108,18 +108,18 @@
                                 class="
                                         hero_slider-slide
                                         d-flex
-                                        flex-column flex-md-row
+                                        flex-column flex-xl-row
                                         justify-content-between justify-content-md-start
                                         align-items-md-center
                                         swiper-slide
                                     ">
-                                <div class="hero_slider-slide_media">
-                                    <picture>
+                                <div class="hero_slider-slide_media d-flex justify-content-center">
+                                    <picture style="height: 100%;">
                                         <source data-srcset="img/productrv1.png" srcset="img/productrv1.png" type="image/webp" />
-                                        <img class="lazy" data-src="img/productrv1.png" src="img/productrv1.png" alt="media" style="margin-right: 43%;" />
+                                        <img class="lazy" data-src="img/productrv1.png" src="img/productrv1.png" alt="media" style="margin-left: 10%; max-height: 500px; width: auto;"/>
                                     </picture>
                                 </div>
-                                <div class="hero_slider-slide_main">
+                                <div class="hero_slider-slide_main mt-3 mt-xl-0">
                                     <h2 class="title">JivaJoy Hot</h2>
                                     <p class="text">
                                         Nikmati kehangatan JivaJoy Hot untuk memberikan aroma yang lebih kuat untuk mengatasi stres berat dan memberikan kenyamanan mendalam.
@@ -148,7 +148,7 @@
                             </div>
 
                         </div>
-                        <div class="hero-pagination swiper-pagination d-sm-flex flex-column"></div>
+                        <div class="hero-pagination swiper-pagination d-xl-flex flex-column ms-5"></div>
                     </div>
                 </div>
             </div>

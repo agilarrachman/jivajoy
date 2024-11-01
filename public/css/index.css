@@ -6885,22 +6885,8 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
 
 @media screen and (min-width:575.98px) {
     .hero {
-        text-align: left
-    }
-
-    .hero-pagination {
-        position: absolute;
-        right: 0;
-        top: 60%;
-        margin-top: 0;
-        margin-right: 10px;
-        z-index: 100
-    }
-
-    .hero-pagination .swiper-pagination-bullet {
-        margin-right: 0;
-        margin-bottom: 20px
-    }
+        text-align: center;
+    }    
 
     .hero-pagination .swiper-pagination-bullet:last-of-type {
         margin-bottom: 0
@@ -6917,10 +6903,6 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
 
     .hero_slider-slide_media img {
         margin: 0
-    }
-
-    .hero_slider-slide_main .text {
-        max-width: 300px
     }
 }
 
@@ -6995,8 +6977,30 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
 }
 
 @media screen and (min-width:1199.98px) {
+    .hero-pagination .swiper-pagination-bullet {
+        margin-right: 0;
+        margin-bottom: 20px
+    }
+    
+    .hero-pagination {
+        position: absolute;
+        right: 0;
+        top: 60%;
+        margin-top: 0;
+        margin-right: 10px;
+        z-index: 100
+    }
+
     .hero {
-        padding-top: 310px
+        text-align: left;
+    }
+
+    .hero_slider-slide_main .text {
+        max-width: 300px
+    }
+
+    .hero {
+        padding-top: 250px
     }
 
     .hero_about {
