@@ -218,7 +218,8 @@ function fetchNews(){
 
             localStorage.setItem('newsData', JSON.stringify(newsWithTimestamp));
 
-            // console.log("Article berhasil di fetch");
+            // Refresh the page to immediately show the new data
+            location.reload();
         })
         .catch(error => {
             console.error('There was a problem with the fetch operation:', error);

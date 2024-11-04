@@ -67,31 +67,35 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeLogoutPopup = document.getElementById("closeLogoutPopup");
     const cancelLogout = document.getElementById("cancelLogout");
 
-    // Tampilkan popup saat tombol logout diklik
-    logoutButton.addEventListener("click", function (event) {
-        event.preventDefault(); // Mencegah link melakukan navigasi
-        logoutPopup.style.display = "flex"; // Menampilkan popup
-    });
+    if (logoutButton) {
+        logoutButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            logoutPopup.style.display = "flex";
+        });
+    }
 
-    logoutSidebar.addEventListener("click", function (event) {
-        event.preventDefault(); // Mencegah link melakukan navigasi
-        logoutPopup.style.display = "flex"; // Menampilkan popup
-    });
+    if (logoutSidebar) {
+        logoutSidebar.addEventListener("click", function (event) {
+            event.preventDefault();
+            logoutPopup.style.display = "flex";
+        });
+    }
 
-    // Tutup popup saat tombol close diklik
-    closeLogoutPopup.addEventListener("click", function () {
-        logoutPopup.style.display = "none"; // Menyembunyikan popup
-    });
+    if (closeLogoutPopup) {
+        closeLogoutPopup.addEventListener("click", function () {
+            logoutPopup.style.display = "none";
+        });
+    }
 
-    // Tutup popup saat tombol Batal diklik
-    cancelLogout.addEventListener("click", function () {
-        logoutPopup.style.display = "none"; // Menyembunyikan popup
-    });
+    if (cancelLogout) {
+        cancelLogout.addEventListener("click", function () {
+            logoutPopup.style.display = "none";
+        });
+    }
 
-    // Tutup popup saat area di luar popup diklik
     window.addEventListener("click", function (event) {
         if (event.target === logoutPopup) {
-            logoutPopup.style.display = "none"; // Menyembunyikan popup
+            logoutPopup.style.display = "none";
         }
     });
 });
@@ -104,34 +108,35 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeDeleteAccountPopup = document.getElementById("closeDeleteAccountPopup");
     const cancelDeleteAccount = document.getElementById("cancelDeleteAccount");
 
-    console.log(document.getElementById("closeLogoutPopup"));  // Cek apakah null
-    console.log(document.getElementById("cancelLogout"));
+    if (deleteAccountButton) {
+        deleteAccountButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            deleteAccountPopup.style.display = "flex";
+        });
+    }
 
-    // Tampilkan popup saat tombol logout diklik
-    deleteAccountButton.addEventListener("click", function (event) {
-        event.preventDefault(); // Mencegah link melakukan navigasi
-        deleteAccountPopup.style.display = "flex"; // Menampilkan popup
-    });
+    if (deleteAccountSidebar) {
+        deleteAccountSidebar.addEventListener("click", function (event) {
+            event.preventDefault();
+            deleteAccountPopup.style.display = "flex";
+        });
+    }
 
-    deleteAccountSidebar.addEventListener("click", function (event) {
-        event.preventDefault(); // Mencegah link melakukan navigasi
-        deleteAccountPopup.style.display = "flex"; // Menampilkan popup
-    });
+    if (closeDeleteAccountPopup) {
+        closeDeleteAccountPopup.addEventListener("click", function () {
+            deleteAccountPopup.style.display = "none";
+        });
+    }
 
-    // Tutup popup saat tombol close diklik
-    closeDeleteAccountPopup.addEventListener("click", function () {
-        deleteAccountPopup.style.display = "none"; // Menyembunyikan popup
-    });
+    if (cancelDeleteAccount) {
+        cancelDeleteAccount.addEventListener("click", function () {
+            deleteAccountPopup.style.display = "none";
+        });
+    }
 
-    // Tutup popup saat tombol Batal diklik
-    cancelDeleteAccount.addEventListener("click", function () {
-        deleteAccountPopup.style.display = "none"; // Menyembunyikan popup
-    });
-
-    // Tutup popup saat area di luar popup diklik
     window.addEventListener("click", function (event) {
         if (event.target === deleteAccountPopup) {
-            deleteAccountPopup.style.display = "none"; // Menyembunyikan popup
+            deleteAccountPopup.style.display = "none";
         }
     });
 });

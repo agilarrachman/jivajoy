@@ -19,20 +19,6 @@
     <script src="js/script.js"></script>
     <link rel="stylesheet" href="css/news2.min.css" />
     <link rel="stylesheet" href="css/skeleton.css" />
-    <script>
-        window.onload = function() {            
-            let refreshCount = localStorage.getItem('refreshCount') || 0;
-            refreshCount = Number(refreshCount);
-
-            if (refreshCount < 1) {
-                refreshCount++;
-                localStorage.setItem('refreshCount', refreshCount);
-                location.reload();
-            } else {
-                localStorage.removeItem('refreshCount');
-            }
-        };
-    </script>
 </head>
 
 <body>
