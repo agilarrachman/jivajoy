@@ -80,9 +80,9 @@
                         <tr>
                             <th>No</th>
                             <th>Kode Pesanan</th>
-                            <th>Tanggal</th>
+                            <th>Tanggal Pesanan Dibuat</th>
                             <th>Nama Customer</th>
-                            <th>Status</th>
+                            <th>Status Pesanan</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -91,7 +91,7 @@
                         <tr class="{{ $order->status == 'Menunggu Konfirmasi Pembayaran' ? 'active' : '' }}">
                             <td>{{ $loop->iteration }}</td>
                             <td class="col-3">{{ $order->kode_pesanan }}</td>
-                            <td class="col-2">{{ $order->updated_at->format('H:i - d/m/Y') }}</td>
+                            <td class="col-2">{{ $order->created_at->format('H:i - d/m/Y') }}</td>
                             <td>{{ $order->customer->nama }}</td>
                             <td>{{ $order->status }}</td>
                             <td class="col-3">

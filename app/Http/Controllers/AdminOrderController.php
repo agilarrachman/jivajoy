@@ -132,7 +132,7 @@ class AdminOrderController extends Controller
     public function edit(Order $order)
     {
         return view('admin.editpesanan', [
-            "active" => "Keranjang",
+            "active" => "Pesanan",
             'order' => $order,
             'products' => Product::where('stok', '>', 0)->get(),
             'customers' => User::where('role', 'Customer')->get()

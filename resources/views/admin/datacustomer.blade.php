@@ -81,7 +81,7 @@
                             <th>Username</th>
                             <th>No HP</th>
                             <th>Jenis Kelamin</th>
-                            <th>Aksi</th>
+                            <th class="col-5">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>

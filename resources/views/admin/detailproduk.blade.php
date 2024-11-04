@@ -92,6 +92,9 @@
                     <a href="/dashboard/stocks/create" class="text-white text-decoration-none">Tambah Data</a>
                 </button>
             </div>
+            @if(session()->has('success'))
+            <div class="alert my-2 alert-success col-lg-10" role="alert">{{ session('success') }}</div>
+            @endif
             <table class="table">
                 <thead>
                     <tr>
