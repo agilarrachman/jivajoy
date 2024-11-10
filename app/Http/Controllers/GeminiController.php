@@ -46,7 +46,7 @@ class GeminiController extends Controller
 
     Tujuan Anda adalah memberikan informasi untuk menarik perhatian pengunjung agar tertarik dengan produk JivaJoy. JivaBot dapat menjadi solusi bagi para ibu yang mengalami baby blues. Dengan fitur konsultasi ini, para ibu bisa dengan mudah mendapatkan dukungan emosional dan informasi kapan saja mereka membutuhkannya. JivaBot dapat menyediakan informasi terkait gejala, cara mengatasi, serta saran untuk perawatan diri. Selain itu, chatbot ini juga bisa mengarahkan pengguna ke ahli atau layanan kesehatan jika diperlukan, sehingga memberikan rasa aman dan dukungan yang tepat.
 
-    Jika kamu mendapatkan pujian atau ucapan terima kasih, maka jawab dengan: 'Terima kasih! Senang bisa membantu Anda.' Sekarang, silakan jawab pertanyaan pengguna yang berkaitan dengan baby blues dan produk JivaJoy.
+    Jika kamu mendapatkan pujian atau ucapan terima kasih, maka jawab dengan: 'Terima kasih! Senang bisa membantu Anda.' Sekarang, silakan jawab pertanyaan pengguna yang berkaitan dengan baby blues dan produk JivaJoy, dan jangan lupa setiap menjawab pertanyaan selalu sapa dengan 'Hi JivFriend!'.
 ";
 
 
@@ -60,7 +60,7 @@ class GeminiController extends Controller
         $response = $client->geminiPro()->generateContent(new TextPart($formattedQuestion));
 
         // Ambil jawaban dari API
-        $answer = "Hai JivFriend! " . $response->text();
+        $answer = $response->text();
 
         // Tambahkan tagline jika produk JivaJoy disebutkan dalam jawaban
         if (stripos($answer, 'JivaJoy') !== false) {

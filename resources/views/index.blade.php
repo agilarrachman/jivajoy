@@ -40,7 +40,7 @@
                         <p class="hero_header-text">
                             Aromaterapi 2in1 (Inhaler & Roll On) dari Kemangi dan Cendana Sebagai Upaya Mencegah Baby Blues dengan Kemasan Website Terintegrasi
                         </p>
-                        <a href="/produk" style="background-color: #4682A9; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; border-radius: 30px; font-size: 16px; cursor: pointer;">
+                        <a href="/product" style="background-color: #4682A9; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; border-radius: 30px; font-size: 16px; cursor: pointer;">
                             <b>Lihat Produk</b>
                         </a>
                     </div>
@@ -268,7 +268,7 @@
                     </ul>
                     <div class="product_main-action d-flex align-items-center">
                         <span class="price">Rp.30.000,-</span>
-                        <a href="product.html" style="background-color: #4682A9; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; border-radius: 30px; font-size: 16px; cursor: pointer;">
+                        <a href="/product" style="background-color: #4682A9; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; border-radius: 30px; font-size: 16px; cursor: pointer;">
                             <b>Lihat Produk</b>
                         </a>
                     </div>
