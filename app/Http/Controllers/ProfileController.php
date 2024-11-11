@@ -110,7 +110,7 @@ class ProfileController extends Controller
         // Jika ada upload foto profil baru
         if ($request->file('foto_profil')) {
             // Simpan foto baru dan hapus foto lama (jika ada)
-            if ($user->foto_profil) {
+            if ($user->foto_profil) {            
                 Storage::delete('public/' . $user->foto_profil);
             }
             $validatedData['foto_profil'] = $request->file('foto_profil')->store('foto_profil', 'public');

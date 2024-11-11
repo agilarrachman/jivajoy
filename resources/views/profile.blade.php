@@ -244,7 +244,7 @@
                     <form method="post" action="/profile/{{ $user->username }}" class="mt-1" enctype="multipart/form-data">
                         @method('put')
                         @csrf
-                        <input type="hidden" name="role" value="User">
+                        <input type="hidden" name="role" value="Customer">
                         <div class="position-relative w-100 mt-4">
                             <img id="profileImagePreview" src="{{ asset('storage/' . $user->foto_profil) }}" alt="" class="rounded-circle my-3 mx-auto mx-md-0">
                             <label for="foto_profil mb-2" class="label">Ubah Foto Profil</label>
