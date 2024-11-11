@@ -52,7 +52,7 @@ Route::get('/dashboard', function () {
         'warmStock' => Product::where('varian', 'Warm')->value('stok'),
         'hotStock' => Product::where('varian', 'Hot')->value('stok'),
     ]);
-});
+})->middleware('admin');
 
 Route::get('/team', function () {
     return view('team', [
@@ -113,8 +113,8 @@ Route::get('/password', function () {
 
 Route::put('/password/{user:username}', [ProfileController::class, 'updatePassword'])->middleware('auth');
 
-Route::resource('/dashboard/customers', AdminCustomerController::class)->middleware('auth');
-Route::resource('/dashboard/admin', AdminAccountController::class)->middleware('auth');
+Route::resource('/dashboard/customers', AdminCustomerController::class)->middleware('admin');
+Route::resource('/dashboard/admin', AdminAccountController::class)->middleware('admin');
 Route::get('/dashboard/profile', function () {
     return view('admin.profile', [
         "active" => "Profil",
@@ -125,18 +125,18 @@ Route::get('/dashboard/password', function () {
         "active" => "Password",
         'user' => User::where('id', auth()->user()->id)->first(),
     ]);
-});
+})->middleware('admin');
 
 Route::resource('/carts', CartController::class)->middleware('auth');
 Route::resource('/orders', OrderController::class)->middleware('auth');
 Route::get('/order/checkout', [OrderItemController::class, 'checkout']);
 Route::resource('/checkout', OrderItemController::class)->middleware('auth');
 
-Route::resource('/dashboard/stocks', StockController::class)->middleware('auth');
-Route::resource('/dashboard/products', ProductController::class)->middleware('auth');
+Route::resource('/dashboard/stocks', StockController::class)->middleware('admin');
+Route::resource('/dashboard/products', ProductController::class)->middleware('admin');
 Route::get('/dashboard/products/{product}/stocks', [ProductController::class, 'getStocks']);
 
-Route::resource('/dashboard/carts', AdminCartController::class)->middleware('auth');
-Route::resource('/dashboard/orders', AdminOrderController::class)->middleware('auth');
+Route::resource('/dashboard/carts', AdminCartController::class)->middleware('admin');
+Route::resource('/dashboard/orders', AdminOrderController::class)->middleware('admin');
 
 Route::post('/question', [GeminiController::class, 'index']);

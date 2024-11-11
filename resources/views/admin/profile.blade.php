@@ -93,6 +93,7 @@
                         <input type="text" class="form-control" id="date" value="{{ auth()->user()->created_at }}" disabled>
                     </div>
                 </form>
+                <a href="/dashboard/password" class="btn btn-rounded my-3" id="buttonPrimary">Ganti Password</a>
             </div>
         </div>
     </div>

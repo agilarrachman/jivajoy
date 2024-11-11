@@ -38,6 +38,13 @@
             padding: 20px;
         }
 
+        .sidebar .active {
+            border-radius: 30px;
+            background-color: #4380a8;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
         .sidebar img {
             width: 100%;
             max-width: 150px;
