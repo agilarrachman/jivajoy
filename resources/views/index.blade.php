@@ -52,7 +52,7 @@
                             </span>
                             <span class="d-flex flex-column">
                                 <span>Nomor telepon</span>
-                                <a class="link" href="tel:+1234567890">+62 895-3597-28314 (Rangga)</a>
+                                <a class="link" href="https://wa.me/62895359728314">+62 895-3597-28314 (Rangga)</a>
                             </span>
                         </span>
                     </div>
