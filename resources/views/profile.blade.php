@@ -248,7 +248,7 @@
                         <div class="position-relative w-100 mt-4">
                             <img id="profileImagePreview" src="{{ asset('storage/' . $user->foto_profil) }}" alt="" class="rounded-circle my-3 mx-auto mx-md-0">
                             <label for="foto_profil mb-2" class="label">Ubah Foto Profil</label>
-                            <input type="file" name="foto_profil" id="foto_profil" class="form-control w-100 @error('foto_profil') is-invalid @enderror" onchange="previewImage(event)">
+                            <input type="file" name="foto_profil" id="foto_profil" class="form-control w-100 @error('foto_profil') is-invalid @enderror" accept="image/*" onchange="previewImage(event)">
                             @error('foto_profil')
                             <div class="invalid-feedback">
                                 {{ $message }}

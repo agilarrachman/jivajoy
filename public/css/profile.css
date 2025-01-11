@@ -6656,6 +6656,7 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
     }
 
     .header.sticky {
+        padding: 0 !important;
         height: 90px
     }
 
@@ -6771,7 +6772,7 @@ h1.heading{
 }
 
 #container-profile{
-    margin-top: 100px;
+    margin-top: 150px;
 }
 
 .footer_main {

@@ -67,7 +67,7 @@
                 @csrf
                 <div class="col d-flex flex-column w-80">
                     <img id="profileImagePreview" src="/img/default profile picture.jpg" alt="" class="rounded-circle my-3">
-                    <input type="file" name="foto_profil" id="foto_profil" class="form-control mx-auto @error('foto_profil') is-invalid @enderror" onchange="previewImage(event)">
+                    <input type="file" name="foto_profil" id="foto_profil" class="form-control mx-auto @error('foto_profil') is-invalid @enderror" accept="image/*" onchange="previewImage(event)">
                     @error('foto_profil')
                     <div class="invalid-feedback">
                         {{ $message }}
